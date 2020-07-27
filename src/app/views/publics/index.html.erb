@@ -1,0 +1,34 @@
+<main role="main" class="container">
+
+  <!-- <h1 class="mt-5">Driving Lesson Marketplace</h1> -->
+
+  <h2 class="display-4">HOME PAGE</h2>
+  <h3 class="display-4">What this site is about</h3>
+  <h3 class="display-4">What we offer</h3>
+
+  <%
+
+  
+=begin%>
+  <div class="jumbotron">
+    <h3 class="display-4">What this site is about</h3>
+    <p class="lead">Mollit consequat nostrud aute officia id. Nulla cupidatat sit in occaecat esse ea nostrud eu duis eiusmod dolore reprehenderit. Amet ullamco cupidatat voluptate occaecat. In anim commodo ullamco consectetur nulla anim. Est nostrud do nostrud nulla tempor consequat dolor proident dolor nulla cillum nostrud. Aute ad ut ex ex est excepteur et. Mollit sit excepteur incididunt laborum.</p>
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+  </div>
+
+  <div class="jumbotron">
+    <h3 class="display-4">What we offer</h3>
+    <p class="lead">Mollit consequat nostrud aute officia id. Nulla cupidatat sit in occaecat esse ea nostrud eu duis eiusmod dolore reprehenderit. Amet ullamco cupidatat voluptate occaecat. In anim commodo ullamco consectetur nulla anim. Est nostrud do nostrud nulla tempor consequat dolor proident dolor nulla cillum nostrud. Aute ad ut ex ex est excepteur et. Mollit sit excepteur incididunt laborum.</p>
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+  </div>
+    <%
+<%
+=end%>
+  <%= link_to 'Student Sign Up', student_signup_path, :class => 'btn btn-primary' %>
+  <%#= button_to "Student Sign Up", { :action => student_signup }, :method => :get, :class => 'btn btn-primary' %>
+  <button type="button" class="btn btn-outline-primary">Student Log In</button>
+
+  <%= link_to 'Instructor Sign Up', instructor_signup_path, :class => 'btn btn-primary' %>
+  <%#= button_to "Instructor Sign Up", { :action => instructor_signup }, :method => :get, :class => 'btn btn-primary' %>
+  <button type="button" class="btn btn-outline-primary">Instructor Log In</button>
+</main>
