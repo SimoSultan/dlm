@@ -1,0 +1,122 @@
+<form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail">Email</label>
+      <input type="email" class="form-control" id="inputEmail">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword">Password</label>
+      <input type="password" class="form-control" id="inputPassword">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="inputFirstName">First Name</label>
+      <input type="text" class="form-control" id="inputFirstName" placeholder="Jane" required>
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="inputLastName">Last Name</label>
+      <input type="text" class="form-control" id="inputLastName" placeholder="Doe" required>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <label for="inputDobDay">Day</label>
+      <input type="text" class="form-control" id="inputDobDay" maxlength="2" placeholder="01" required>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputDobMonth">Month</label>
+      <select id="inputDobMonth" class="form-control" required>
+        <option selected>Choose...</option>
+        <option value="01">January</option>
+        <option value="02">February</option>
+        <option value="03">March</option>
+        <option value="04">April</option>
+        <option value="05">May</option>
+        <option value="06">June</option>
+        <option value="07">July</option>
+        <option value="08">August</option>
+        <option value="09">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputDobYear">Year</label>
+      <input type="text" class="form-control" id="inputDobYear" maxlength="4" placeholder="2000" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputMobile">Mobile Number</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="0400 111 222" maxlength="10" required>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" required>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">City</label>
+      <input type="text" class="form-control" id="inputCity" required>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">State</label>
+      <select id="inputState" class="form-control" required>
+        <option selected>Choose...</option>
+        <option value="QLD">QLD</option>
+        <option value="VIC">VIC</option>
+        <option value="NSW">NSW</option>
+        <option value="NT">NT</option>
+        <option value="ACT">ACT</option>
+        <option value="WA">WA</option>
+        <option value="SA">SA</option>
+        <option value="TAS">TAS</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">Post Code</label>
+      <input type="text" class="form-control" id="inputPostCode" maxlength="4" required>
+    </div>
+  </div>
+  <div class="form-group col-md-4">
+    <label for="inputTransmission">Transmission</label>
+    <select id="inputTransmission" class="form-control" required>
+      <option selected>Choose...</option>
+      <option value="0">Manual</option>
+      <option value="1">Automatic</option>
+    </select>
+  </div>
+
+  
+  <% if @details == "Instructor" %>
+    <div class="form-group col-md-4">
+      <label for="inputLicenseClass">License Class</label>
+      <select id="inputLicenseClass" class="form-control" required>
+        <option selected>Choose...</option>
+        <option value="0">C</option>
+        <option value="1">CA</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputYearStarted">Year Started Instructing</label>
+      <input type="text" class="form-control" id="inputYearStarted" maxlength="4" placeholder="2007" required>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputBlueCard">Blue Card Number</label>
+        <!--  <input type="text" class="form-control" id="inputBlueCard" maxlength="6" placeholder="999999" required> / 2 -->
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputBlueCard">Blue Card Expiry</label>
+        <!-- <input type="text" class="form-control" id="inputBlueCard" maxlength="6" placeholder="999999" required> -->
+      </div>
+    </div>  
+  <% end %>
+  
+
+  <%= link_to 'Cancel', home_path, :class=> "btn btn-outline-primary" %>
+
+  <button type="submit" class="btn btn-primary">Sign in</button>
+</form>
