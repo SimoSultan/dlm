@@ -10,5 +10,5 @@ class PublicsController < ApplicationController
   def instructor_signup
     @details = "Instructor"
     render 'signup'
-  end
+  end 
 end
