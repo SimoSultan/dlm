@@ -11,32 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <%#= form.hidden_field :user_id, value: current_user.id %>
+
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :address %>
-    <%= form.text_field :address %>
+    <%= form.text_field :address, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :phone %>
-    <%= form.text_field :phone %>
+    <%= form.text_field :phone, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :dob %>
-    <%= form.text_field :dob %>
+    <%= form.text_field :dob, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :transmission %>
     <%= form.check_box :transmission %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :gender %>
     <%= form.check_box :gender %>
   </div>

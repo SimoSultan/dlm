@@ -55,3 +55,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Extra gems I have added
 gem "devise"
+gem 'nested_form'

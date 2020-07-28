@@ -1,7 +1,7 @@
 class CreateInstructors < ActiveRecord::Migration[6.0]
   def change
     create_table :instructors do |t|
-      t.references :user
+      # t.references :user
       t.string :name
       t.string :address
       t.string :phone

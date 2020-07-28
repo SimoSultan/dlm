@@ -27,16 +27,22 @@ class InstructorsController < ApplicationController
   # POST /instructors.json
   def create
     @instructor = Instructor.new(instructor_params)
-
-    respond_to do |format|
-      if @instructor.save
-        format.html { redirect_to @instructor, notice: 'Instructor was successfully created.' }
-        format.json { render :show, status: :created, location: @instructor }
-      else
-        format.html { render :new }
-        format.json { render json: @instructor.errors, status: :unprocessable_entity }
-      end
+    @instructor.user = current_user
+    
+    if @student.save
+      render :show
+    else
+      render :new
     end
+    # respond_to do |format|
+    #   if @instructor.save
+    #     format.html { redirect_to @instructor, notice: 'Instructor was successfully created.' }
+    #     format.json { render :show, status: :created, location: @instructor }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @instructor.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /instructors/1
