@@ -19,13 +19,18 @@
       <%= render "shared/nav"%>
     </header>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
 
-    <h1 class="mt-5">Driving Lesson Marketplace</h1>
+    <div class="container">
 
+      <h1 class="mt-5">Driving Lesson Marketplace</h1>
 
-    <%= yield %>
+      <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
+      <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
+
+      <%= yield %>
+
+    </div>
+    
 
  
     <%#= render "shared/footer"%>

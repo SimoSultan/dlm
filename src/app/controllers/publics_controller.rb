@@ -4,11 +4,11 @@ class PublicsController < ApplicationController
 
   def student_signup
     @details = "Student"
-    render 'signup'
+    # render 'signup'
   end
 
   def instructor_signup
     @details = "Instructor"
-    render 'signup'
+    # render 'signup'
   end 
 end

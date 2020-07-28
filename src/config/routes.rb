@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   root to: 'publics#index', as: "home"
 
   # SIGNUP
-  get '/student/signup', to: "publics#student_signup", as: "student_signup"
-  get '/instructor/signup', to: "publics#instructor_signup", as: "instructor_signup"
+  # get '/student/signup', to: "publics#student_signup", as: "student_signup"
+  # get '/instructor/signup', to: "publics#instructor_signup", as: "instructor_signup"
 end
