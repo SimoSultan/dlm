@@ -10,31 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_28_022814) do
+ActiveRecord::Schema.define(version: 2020_07_28_125914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "instructors", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "name"
+    t.bigint "user_id", null: false
+    t.string "first_name"
+    t.string "last_name"
     t.string "address"
     t.string "phone"
     t.string "dob"
-    t.boolean "transmission"
-    t.boolean "gender"
+    t.integer "transmission"
+    t.integer "gender"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_instructors_on_user_id"
   end
 
   create_table "students", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "name"
+    t.bigint "user_id", null: false
+    t.string "first_name"
+    t.string "last_name"
     t.string "address"
     t.string "phone"
     t.string "dob"
-    t.boolean "transmission"
+    t.integer "transmission"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_students_on_user_id"
@@ -62,4 +64,6 @@ ActiveRecord::Schema.define(version: 2020_07_28_022814) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "instructors", "users"
+  add_foreign_key "students", "users"
 end
