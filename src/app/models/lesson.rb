@@ -1,6 +1,5 @@
 class Lesson < ApplicationRecord
 
-  # enum status: [:request, :lesson]
   # self.implicit_order_column = "created_at"
 
   belongs_to :student
@@ -8,6 +7,5 @@ class Lesson < ApplicationRecord
 
   # has_one :payment, class_name: "payment", foreign_key: "payment_id"
   # has_many :comments, class_name: "comment", foreign_key: "reference_id"
-
 
 end

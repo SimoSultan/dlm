@@ -21,6 +21,7 @@ class LessonsController < ApplicationController
   end
 
   def show
+    @lesson = Lesson.find_by(id: params[:id])
   end
 
   def create
@@ -46,8 +47,6 @@ class LessonsController < ApplicationController
   end
 
   def update
- 
-    puts "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
     id = params[:id]
     lesson = Lesson.find_by(id: id)
 

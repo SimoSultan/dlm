@@ -25,6 +25,9 @@ class StudentsController < ApplicationController
   # POST /students
   # POST /students.json
   def create
+
+    student_params[:phone] = format_phone(student_params[:phone])
+
     @student = Student.new(student_params)
     @student.user = current_user
 
@@ -39,6 +42,9 @@ class StudentsController < ApplicationController
   # PATCH/PUT /students/1
   # PATCH/PUT /students/1.json
   def update
+    # student_params[:phone] = format_phone(student_params[:phone])
+    # puts "student_params[:phone]"
+    # puts student_params
     respond_to do |format|
       if @student.update(student_params)
         format.html { redirect_to @student, notice: 'Student was successfully updated.' }
@@ -70,4 +76,9 @@ class StudentsController < ApplicationController
     def student_params
       params.require(:student).permit(:first_name, :last_name, :address, :phone, :dob, :transmission)
     end
+
+    # def format_phone(number)
+    #   x = number.to_s.delete('^0-9')
+    #   return x
+    # end
 end

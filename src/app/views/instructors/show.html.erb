@@ -10,8 +10,8 @@
 </p>
 
 <p>
-  <strong>Phone:</strong>
-  <%= @instructor.phone if @instructor.phone %>
+  <strong>Mobile:</strong>
+  <%= "#{@instructor.phone[0..3]} #{@instructor.phone[4..6]} #{@instructor.phone[7..9]}" if @instructor.phone %>
 </p>
 
 <p>

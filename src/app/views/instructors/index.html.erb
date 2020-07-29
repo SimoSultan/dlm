@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Instructors</h1>
+<h1>All Instructors</h1>
 
 <table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Address</th>
-      <th scope="col">Phone</th>
+      <th scope="col">Mobile</th>
       <th scope="col">Dob</th>
       <th scope="col">Transmission</th>
       <th scope="col">Gender</th>
@@ -20,7 +20,7 @@
       <tr>
         <td><%= instructor.first_name.capitalize + ' ' + instructor.last_name.capitalize %></td>
         <td><%= instructor.address %></td>
-        <td><%= instructor.phone %></td>
+        <td><%= "#{instructor.phone[0..3]} #{instructor.phone[4..6]} #{instructor.phone[7..9]}" %></td>
         <td><%= instructor.dob %></td>
         <td><%= instructor.transmission.capitalize %></td>
         <td><%= instructor.gender.capitalize %></td>
