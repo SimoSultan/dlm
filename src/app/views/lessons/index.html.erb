@@ -24,7 +24,7 @@
         <td><%= lesson.time.strftime('%H:%M') if lesson.time %></td>
         <td><%= "#{lesson.duration} mins" if lesson.duration %></td>
         <!--<td><%= lesson.transmission.capitalize if lesson.transmission %></td>-->
-        <td><%= lesson.cancelled ? "Yes" : "No" %></td>
+        <td><%= lesson.cancelled ? "Yes": "No" %></td>
         <td><%= "to-do" %></td>
         <td><%= link_to 'Show', lesson %></td>
         <td><%= link_to 'Edit', edit_lesson_path(lesson) %></td>

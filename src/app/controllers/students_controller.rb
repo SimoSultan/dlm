@@ -26,7 +26,7 @@ class StudentsController < ApplicationController
   # POST /students.json
   def create
 
-    student_params[:phone] = format_phone(student_params[:phone])
+    # student_params[:phone] = format_phone(student_params[:phone])
 
     @student = Student.new(student_params)
     @student.user = current_user

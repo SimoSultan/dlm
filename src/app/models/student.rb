@@ -14,8 +14,6 @@ class Student < ApplicationRecord
   private
 
   def validate_number
-    puts "----------------------------"
-    puts phone
     phone.to_s.delete('^0-9')
     if phone.length != 10
       errors.add(:phone, "must be a 10 digit mobile number. eg. '0400123456'")
