@@ -1,0 +1,78 @@
+<h1>Edit Lesson</h1>
+
+<div class="card text-center">
+  <h5 class="card-header">Edit Driving Lesson</h5>
+  <div class="card-body">
+    <%= form_with model: @lesson, local: true, url: lessons_path do |form| %>
+
+      <div class="form-group row">
+        <%= form.label :date, class: "col-sm-3 col-form-label text-left" %>
+        <div class="col-sm-6"><%= form.date_field :date, value: :date, class: "form-control" %></div>
+      </div>
+
+      <div class="form-group row">
+        <%= form.label :time, class: "col-sm-3 col-form-label text-left" %>
+        <div class="col-sm-6"><%= form.time_field :time, value: :time, class: "form-control"  %></div>
+      </div>
+
+      <% if false %>
+      <div class="form-group row">
+        <%= form.label :instructor, class: "col-sm-3 col-form-label text-left" %>
+        <div class="col-sm-6">
+          <%= form.radio_button :instructor, :any, class: "form-check-input" %>
+          <%= form.label :instructor, "Any Instructor", class: "form-check-label", value: :any %><br />
+          <%= form.radio_button :instructor, :male, class: "form-check-input" %>
+          <%= form.label :instructor, "Male", class: "form-check-label", value: :male %><br />
+          <%= form.radio_button :instructor, :female, class: "form-check-input" %>
+          <%= form.label :instructor, "Female", class: "form-check-label", value: :female %>
+        </div>
+      </div>
+      <% end %>
+
+      <div class="form-group row">
+        <%= form.label :instructor, class: "col-sm-3 col-form-label text-left" %>
+        <div class="col-sm-6">
+          <%= form.collection_select :instructor_id, Instructor.all, :id, :first_name, {}, {value: :instructor, class: "form-control"} %>
+          <%#= form.text_field :instructor, class: "form-control", disabled: true, value: current_user.instructor.first_name %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= form.label :duration, class: "col-sm-3 col-form-label text-left" %>
+        <div class="col-sm-6">
+          <%= form.select :duration, [['60 mins', 60], ['90 mins', 90], ['120 mins', 120]], {}, {class: "form-control", value: :duration} %>
+
+          <%#= form.text_field :duration, class: "form-control", disabled: true, value: :duration %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= form.label :cancelled, class: "col-sm-3 col-form-label text-left" %>
+        <div class="col-sm-6">
+          <%= form.radio_button :cancelled, false, class: "form-check-input", value: :cancelled %>
+          <%= form.label :cancelled, "No", class: "form-check-label", value: false %><br />
+          <%= form.radio_button :cancelled, true, class: "form-check-input", value: :cancelled %>
+          <%= form.label :cancelled, "Yes", class: "form-check-label", value: true %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= form.label :transmission, class: "col-sm-3 col-form-label text-left" %>
+        <div class="col-sm-6"><%= form.text_field :transmissio, class: "form-control", disabled: true, value: current_user.student.transmission.capitalize %></div>
+      </div>
+
+      <div class="form-group row">
+        <%= form.label :address, class: "col-sm-3 col-form-label text-left" %>
+        <div class="col-sm-6"><%= form.text_field :address, class: "form-control", disabled: true, value: current_user.student.address %></div>
+      </div>
+
+      <div class="actions">
+        <%= form.submit "UPDATE", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<br>
+
+<%= link_to 'Back', lessons_path, class: "btn btn-secondary" %>

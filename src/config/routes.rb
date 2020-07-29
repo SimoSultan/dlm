@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :instructors
   resources :students
+  resources :lessons
   devise_for :users, :controllers => {:registrations => "registrations"}
 
 end
