@@ -6,7 +6,7 @@ class InstructorsController < ApplicationController
   # GET /instructors
   # GET /instructors.json
   def index
-    @instructors = Instructor.all
+    @instructors = Instructor.order(:created_at).reverse_order
   end
 
   # GET /instructors/1

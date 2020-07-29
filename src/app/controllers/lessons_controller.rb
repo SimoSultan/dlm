@@ -1,8 +1,8 @@
 class LessonsController < ApplicationController
 
   def index
-    @all_lessons = []
-    @all_lessons = Lesson.all
+    # @all_lessons = []
+    @all_lessons = Lesson.order(:date, :time).reverse_order
 
     # BELOW IS WORKING JUST LOOKING AT ALL LESSONS FOR DEV REASONS
     # if current_user.student?
@@ -10,6 +10,7 @@ class LessonsController < ApplicationController
     # else
     #   @all_lessons = Lesson.where(instructor_id: current_user.instructor.id)
     # end
+
   end
 
   def new
@@ -30,11 +31,11 @@ class LessonsController < ApplicationController
     @lesson.student_id = lesson_params[:student_id].to_i
     @lesson.instructor_id = lesson_params[:instructor_id].to_i
     @lesson.date = lesson_params[:date]
-    @lesson.time = format_time(lesson_params[:time])
+    @lesson.time = lesson_params[:time]
     @lesson.duration = lesson_params[:duration].to_i
-    @lesson.transmission = lesson_params[:transmission].to_i
+    # @lesson.transmission = lesson_params[:transmission].to_i
     @lesson.cancelled = false
-    @lesson.status = 0
+    # @lesson.status = 0
 
     if @lesson.save
       render :index
@@ -45,25 +46,25 @@ class LessonsController < ApplicationController
   end
 
   def update
-    new_lesson_details = params[:lesson]
-    id = new_lesson_details[:id]
+ 
+    puts "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
+    id = params[:id]
     lesson = Lesson.find_by(id: id)
-    lesson.date = new_lesson_details[:date]
-    lesson.time = new_lesson_details[:time]
-    lesson.instructor = new_lesson_details[:instructor]
-    lesson.duration = new_lesson_details[:duration]
-    lesson.cancelled = new_lesson_details[:cancelled]
 
-    if lesson.update
-      redirect_to lessons_path
+    lesson.date = params[:date]
+    lesson.time = params[:time]
+    lesson.instructor_id = params[:instructor_id].to_i
+    lesson.duration = params[:duration].to_i
+    lesson.cancelled = params[:cancelled]
+
+    if lesson.save
+      render :index
+    else
+      render :edit
     end
   end
 
   private
-    def format_time(time)
-      puts "ooooooooooooooooooooooooooooooo"
-      puts time
-      time
-    end
+
 
 end

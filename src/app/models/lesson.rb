@@ -1,7 +1,7 @@
 class Lesson < ApplicationRecord
 
-  enum transmission: [:manual, :automatic]
-  enum status: [:request, :lesson]
+  # enum status: [:request, :lesson]
+  # self.implicit_order_column = "created_at"
 
   belongs_to :student
   belongs_to :instructor

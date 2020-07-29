@@ -12,18 +12,18 @@
       <%= form.hidden_field :transmission, value: current_user.student.transmission %>
 
       <div class="form-group row">
-        <%= form.label :date, class: "col-sm-2 col-form-label" %>
+        <%= form.label :date, class: "col-sm-3 col-form-label text-left" %>
         <div class="col-sm-6"><%= form.date_field :date, class: "form-control" %></div>
       </div>
 
       <div class="form-group row">
-        <%= form.label :time, class: "col-sm-2 col-form-label" %>
+        <%= form.label :time, class: "col-sm-3 col-form-label text-left" %>
         <div class="col-sm-6"><%= form.time_field :time, class: "form-control" %></div>
       </div>
 
       <% if false %>
       <div class="form-group row">
-        <%= form.label :instructor, class: "col-sm-2 col-form-label" %>
+        <%= form.label :instructor, class: "col-sm-3 col-form-label text-left" %>
         <div class="col-sm-6">
           <%= form.radio_button :instructor, :any, class: "form-check-input" %>
           <%= form.label :instructor, "Any Instructor", class: "form-check-label", value: :any %><br />
@@ -36,20 +36,21 @@
       <% end %>
 
       <div class="form-group row">
-        <%= form.label :instructor, class: "col-sm-2 col-form-label" %>
-        <div class="col-sm-6">  <%= form.collection_select(:instructor_id, Instructor.all, :id, :first_name) %><br/></div>
-      </div>
-
-      <div class="form-group row">
-        <%= form.label :duration, class: "col-sm-2 col-form-label" %>
+        <%= form.label :instructor, class: "col-sm-3 col-form-label text-left" %>
         <div class="col-sm-6">
-          <%= form.select(:duration, [['60 mins', 60], ['90 mins', 90], ['120 mins', 120]]) %>
+          <%= form.collection_select :instructor_id, Instructor.all, :id, :first_name, {}, {value: :instructor, class: "form-control"} %>
         </div>
-        
       </div>
 
       <div class="form-group row">
-        <%= form.label :address, class: "col-sm-2 col-form-label" %>
+        <%= form.label :duration, class: "col-sm-3 col-form-label text-left" %>
+        <div class="col-sm-6">
+          <%= form.select :duration, [['60 mins', 60], ['90 mins', 90], ['120 mins', 120]], {}, {class: "form-control", value: :duration} %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= form.label :address, class: "col-sm-3 col-form-label text-left" %>
         <div class="col-sm-6"><%= form.text_field :address, class: "form-control", disabled: true, value: current_user.student.address %></div>
       </div>
 
