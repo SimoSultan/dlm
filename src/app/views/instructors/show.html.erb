@@ -1,8 +1,7 @@
-<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Name:</strong>
-  <%= @instructor.name %>
+  <%= @instructor.first_name.capitalize + ' ' + @instructor.last_name.capitalize %>
 </p>
 
 <p>
@@ -22,12 +21,12 @@
 
 <p>
   <strong>Transmission:</strong>
-  <%= @instructor.transmission %>
+  <%= @instructor.transmission.capitalize %>
 </p>
 
 <p>
   <strong>Gender:</strong>
-  <%= @instructor.gender %>
+  <%= @instructor.gender.capitalize %>
 </p>
 
 <%= link_to 'Edit', edit_instructor_path(@instructor) %> |

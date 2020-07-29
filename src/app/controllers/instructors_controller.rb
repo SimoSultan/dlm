@@ -28,8 +28,8 @@ class InstructorsController < ApplicationController
   def create
     @instructor = Instructor.new(instructor_params)
     @instructor.user = current_user
-    
-    if @student.save
+
+    if @instructor.save
       render :show
     else
       render :new
@@ -77,6 +77,6 @@ class InstructorsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def instructor_params
-      params.require(:instructor).permit(:name, :address, :phone, :dob, :transmission, :gender)
+      params.require(:instructor).permit(:first_name, :last_name, :address, :phone, :dob, :transmission, :gender)
     end
 end

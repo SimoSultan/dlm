@@ -6,18 +6,34 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <%# if user_signed_in? %>
+          <%# if current_user.role == "student" %>
+            <%#= link_to 'My Profile', student_path(current_user.student.id), class: "nav-link" %>
+          <%# else %>
+            <%#= link_to 'My Profile', instructor_path(current_user.instructor.id), class: "nav-link" %>
+          <%# end %>
+        <%# else %>
+          <%#= link_to 'My Profile', new_user_registration_path, class: "nav-link" %>
+        <%# end %>
+        <%#= link_to 'My Profile', new_user_registration_path, class: "nav-link" %>
+
       </li>
     </ul>
     
     <ul class="navbar-nav nav-right">
       <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to current_user.email, edit_user_registration_path, class: "nav-link" %>
+          <% if current_user.role == "student" %>
+            <%= link_to current_user.email, edit_student_path(current_user), class: "nav-link" %>
+          <% else %>
+            <%= link_to current_user.email, edit_instructor_path(current_user), class: "nav-link" %>
+          <% end %>
         </li>
         <li class="nav-item">
           <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>
+      <% elsif user_signed_in? %>
+        <li class="nav-item">Signing Up</li>
       <% else %>
         <li class="nav-item">
           <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %>

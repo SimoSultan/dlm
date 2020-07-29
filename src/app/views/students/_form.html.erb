@@ -11,11 +11,15 @@
     </div>
   <% end %>
 
-  <%#= form.hidden_field :user_id, value: current_user.id %>
 
   <div class="form-group">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "form-control" %>
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, class: "form-control" %>
   </div>
 
   <div class="form-group">
@@ -33,9 +37,11 @@
     <%= form.text_field :dob, class: "form-control" %>
   </div>
 
-  <div class="form-group">
-    <%= form.label :transmission %>
-    <%= form.check_box :transmission %>
+  <div class="form-group form-check">
+    <%= form.radio_button :transmission, :manual, class: "form-check-input" %>
+    <%= form.label :transmission, "Manual", class: "form-check-label", value: :manual %><br />
+    <%= form.radio_button :transmission, :automatic, class: "form-check-input" %>
+    <%= form.label :transmission, "Automatic", class: "form-check-label", value: :automatic %>
   </div>
 
   <div class="actions">

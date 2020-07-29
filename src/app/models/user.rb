@@ -9,14 +9,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :student
-  # accepts_nested_attributes_for :student
-  # accepts_nested_attributes_for :student, reject_if: ->(attributes){ attributes['name'].blank? }, allow_destroy: true
-  # has_one :instructor
-  # accepts_nested_attributes_for :instructor
-  # accepts_nested_attributes_for :instructor, reject_if: ->(attributes){ attributes['name'].blank? }, allow_destroy: true
+  has_one :instructor
 
-  # def with_student
-  #   build_student if student.nil?
-  #   self
-  # end
+  validates :role, presence: true
+
 end

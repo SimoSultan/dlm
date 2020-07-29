@@ -24,9 +24,13 @@
     <%
 <%
 =end%>
-  <%= link_to 'Student Sign Up', new_user_registration_path, :class => 'btn btn-primary' %>
-  <button type="button" class="btn btn-outline-primary">Student Log In</button>
 
-  <%#= link_to 'Instructor Sign Up', instructor_signup_path, :class => 'btn btn-primary' %>
-  <button type="button" class="btn btn-outline-primary">Instructor Log In</button>
+  <% if !user_signed_in?%>
+    <%= link_to 'Sign Up', new_user_registration_path, :class => 'btn btn-primary' %>
+    <button type="button" class="btn btn-outline-primary">Student Log In</button>
+
+    <%#= link_to 'Instructor Sign Up', instructor_signup_path, :class => 'btn btn-primary' %>
+    <button type="button" class="btn btn-outline-primary">Instructor Log In</button>
+  <% end %>
+
 </main>

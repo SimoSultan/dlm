@@ -2,7 +2,7 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @student.name %>
+  <%= @student.first_name.capitalize + ' ' + @student.last_name.capitalize %>
 </p>
 
 <p>
@@ -22,7 +22,7 @@
 
 <p>
   <strong>Transmission:</strong>
-  <%= @student.transmission %>
+  <%= @student.transmission.capitalize %>
 </p>
 
 <%= link_to 'Edit', edit_student_path(@student) %> |
