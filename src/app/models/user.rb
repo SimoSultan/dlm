@@ -13,4 +13,37 @@ class User < ApplicationRecord
 
   validates :role, presence: true
 
+  # after_create :init_profile
+
+  # before_save(on: :create) do 
+  #   puts "here 1"
+  #   if self.role == "student"
+  #     puts "here2"
+  #       student = Student.new
+  #       student.user = current_user
+  #       student.save
+  #   else
+  #     puts "here 3"
+  #       instructor = Instructor.new
+  #       instructor.user = current_user
+  #       instructor.save
+  #   end
+  # end
+
+  private 
+
+    # def init_profile
+    #   puts "here"
+    #   if self.role == "student"
+    #     puts "here 2"
+
+    #     student = Student.new
+    #     student.user = current_user
+    #     student.save
+    #   else
+    #     instructor = Instructor.new
+    #     instructor.user = current_user
+    #     instructor.save
+    #   end
+    # end
 end

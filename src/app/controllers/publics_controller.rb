@@ -1,14 +1,8 @@
 class PublicsController < ApplicationController
-  def index
+  def home
+    # if user_signed_in?
+    #   render "students/edit"
+    # end
   end
 
-  def student_signup
-    @details = "Student"
-    # render 'signup'
-  end
-
-  def instructor_signup
-    @details = "Instructor"
-    # render 'signup'
-  end 
 end

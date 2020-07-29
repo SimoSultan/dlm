@@ -1,32 +1,32 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @instructor.first_name.capitalize + ' ' + @instructor.last_name.capitalize %>
+  <%= @instructor.first_name.capitalize + ' ' + @instructor.last_name.capitalize if @instructor.first_name &&  @instructor.last_name %>
 </p>
 
 <p>
   <strong>Address:</strong>
-  <%= @instructor.address %>
+  <%= @instructor.address if @instructor.address %>
 </p>
 
 <p>
   <strong>Phone:</strong>
-  <%= @instructor.phone %>
+  <%= @instructor.phone if @instructor.phone %>
 </p>
 
 <p>
   <strong>Dob:</strong>
-  <%= @instructor.dob %>
+  <%= @instructor.dob if @instructor.dob %>
 </p>
 
 <p>
   <strong>Transmission:</strong>
-  <%= @instructor.transmission.capitalize %>
+  <%= @instructor.transmission.capitalize if @instructor.transmission %>
 </p>
 
 <p>
   <strong>Gender:</strong>
-  <%= @instructor.gender.capitalize %>
+  <%= @instructor.gender.capitalize if @instructor.gender %>
 </p>
 
 <%= link_to 'Edit', edit_instructor_path(@instructor) %> |
