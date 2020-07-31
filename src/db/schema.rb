@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_31_025502) do
+ActiveRecord::Schema.define(version: 2020_07_31_045253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,13 @@ ActiveRecord::Schema.define(version: 2020_07_31_025502) do
     t.index ["user_id"], name: "index_instructors_on_user_id"
   end
 
+  create_table "lesson_infos", force: :cascade do |t|
+    t.integer "cost"
+    t.integer "duration"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "lessons", force: :cascade do |t|
     t.bigint "student_id", null: false
     t.bigint "instructor_id", null: false
@@ -51,6 +58,18 @@ ActiveRecord::Schema.define(version: 2020_07_31_025502) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["instructor_id"], name: "index_lessons_on_instructor_id"
     t.index ["student_id"], name: "index_lessons_on_student_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "lesson_id", null: false
+    t.string "card_no"
+    t.string "exp"
+    t.integer "amount"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lesson_id"], name: "index_payments_on_lesson_id"
+    t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -92,5 +111,7 @@ ActiveRecord::Schema.define(version: 2020_07_31_025502) do
   add_foreign_key "instructors", "users"
   add_foreign_key "lessons", "instructors"
   add_foreign_key "lessons", "students"
+  add_foreign_key "payments", "lessons"
+  add_foreign_key "payments", "users"
   add_foreign_key "students", "users"
 end

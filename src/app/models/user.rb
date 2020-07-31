@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_one :instructor
   has_one :admin
 
+  has_many :payments, class_name: "payment", foreign_key: "reference_id"
+
   validates :role, presence: true
 
   # after_create :init_profile

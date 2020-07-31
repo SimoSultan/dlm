@@ -1,0 +1,2 @@
+module LessonInfosHelper
+end
