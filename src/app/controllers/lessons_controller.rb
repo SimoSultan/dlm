@@ -1,16 +1,16 @@
 class LessonsController < ApplicationController
 
-  def index()
-    # @all_lessons = []
-    @all_lessons = Lesson.order(:date, :time).reverse_order
+  def index
+    @all_lessons = []
 
-    # BELOW IS WORKING JUST LOOKING AT ALL LESSONS FOR DEV REASONS
-    # if current_user.student?
+    if current_user.student?
       @all_lessons = Lesson.where(student_id: current_user.student.id).order(:date, :time).reverse_order
-    # else
-    #   @all_lessons = Lesson.where(instructor_id: current_user.instructor.id)
-    # end
-
+    elsif current_user.instructor?
+      @all_lessons = Lesson.where(instructor_id: current_user.instructor.id).order(:date, :time).reverse_order
+    elsif current_user.admin?
+      @all_lessons = Lesson.order(:date, :time).reverse_order
+    end
+    @all_lessons
   end
 
   def new

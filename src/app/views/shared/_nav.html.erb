@@ -16,22 +16,24 @@
             Hello <%= current_user.admin.first_name.capitalize if current_user.admin.first_name %>!
           <% end %>
         <% end %>
+      </li>
 
-      </li>
-      <% if current_user.admin? %>
-      <li class="nav-item">
-        <%= link_to 'All Lessons', lessons_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to 'All Students', students_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to 'All Instructors', instructors_path, class: "nav-link" %>
-      </li>
-      <% else %>
-      <li class="nav-item">
-        <%= link_to 'My Lessons', lessons_path(current_user), class: "nav-link" %>
-      </li>
+      <% if user_signed_in? %>
+        <% if current_user.admin? %>
+        <li class="nav-item">
+          <%= link_to 'All Lessons', lessons_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'All Students', students_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'All Instructors', instructors_path, class: "nav-link" %>
+        </li>
+        <% elsif current_user.student? || current_user.instructor? %>
+        <li class="nav-item">
+          <%= link_to 'My Lessons', lessons_path, class: "nav-link" %>
+        </li>
+        <% end %>
       <% end %>
    
     </ul>
