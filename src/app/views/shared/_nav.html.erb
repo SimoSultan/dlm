@@ -9,13 +9,16 @@
       <li class="navbar-text active" >
         <% if user_signed_in? %>
           <% if current_user.student? %>
-            Hello <%= current_user.student.first_name %>!
-          <% else %>
-            Hello <%= current_user.instructor.first_name if current_user.instructor.first_name %>!
+            Hello <%= current_user.student.first_name.capitalize if current_user.student.first_name %>!
+          <% elsif current_user.instructor? %>
+            Hello <%= current_user.instructor.first_name.capitalize if current_user.instructor.first_name %>!
+          <% elsif current_user.admin? %>
+            Hello <%= current_user.admin.first_name.capitalize if current_user.admin.first_name %>!
           <% end %>
         <% end %>
 
       </li>
+      <% if current_user.admin? %>
       <li class="nav-item">
         <%= link_to 'All Lessons', lessons_path, class: "nav-link" %>
       </li>
@@ -25,6 +28,12 @@
       <li class="nav-item">
         <%= link_to 'All Instructors', instructors_path, class: "nav-link" %>
       </li>
+      <% else %>
+      <li class="nav-item">
+        <%= link_to 'My Lessons', lessons_path(current_user), class: "nav-link" %>
+      </li>
+      <% end %>
+   
     </ul>
     
     <ul class="navbar-nav nav-right">
@@ -32,8 +41,10 @@
         <li class="nav-item">
           <% if current_user.student? %>
             <%= link_to current_user.email, student_path(current_user.student.id), class: "nav-link" %>
-          <% else %>
+          <% elsif current_user.instructor?  %>
             <%= link_to current_user.email, instructor_path(current_user.instructor.id), class: "nav-link" %>
+          <% elsif current_user.admin? %>
+            <%= link_to current_user.email, admin_path(current_user.admin.id), class: "nav-link" %>
           <% end %>
         </li>
         <li class="nav-item">

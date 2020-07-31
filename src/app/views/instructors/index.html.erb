@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th scope="col">Name</th>
+      <th scope="col">Email</th>
       <th scope="col">Address</th>
       <th scope="col">Mobile</th>
       <th scope="col">Dob</th>
@@ -19,11 +20,12 @@
     <% @instructors.each do |instructor| %>
       <tr>
         <td><%= instructor.first_name.capitalize + ' ' + instructor.last_name.capitalize %></td>
-        <td><%= instructor.address %></td>
+        <td><%= instructor.user.email if instructor.user.email %></td>
+        <td><%= instructor.address if instructor.address%></td>
         <td><%= "#{instructor.phone[0..3]} #{instructor.phone[4..6]} #{instructor.phone[7..9]}" %></td>
-        <td><%= instructor.dob %></td>
-        <td><%= instructor.transmission.capitalize %></td>
-        <td><%= instructor.gender.capitalize %></td>
+        <td><%= instructor.dob if instructor.dob %></td>
+        <td><%= instructor.transmission.capitalize if instructor.transmission %></td>
+        <td><%= instructor.gender.capitalize if instructor.gender %></td>
         <td><%= link_to 'Show', instructor %></td>
         <td><%= link_to 'Edit', edit_instructor_path(instructor) %></td>
         <td><%= link_to 'Destroy', instructor, method: :delete, data: { confirm: 'Are you sure?' } %></td>

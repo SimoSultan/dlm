@@ -1,7 +1,13 @@
+<%= link_to 'Edit My Account', edit_instructor_path(@instructor) %>
 
 <p>
   <strong>Name:</strong>
   <%= @instructor.first_name.capitalize + ' ' + @instructor.last_name.capitalize if @instructor.first_name &&  @instructor.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @instructor.user.email if @instructor.user.email %>
 </p>
 
 <p>
@@ -29,5 +35,5 @@
   <%= @instructor.gender.capitalize if @instructor.gender %>
 </p>
 
-<%= link_to 'Edit', edit_instructor_path(@instructor) %> |
-<%= link_to 'Back', instructors_path %>
+<%= link_to 'Show All My Lessons', lessons_path(@instructor), class: 'btn btn-outline-primary'%>
+<%= link_to 'Back', instructors_path, class: 'btn btn-secondary'%>
