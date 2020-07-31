@@ -32,9 +32,8 @@
   <%= @student.transmission.capitalize if @student.transmission %>
 </p>
 
-<% render 'shared/new_lesson' %>
+<%= render 'shared/new_lesson' %>
 
 <br>
 
 <%= link_to 'Show All My Lessons', lessons_path, class: 'btn btn-outline-primary'%>
-<%= link_to 'Back', students_path, class: "btn btn-secondary"%>
