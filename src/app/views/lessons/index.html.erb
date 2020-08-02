@@ -26,9 +26,12 @@
         <!--<td><%= lesson.transmission.capitalize if lesson.transmission %></td>-->
         <td><%= lesson.cancelled ? "Yes": "No" %></td>
         <td><%= "to-do" %></td>
-        <td><%= link_to 'Show', lesson %></td>
-        <td><%= link_to 'Edit', edit_lesson_path(lesson) %></td>
-        <td><%= link_to 'Delete', lesson, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', lesson_show_path(lesson) %></td>
+        <td><%#= link_to 'Show', lesson, data: {toggle: 'modal', target: "#myModal"} %></td>
+        <td><%#= link_to 'Show', lesson, data: { modal_url: lesson } %></td>
+        <td><%#= link_to 'Show', lesson, data: { behavior: 'modal' } %></td>
+        <td><%= link_to 'Edit', lesson_edit_path(lesson) %></td>
+        <td><%= link_to 'Delete', lesson_destroy_path(lesson), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -36,4 +39,9 @@
 
 <br>
 
-<%= link_to 'New Lesson', new_lesson_path %>
+
+<%#= render 'shared/slideout' %>
+
+
+
+<%= link_to 'New Lesson', lesson_new_path %>

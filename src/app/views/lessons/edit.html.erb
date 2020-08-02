@@ -3,7 +3,7 @@
 <div class="card text-center">
   <h5 class="card-header">Edit Driving Lesson</h5>
   <div class="card-body">
-    <%= form_with model: @lesson, url: lesson_update_path, method: "patch" do |form| %>
+    <%= form_with model: @lesson, url: lesson_path, method: "patch" do |form| %>
 
       <div class="form-group row">
         <%= form.label :date, class: "col-sm-3 col-form-label text-left" %>

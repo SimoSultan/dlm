@@ -6,7 +6,7 @@
 <div class="card text-center">
   <h5 class="card-header">Book a Driving Lesson</h5>
   <div class="card-body">
-    <%= form_with(model: @lesson, local: true) do |form| %>
+    <%= form_with model: @lesson, local: true, url: lesson_create_path do |form| %>
 
       <%= form.hidden_field :student_id, value: current_user.student.id %>
       <%= form.hidden_field :transmission, value: current_user.student.transmission %>
@@ -59,13 +59,15 @@
         <div class="col-sm-6"><%= form.text_field :address, class: "form-control", disabled: true, value: current_user.student.address %></div>
       </div>
 
+
       <div class="actions">
         <%= form.submit "BOOK", class: "btn btn-primary" %>
       </div>
     <% end %>
+
   </div>
 </div>
 
 <br>
 
-<%= link_to 'Back', lessons_path, class: "btn btn-secondary" %>
+<%= link_to 'Back', class: "btn btn-secondary" %>

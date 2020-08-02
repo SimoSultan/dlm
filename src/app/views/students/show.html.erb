@@ -32,7 +32,9 @@
   <%= @student.transmission.capitalize if @student.transmission %>
 </p>
 
-<%= render 'shared/new_lesson' %>
+<%#= link_to 'New Lesson', lesson_new_path, class: 'btn btn-outline-primary' %>
+
+<%= render 'shared/new_lesson', lesson: @lesson %>
 
 <br>
 

@@ -16,7 +16,7 @@
   <body>
 
     <header>
-      <%= render "shared/nav"%>
+      <%= render "shared/nav" %>
     </header>
 
 
@@ -27,12 +27,17 @@
       <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
       <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
 
+
+      
       <%= yield %>
+
+      
+
+    
 
     </div>
     
 
- 
     <%#= render "shared/footer"%>
 
     
