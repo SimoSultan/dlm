@@ -36,9 +36,21 @@
     <%= form.text_field :phone, class: "form-control" %>
   </div>
 
-  <div class="form-group">
-    <%= form.label :dob %>
-    <%= form.text_field :dob, class: "form-control" %>
+  <div class="form-group form-row">
+    <%= form.label "DOB" %>
+    <br>
+    <div class="form-group col-md-2">
+      <%= form.label "Day" %>
+      <%= form.text_field :dob_day, class: "form-control" %>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label "Month" %>
+      <%= form.text_field :dob_month, class: "form-control" %>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label "Year" %>
+      <%= form.text_field :dob_year, class: "form-control" %>
+    </div>
   </div>
 
   <div class="form-group form-check">

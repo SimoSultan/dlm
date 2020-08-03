@@ -28,15 +28,13 @@
 
 <p>
   <strong>Dob:</strong>
-  <%= @student.dob if @student.dob %>
+  <%= get_readable_date(@student.dob, "without_day") if @student.dob %>
 </p>
 
 <p>
   <strong>Transmission:</strong>
   <%= @student.transmission.capitalize if @student.transmission %>
 </p>
-
-
 
 
 <%= render 'shared/new_lesson', lesson: @lesson %>

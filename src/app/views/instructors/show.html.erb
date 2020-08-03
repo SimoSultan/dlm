@@ -25,7 +25,7 @@
 
 <p>
   <strong>Dob:</strong>
-  <%= @instructor.dob if @instructor.dob %>
+  <%= get_readable_date(@instructor.dob, "without_day") if @instructor.dob %>
 </p>
 
 <p>

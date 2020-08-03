@@ -1,4 +1,5 @@
 class Student < ApplicationRecord
+  require 'date'
 
   enum transmission: {manual: 0, automatic: 1}
   
@@ -9,11 +10,12 @@ class Student < ApplicationRecord
   # has_many :comments, class_name: "comment", foreign_key: "comment_id"
 
 
-  validate :validate_number
+  validate :validate_phone_number
+  validate :validate_student_dob
   
   private
 
-  def validate_number
+  def validate_phone_number
     phone.to_s.delete('^0-9')
     if phone.length != 10
       errors.add(:phone, "must be a 10 digit mobile number. eg. '0400123456'")
@@ -21,4 +23,21 @@ class Student < ApplicationRecord
       errors.add(:phone, "must be a mobile number starting with '04'")
     end
   end
+
+  def validate_student_dob
+    current_date = Date.today
+
+    dob_year = dob.split('-')[0].to_i
+    dob_month = dob.split('-')[1].to_i
+    dob_day = dob.split('-')[2].to_i
+
+    if current_date.year - 16 < dob_year
+      errors.add(:student, "must be over 16 to sign up")
+    elsif current_date.year - 16 == dob_year and current_date.month < dob_month
+      errors.add(:student, "must be over 16 to sign up")
+    elsif current_date.year - 16 == dob_year and current_date.month == dob_month and current_date.day < dob_day
+      errors.add(:student, "must be over 16 to sign up")
+    end
+  end
+
 end

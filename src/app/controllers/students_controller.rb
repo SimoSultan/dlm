@@ -75,9 +75,10 @@ class StudentsController < ApplicationController
       params[:student][:first_name].capitalize!
       params[:student][:last_name].capitalize!
       params[:student][:phone] = format_phone_number(params[:student][:phone])
-      params[:student][:dob] = format_dob(params[:student][:dob_day], params[:student][:dob_month], params[:student][:dob_year])
+      # params[:student][:dob] = format_dob(params[:student][:dob_day], params[:student][:dob_month], params[:student][:dob_year])
       
-      params.require(:student).permit(:first_name, :last_name, :address, :phone, :dob, :dob_day, :dob_month, :dob_year, :transmission, :avatar)
+      # params.require(:student).permit(:first_name, :last_name, :address, :phone, :dob, :dob_day, :dob_month, :dob_year, :transmission, :avatar)
+      params.require(:student).permit(:first_name, :last_name, :address, :phone, :dob, :transmission, :avatar)
     end
 
 end

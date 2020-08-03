@@ -79,6 +79,7 @@ class InstructorsController < ApplicationController
     def instructor_params
       params[:instructor][:first_name].capitalize!
       params[:instructor][:last_name].capitalize!
+      params[:instructor][:phone] = format_phone_number(params[:instructor][:phone])
       params.require(:instructor).permit(:first_name, :last_name, :address, :phone, :dob, :transmission, :gender, :avatar)
     end
 end
