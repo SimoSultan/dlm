@@ -18,6 +18,13 @@ class LessonsController < ApplicationController
   end
 
   def edit
+    @lesson = Lesson.find_by(id: params[:id])
+
+    @instructors = Instructor.all
+    @instructors.map do |ins|
+      ins[:first_name] = "#{ins[:first_name]} #{ins[:last_name]}"
+    end
+
   end
 
   def show
@@ -32,7 +39,6 @@ class LessonsController < ApplicationController
   #   #   format.js
   #   # end
   #   render "shared/slideout", lesson: @lesson
-
   # end
 
   def create

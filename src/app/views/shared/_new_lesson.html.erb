@@ -1,7 +1,4 @@
 
-<h1>New Lesson</h1>
-
-
 
 <div class="card text-center">
   <h5 class="card-header">Book a Driving Lesson</h5>
@@ -34,7 +31,7 @@
       </div>
       <% end %>
 
-      <% if current_user.admin? %>
+      <% if current_user.admin? || current_user.instructor? %>
       <div class="form-group row">
         <%= form.label :student, class: "col-sm-3 col-form-label text-left" %>
         <div class="col-sm-6">
@@ -49,7 +46,7 @@
       <div class="form-group row">
         <%= form.label :instructor, class: "col-sm-3 col-form-label text-left" %>
         <div class="col-sm-6">
-          <%= form.collection_select :instructor_id, Instructor.all, :id, :first_name, {selected: "", disabled: "", prompt: "Select instructor"}, {value: :instructor, class: "form-control"} %>
+          <%= form.collection_select :instructor_id, Instructor.all, :id, :first_name, {selected: "", disabled: "", prompt: "Select instructor"}, {value: current_user.instructor.first_name, class: "form-control"} %>
         </div>
       </div>
 
@@ -60,7 +57,8 @@
         </div>
       </div>
 
-      <div class="form-group row">
+      <% if current_user.student? %>
+       <div class="form-group row">
         <%= form.label :transmission, class: "col-sm-3 col-form-label text-left" %>
         <div class="col-sm-6"><%= form.text_field :transmission, class: "form-control", disabled: true, value: current_user.student.transmission.capitalize %></div>
       </div>
@@ -69,6 +67,17 @@
         <%= form.label :address, class: "col-sm-3 col-form-label text-left" %>
         <div class="col-sm-6"><%= form.text_field :address, class: "form-control", disabled: true, value: current_user.student.address %></div>
       </div>
+      <% elsif current_user.admin? || current_user.instructor? %>
+      <div class="form-group row">
+        <%= form.label "Student Transmission", class: "col-sm-3 col-form-label text-left" %>
+        <div class="col-sm-6"><%= form.text_field :transmission, class: "form-control", disabled: true, value: "prefilled in future update" %></div>
+      </div>
+
+      <div class="form-group row">
+        <%= form.label "Student Address", class: "col-sm-3 col-form-label text-left" %>
+        <div class="col-sm-6"><%= form.text_field :address, class: "form-control", disabled: true, value: "prefilled in future update" %></div>
+      </div>
+      <% end %>
 
 
       <div class="actions">
@@ -79,6 +88,3 @@
   </div>
 </div>
 
-<br>
-
-<%= link_to 'Back', class: "btn btn-secondary" %>
