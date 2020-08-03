@@ -1,5 +1,7 @@
 <%= link_to 'Edit My Account', edit_instructor_path(@instructor) %>
 
+<br>
+
 <%= image_tag user_avatar(current_user, 80), class: 'profile-avatar'%>
 
 
@@ -39,4 +41,4 @@
 </p>
 
 <%= link_to 'Show All My Lessons', lessons_path, class: 'btn btn-outline-primary'%>
-<%= link_to 'Back', instructors_path, class: 'btn btn-secondary'%>
+<%= link_to 'Back', instructor_path(current_user.instructor.id), class: 'btn btn-secondary'%>
