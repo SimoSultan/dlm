@@ -11,18 +11,10 @@
     </div>
   <% end %>
 
-  <% if current_user.admin.avatar.attached? %>
-    <%= image_tag current_user.avatar.variant(resize: "100x100!"), class: 'profile-image' %>
-  <% else %>
-    
-    <div class="hero-avatar-container"></div>
-    <%= image_tag "default.png", class: 'profile-avatar' %>
-    <%#= image_tag gravatar_image_tag(current_user.email, size: 100), height: 100, width: 100, class: 'rounded-circle' %>
-    <br>
+  <%= image_tag user_avatar(current_user, 100), class: 'profile-avatar'%>
+  <br>
 
-    <%= form.file_field :avatar, accept: 'image/png,image/gif,image/jpeg' %>  
-
-  <% end %>
+  <%= form.file_field :avatar, accept: 'image/png,image/gif,image/jpeg' %>  
 
   <div class="form-group">
     <%= form.label :first_name %>

@@ -26,14 +26,11 @@
         <!--<td><%= lesson.transmission.capitalize if lesson.transmission %></td>-->
         <td><%= lesson.cancelled ? "Yes": "No" %></td>
         <td><%= "to-do" %></td>
-        <td><%= link_to 'Show', lesson_show_path(lesson) %></td>
-        <td><%#= link_to 'Show', lesson_show_path(lesson), data: {toggle: 'modal', target: "#show_lesson_modal"} %></td>
-        <td><%#= link_to 'Show', lesson_show_modal_path(lesson), remote: true %></td>
-        <td><%#= javascript_include_tag 'show_modal' %></td>
-        <td><%#= link_to 'Show', lesson, data: { modal_url: lesson } %></td>
-        <td><%#= link_to 'Show', lesson, data: { behavior: 'modal' } %></td>
+        <td><%#= link_to 'Show', lesson_show_path(lesson) %></td>
+        <% if current_user.admin? || current_user.instructor? %>
         <td><%= link_to 'Edit', lesson_edit_path(lesson) %></td>
         <td><%= link_to 'Delete', lesson_destroy_path(lesson), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

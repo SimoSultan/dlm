@@ -49,6 +49,8 @@
             <%= link_to current_user.email, admin_path(current_user.admin.id), class: "nav-link" %>
           <% end %>
         </li>
+        <%= image_tag user_avatar(current_user, 100), class: 'navbar-avatar'%>
+        
         <li class="nav-item">
           <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>
