@@ -1,12 +1,11 @@
 class Student < ApplicationRecord
 
-  enum transmission: [manual: 0, automatic: 1]
+  enum transmission: {manual: 0, automatic: 1}
   
   belongs_to :user, class_name: 'User', foreign_key: 'user_id'
 
+  has_one_attached :avatar
   has_many :lessons
-  has_one_attached :image
-  has_many :lessons, class_name: "lesson", foreign_key: "lesson_id"
   # has_many :comments, class_name: "comment", foreign_key: "comment_id"
 
 

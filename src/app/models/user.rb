@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-  enum role: [student: 0, instructor: 1, admin: 2]
+  enum role: {student: 0, instructor: 1, admin: 2}
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_one :instructor
   has_one :admin
 
-  has_many :payments, class_name: "payment", foreign_key: "reference_id"
+  # has_many :payments, class_name: "payment", foreign_key: "reference_id"
 
   validates :role, presence: true
 

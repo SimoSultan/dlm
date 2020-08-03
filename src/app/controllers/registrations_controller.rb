@@ -12,10 +12,12 @@ class RegistrationsController < Devise::RegistrationsController
 
       # We know that the user has been persisted to the database, so now we can create our empty profile
       puts "____________________________"
-      if resource.role == "student"
+      if resource.student?
         resource.create_student!
-      else
+      elsif resource.instructor?
         resource.create_instructor!
+      elsif resource.admin?
+        resource.create_admin!
       end
  
 
@@ -36,11 +38,29 @@ class RegistrationsController < Devise::RegistrationsController
 
   end
 
-
+  def edit
+    super
+  end
 
   def update
     super
   end
 
+  # def upload_avatar
+  #   @user = User.where(id: current_user.id)
+  #   @user.avatar = params[:avatar]
+  #   # @user.avatar = params[:user][:avatar]
+  #   @user.save
+  # #  current_user.avatar.attach(params[:avatar])
+  # #  current_user.save
+  # #  redirect_to student_path(current_user.student.id)
+  # end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:avatar)
+  end
+    
   
 end 

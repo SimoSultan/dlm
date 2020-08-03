@@ -54,4 +54,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Extra gems I have added
-gem "devise"
+gem "devise", "~> 4.7.2"
+
+gem "aws-sdk-s3", "~> 1.75", require: false
+
+gem "gravatar_image_tag", "~> 1.2"
