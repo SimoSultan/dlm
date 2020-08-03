@@ -69,6 +69,8 @@ class AdminsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def admin_params
+      params[:admin][:first_name].capitalize!
+      params[:admin][:last_name].capitalize!
       params.require(:admin).permit(:first_name, :last_name, :avatar)
     end
 end

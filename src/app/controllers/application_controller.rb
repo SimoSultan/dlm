@@ -5,6 +5,18 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   # before_action :authenticate_user!
 
+  def format_phone_number(number)
+    x = number.to_s.delete('^0-9')
+    return x
+  end
+
+  def format_dob(dob_day, dob_month, dob_year)
+    dob = "#{dob_day}-#{dob_month}-#{dob_year}"
+
+    return dob
+  end
+
+
   protected
 
     def configure_permitted_parameters

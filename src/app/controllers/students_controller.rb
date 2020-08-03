@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
   # before_action :authenticate_user!, except: [:index, :show]
-
+  
   # GET /students
   # GET /students.json
   def index
@@ -27,13 +27,11 @@ class StudentsController < ApplicationController
   # POST /students.json
   def create
 
-    # student_params[:phone] = format_phone(student_params[:phone])
-
     @student = Student.new(student_params)
     @student.user = current_user
 
     if @student.save
-      render :show
+      redirect_to student_path(current_user.student.id)
     else
       render :new
     end
@@ -45,7 +43,6 @@ class StudentsController < ApplicationController
   def update
     # student_params[:phone] = format_phone(student_params[:phone])
     # puts "student_params[:phone]"
-    # puts student_params
     respond_to do |format|
       if @student.update(student_params)
         format.html { redirect_to @student, notice: 'Student was successfully updated.' }
@@ -75,11 +72,12 @@ class StudentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def student_params
-      params.require(:student).permit(:first_name, :last_name, :address, :phone, :dob, :transmission, :avatar)
+      params[:student][:first_name].capitalize!
+      params[:student][:last_name].capitalize!
+      params[:student][:phone] = format_phone_number(params[:student][:phone])
+      params[:student][:dob] = format_dob(params[:student][:dob_day], params[:student][:dob_month], params[:student][:dob_year])
+      
+      params.require(:student).permit(:first_name, :last_name, :address, :phone, :dob, :dob_day, :dob_month, :dob_year, :transmission, :avatar)
     end
 
-    # def format_phone(number)
-    #   x = number.to_s.delete('^0-9')
-    #   return x
-    # end
 end

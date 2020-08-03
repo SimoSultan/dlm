@@ -2,7 +2,7 @@
 
 <%= render 'form', student: @student %>
 
-<%= link_to 'Show', @student %> |
-<%= link_to 'Back', students_path %> | 
-<%= link_to 'Delete My Account', edit_user_registration_path %>
+<%#= link_to 'Show', @student %>
+<%= link_to 'Back', student_path(current_user.student.id), class: 'btn btn-outline-secondary'%>
+<%= link_to 'Change My Password', edit_user_registration_path, class: 'btn btn-outline-danger'%>
 

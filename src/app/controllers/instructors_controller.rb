@@ -77,6 +77,8 @@ class InstructorsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def instructor_params
+      params[:instructor][:first_name].capitalize!
+      params[:instructor][:last_name].capitalize!
       params.require(:instructor).permit(:first_name, :last_name, :address, :phone, :dob, :transmission, :gender, :avatar)
     end
 end
