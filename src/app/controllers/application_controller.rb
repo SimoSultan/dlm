@@ -27,18 +27,6 @@ class ApplicationController < ActionController::Base
         devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:avatar)}
     end
 
-    def after_sign_up_path_for(current_user)
-      puts "-------------------------"
-      puts "inside after sign up path"
-      puts current_user.id
-      puts current_user.student.id
-      puts current_user.role
-      # if current_user.role == 'student'
-        # edit_student_path(current_user.student.id)
-      # else
-      #   edit_instructor_path
-      # end
-    end
 
     def after_sign_out_path_for(resource)
       home_path

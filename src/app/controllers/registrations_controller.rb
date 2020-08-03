@@ -46,20 +46,19 @@ class RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  # def upload_avatar
-  #   @user = User.where(id: current_user.id)
-  #   @user.avatar = params[:avatar]
-  #   # @user.avatar = params[:user][:avatar]
-  #   @user.save
-  # #  current_user.avatar.attach(params[:avatar])
-  # #  current_user.save
-  # #  redirect_to student_path(current_user.student.id)
-  # end
-
   private
 
-  def user_params
-    params.require(:user).permit(:avatar)
+  def after_sign_up_path_for(current_user)
+    puts "-------------------------"
+    puts "inside after sign up path"
+
+    if current_user.student?
+      edit_student_path(current_user.student.id)
+    elsif current_user.instructor?
+      edit_instructor_path(current_user.instructor.id)
+    elsif current_user.admin?
+      edit_admin_path(current_user.admin.id)
+    end
   end
     
   

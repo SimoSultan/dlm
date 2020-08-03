@@ -16,6 +16,9 @@
   </thead>
 
   <tbody>
+    <% if @all_lessons.empty? %>
+      <td>You have no booked lessons</td>
+    <% end %>
     <% @all_lessons.each do |lesson| %>
       <tr>
         <td><%= lesson.student.first_name.capitalize + ' ' + lesson.student.last_name.capitalize %></td>

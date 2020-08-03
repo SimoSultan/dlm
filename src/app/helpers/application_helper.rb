@@ -32,6 +32,7 @@ module ApplicationHelper
   end
 
   def get_readable_date(date_string, type) 
+    return "N/A" if date_string.empty? 
 
     ymd = date_string.split("-")
     year = ymd[0].to_i

@@ -4,10 +4,15 @@
 
 <%= image_tag user_avatar(current_user, 80), class: 'profile-avatar'%>
 
+<br>
 
 <p>
   <strong>Name:</strong>
-  <%= @instructor.first_name.capitalize + ' ' + @instructor.last_name.capitalize if @instructor.first_name &&  @instructor.last_name %>
+  <%= if @instructor.first_name.empty? && @instructor.last_name.empty?
+    "N/A"
+  else
+    @instructor.first_name.capitalize + ' ' + @instructor.last_name.capitalize
+  end %>
 </p>
 
 <p>
@@ -17,27 +22,27 @@
 
 <p>
   <strong>Address:</strong>
-  <%= @instructor.address if @instructor.address %>
+  <%= @instructor.address.empty? ? "N/A" : @instructor.address %>
 </p>
 
 <p>
   <strong>Mobile:</strong>
-  <%= "#{@instructor.phone[0..3]} #{@instructor.phone[4..6]} #{@instructor.phone[7..9]}" if @instructor.phone %>
+  <%= @instructor.phone.empty? ? "N/A" : "#{@instructor.phone[0..3]} #{@instructor.phone[4..6]} #{@instructor.phone[7..9]}" %>
 </p>
 
 <p>
   <strong>Dob:</strong>
-  <%= get_readable_date(@instructor.dob, "without_day") if @instructor.dob %>
+  <%= get_readable_date(@instructor.dob, "without_day") if @instructor.dob != nil %>
 </p>
 
 <p>
   <strong>Transmission:</strong>
-  <%= @instructor.transmission.capitalize if @instructor.transmission %>
+  <%= @instructor.transmission ? @instructor.transmission.capitalize : "N/A" %>
 </p>
 
 <p>
   <strong>Gender:</strong>
-  <%= @instructor.gender.capitalize if @instructor.gender %>
+  <%= @instructor.gender ? @instructor.gender.capitalize : "N/A" %>
 </p>
 
 <%= link_to 'Show All My Lessons', lessons_path, class: 'btn btn-outline-primary'%>

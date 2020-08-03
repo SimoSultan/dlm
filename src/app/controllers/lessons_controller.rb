@@ -51,25 +51,10 @@ class LessonsController < ApplicationController
     @lesson.date = lesson_params[:date]
     @lesson.time = lesson_params[:time]
     @lesson.duration = lesson_params[:duration].to_i
-    # @lesson.transmission = lesson_params[:transmission].to_i
     @lesson.cancelled = false
-    # @lesson.status = 0
 
     if @lesson.save
-      # redirect_to student_path(current_user.student.id), notice: "Lesson was successfully created!"
       redirect_to student_path(current_user.student.id)
-
-      # respond_to do |format|
-      #   if @lesson.save
-      #     format.html { redirect_to @student, notice: 'Lesson was successfully updated.' }
-      #     # format.html { redirect_to @lesson, notice: 'Lesson was successfully updated.' }
-      #     format.json { render :show, status: :ok, location: @lesson }
-      #   else
-      #     format.html { render :edit }
-      #     format.json { render json: @lesson.errors, status: :unprocessable_entity }
-      #   end
-      # end
-
     else
       redirect_to lessons_path
     end

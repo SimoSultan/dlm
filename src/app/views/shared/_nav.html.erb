@@ -5,18 +5,6 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
-    
-      <li class="navbar-text active" >
-        <% if user_signed_in? %>
-          <% if current_user.student? %>
-            Hello <%= current_user.student.first_name.capitalize if current_user.student.first_name %>!
-          <% elsif current_user.instructor? %>
-            Hello <%= current_user.instructor.first_name.capitalize if current_user.instructor.first_name %>!
-          <% elsif current_user.admin? %>
-            Hello <%= current_user.admin.first_name.capitalize if current_user.admin.first_name %>!
-          <% end %>
-        <% end %>
-      </li>
 
       <% if user_signed_in? %>
         <% if current_user.admin? %>
@@ -28,6 +16,13 @@
         </li>
         <li class="nav-item">
           <%= link_to 'All Instructors', instructors_path, class: "nav-link" %>
+        </li>
+        <% elsif current_user.instructor? %>
+        <li class="nav-item">
+          <%= link_to 'My Lessons', lessons_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'My Calendar', lessons_path, class: "nav-link" %>
         </li>
         <% elsif current_user.student? || current_user.instructor? %>
         <li class="nav-item">
@@ -42,11 +37,11 @@
       <% if user_signed_in? %>
         <li class="nav-item">
           <% if current_user.student? %>
-            <%= link_to current_user.email, student_path(current_user.student.id), class: "nav-link" %>
+            <%= link_to "#{current_user.student.first_name.capitalize} #{current_user.student.last_name.capitalize}", student_path(current_user.student.id), class: "nav-link" %>
           <% elsif current_user.instructor?  %>
-            <%= link_to current_user.email, instructor_path(current_user.instructor.id), class: "nav-link" %>
+            <%= link_to "#{current_user.instructor.first_name.capitalize} #{current_user.instructor.last_name.capitalize}", instructor_path(current_user.instructor.id), class: "nav-link" %>
           <% elsif current_user.admin? %>
-            <%= link_to current_user.email, admin_path(current_user.admin.id), class: "nav-link" %>
+            <%= link_to "#{current_user.admin.first_name.capitalize} #{current_user.admin.last_name.capitalize}", admin_path(current_user.admin.id), class: "nav-link" %>
           <% end %>
         </li>
         <%= image_tag user_avatar(current_user, 100), class: 'navbar-avatar'%>

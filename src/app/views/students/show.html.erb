@@ -8,7 +8,11 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @student.first_name.capitalize + ' ' + @student.last_name.capitalize if @student.first_name && @student.last_name %>
+  <%= if @student.first_name.empty? && @student.last_name.empty?
+    "N/A"
+  else
+    @student.first_name.capitalize + ' ' + @student.last_name.capitalize
+  end %>
 </p>
 
 <p>
@@ -18,12 +22,12 @@
 
 <p>
   <strong>Address:</strong>
-  <%= @student.address if @student.address %>
+  <%= @student.address.empty? ? "N/A" : @student.address %>
 </p>
 
 <p>
   <strong>Mobile:</strong>
-  <%= "#{@student.phone[0..3]} #{@student.phone[4..6]} #{@student.phone[7..9]}" if @student.phone %>
+  <%= @student.phone.empty? ? "N/A" : "#{@student.phone[0..3]} #{@student.phone[4..6]} #{@student.phone[7..9]}" %>
 </p>
 
 <p>
@@ -33,7 +37,7 @@
 
 <p>
   <strong>Transmission:</strong>
-  <%= @student.transmission.capitalize if @student.transmission %>
+  <%= @student.transmission ? @student.transmission.capitalize : "N/A" %>
 </p>
 
 
