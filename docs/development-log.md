@@ -38,21 +38,63 @@
 
 > Monday 27th July 2020
 
+- 27/07/20 `10:00` - **Added in relationships to ERD on a note**
+
+----
+
+> Tuesday 28th July 2020
 
 - 27/07/20 `10:00` - **Added in relationships to ERD on a note**
 
+----
 
+> Wednesday 29th July 2020
+
+- 27/07/20 `10:00` - **Added in relationships to ERD on a note**
 
 ----
 
-### Major Milestone near Halfway
+> Thursday 30th July 2020
 
+- 27/07/20 `10:00` - **Added in relationships to ERD on a note**
 
 ----
 
-----
-### Midway Final Testing Status Update
+> Thursday 30th July 2020
 
+- 27/07/20 `10:00` - **Added in relationships to ERD on a note**
+
+----
+
+
+> Friday 31st July 2020
+
+- 27/07/20 `10:00` - **Added in relationships to ERD on a note**
+
+----
+
+> Sunday 2nd August 2020
+
+- 27/07/20 `10:00` - **Added in relationships to ERD on a note**
+
+----
+
+> Monday 3rd August 2020
+
+- 27/07/20 `10:00` - **Added in relationships to ERD on a note**
+
+----
+
+> Tuesday 4th August 2020
+
+- 27/07/20 `10:00` - **Added in relationships to ERD on a note**
+
+----
+
+
+> Wednesday 5th August 2020
+
+- 27/07/20 `10:00` - **Added in relationships to ERD on a note**
 
 
 ----

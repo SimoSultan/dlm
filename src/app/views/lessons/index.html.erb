@@ -27,7 +27,9 @@
         <td><%= lesson.cancelled ? "Yes": "No" %></td>
         <td><%= "to-do" %></td>
         <td><%= link_to 'Show', lesson_show_path(lesson) %></td>
-        <td><%#= link_to 'Show', lesson, data: {toggle: 'modal', target: "#myModal"} %></td>
+        <td><%#= link_to 'Show', lesson_show_path(lesson), data: {toggle: 'modal', target: "#show_lesson_modal"} %></td>
+        <td><%#= link_to 'Show', lesson_show_modal_path(lesson), remote: true %></td>
+        <td><%#= javascript_include_tag 'show_modal' %></td>
         <td><%#= link_to 'Show', lesson, data: { modal_url: lesson } %></td>
         <td><%#= link_to 'Show', lesson, data: { behavior: 'modal' } %></td>
         <td><%= link_to 'Edit', lesson_edit_path(lesson) %></td>
@@ -40,7 +42,7 @@
 <br>
 
 
-<%#= render 'shared/slideout' %>
+<%#= render 'shared/slideout', lesson: lesson %>
 
 
 

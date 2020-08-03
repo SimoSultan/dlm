@@ -1,7 +1,7 @@
 
 
 <!-- Modal -->
-<div class="modal right fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+<div class="modal right fade" id="show_lesson_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
 
@@ -15,21 +15,25 @@
         <p>
           <strong>Instructor:</strong>
           <%= "#{lesson&.instructor&.first_name&.capitalize} #{lesson&.instructor&.last_name&.capitalize}" %>
+          <%#= "#{@lesson&.instructor&.first_name&.capitalize} #{@lesson&.instructor&.last_name&.capitalize}" %>
         </p>
 
         <p>
           <strong>Date:</strong>
           <%= lesson&.date %>
+          <%#= @lesson.date %>
         </p>
 
         <p>
           <strong>Time:</strong>
-          <%= lesson&.time.strftime('%H:%M') if lesson&.time %>
+          <%= lesson&.time.strftime('%H:%M') %>
+          <%#= @lesson&.time.strftime('%H:%M') %>
         </p>
 
         <p>
           <strong>Duration:</strong>
-          <%= "#{lesson&.duration} mins" if lesson&.duration %>
+          <%= "#{lesson&.duration} mins" %>
+          <%#= "#{@lesson&.duration} mins" %>
         </p>
 
         <p>
@@ -45,6 +49,7 @@
         <p>
           <strong>Cancelled:</strong>
           <%= lesson&.cancelled ? "Yes" : "No" %>
+          <%#= @lesson&.cancelled ? "Yes" : "No" %>
         </p>
 
 

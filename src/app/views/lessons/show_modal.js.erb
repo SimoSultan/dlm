@@ -1,0 +1,28 @@
+// populate modal
+$('#show_lesson_modal').html("#{ escape_javascript(<%= render partial: 'lesson', locals: {lesson: @lesson} )}");
+
+// render modal
+$('#show_lesson_modal').modal('toggle');
+$('#show_lesson_modal').modal('show');
+//<script>
+//    render 'shared/slideout', lesson: @lesson
+//</script>
+<%
+=begin
+var modal = document.getElementById("show_lesson_modal");
+modal.innerHTML = ('#{ escape_javascript(<%= render partial: 'lesson', locals: {lesson: @lesson} )}');
+
+
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+=end
+%>

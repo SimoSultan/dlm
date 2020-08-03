@@ -2,7 +2,6 @@ class LessonsController < ApplicationController
 
   def index
     @all_lessons = []
-    # @all_lessons = Lesson.order(:date, :time).reverse_order
 
     if current_user.student?
       @all_lessons = Lesson.where(student_id: current_user.student.id).order(:date, :time).reverse_order
@@ -23,16 +22,18 @@ class LessonsController < ApplicationController
 
   def show
     @lesson = Lesson.find_by(id: params[:id])
-    # render layout: !request.xhr?
-    # render 'shared/slideout'
-    # render 'shared/slideout'
     # render "shared/slideout", lesson: lesson
-    # render "shared/slideout", locals: {lesson: lesson}
-    # render "shared/slideout", locals: lesson: lesson
-    # render "shared/slideout", locals: lesson: @lesson
-    render "shared/slideout", :locals => { :lesson => @lesson }
-    # render "modal"
+
   end
+
+  # def show_modal
+  #   @lesson = params[:lesson]
+  #   # respond_to do |format|
+  #   #   format.js
+  #   # end
+  #   render "shared/slideout", lesson: @lesson
+
+  # end
 
   def create
     @lesson = Lesson.new
@@ -47,9 +48,8 @@ class LessonsController < ApplicationController
     # @lesson.transmission = lesson_params[:transmission].to_i
     @lesson.cancelled = false
     # @lesson.status = 0
-    # @lesson.save
+
     if @lesson.save
-      # render :index
       # redirect_to student_path(current_user.student.id), notice: "Lesson was successfully created!"
       redirect_to student_path(current_user.student.id)
 
@@ -81,7 +81,7 @@ class LessonsController < ApplicationController
     @lesson.cancelled = params[:cancelled]
 
     if @lesson.save
-      render :index
+      redirect_to lessons_path
     else
       render :edit
     end
@@ -94,11 +94,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.find_by(id: id)
     @lesson.destroy
     redirect_to student_path(current_user.student.id)
-    # @lesson.destroy, notice: 'Lesson was successfully deleted.'
-    # respond_to do |format|
-    #   format.html { redirect_to students_url, notice: 'Lesson was successfully destroyed.' }
 
-    # end
   end
 
   private

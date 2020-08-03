@@ -8,8 +8,7 @@
   <div class="card-body">
     <%= form_with model: @lesson, local: true, url: lesson_create_path do |form| %>
 
-      <%= form.hidden_field :student_id, value: current_user.student.id %>
-      <%= form.hidden_field :transmission, value: current_user.student.transmission %>
+      <%#= form.hidden_field :student_id, value: current_user.student.id %>
 
       <div class="form-group row">
         <%= form.label :date, class: "col-sm-3 col-form-label text-left" %>
@@ -34,6 +33,18 @@
         </div>
       </div>
       <% end %>
+
+      <% if current_user.admin? %>
+      <div class="form-group row">
+        <%= form.label :student, class: "col-sm-3 col-form-label text-left" %>
+        <div class="col-sm-6">
+          <%= form.collection_select :student_id, Student.all, :id, :first_name, {selected: "", disabled: "", prompt: "Select student"}, {value: :student, class: "form-control"} %>
+        </div>
+      </div>
+      <% else %>
+      <%= form.hidden_field :student_id, value: current_user.student.id %>
+      <% end %>
+ 
 
       <div class="form-group row">
         <%= form.label :instructor, class: "col-sm-3 col-form-label text-left" %>

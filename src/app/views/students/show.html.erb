@@ -1,4 +1,13 @@
 <%= link_to 'Edit My Account', edit_student_path(@student) %>
+<br>
+
+
+<% if @student.image %>
+  <%= image_tag @student.image, alt: "pretty snakes" %>
+  
+<% else %>
+  <%#= file_field :image, accept: %>
+<% end %>
 
 <br>
 
@@ -32,7 +41,8 @@
   <%= @student.transmission.capitalize if @student.transmission %>
 </p>
 
-<%#= link_to 'New Lesson', lesson_new_path, class: 'btn btn-outline-primary' %>
+
+
 
 <%= render 'shared/new_lesson', lesson: @lesson %>
 
