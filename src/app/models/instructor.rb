@@ -22,4 +22,20 @@ class Instructor < ApplicationRecord
       errors.add(:phone, "must be a mobile number starting with '04'")
     end
   end
+
+  def validate_instructor_dob
+    current_date = Date.today
+
+    dob_year = dob.split('-')[0].to_i
+    dob_month = dob.split('-')[1].to_i
+    dob_day = dob.split('-')[2].to_i
+
+    if current_date.year - 20 < dob_year
+      errors.add(:student, "must be over 16 to sign up")
+    elsif current_date.year - 20 == dob_year and current_date.month < dob_month
+      errors.add(:student, "must be over 16 to sign up")
+    elsif current_date.year - 20 == dob_year and current_date.month == dob_month and current_date.day < dob_day
+      errors.add(:student, "must be over 16 to sign up")
+    end
+  end
 end
