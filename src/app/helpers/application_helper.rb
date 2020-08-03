@@ -73,4 +73,16 @@ module ApplicationHelper
     return readable
   
   end
+
+
+  # GOOGLE MAPS JAVASCRIPT TAGE
+  def google_maps_api_script_tag
+    "https://maps.googleapis.com/maps/api/js?key=#{google_maps_api_key}&libraries=places&callback=initMap"
+  end
+
+  def google_maps_api_key
+    Rails.application.credentials.dig(:google, :maps_api_key)
+  end
+
+
 end
