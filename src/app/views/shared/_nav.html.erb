@@ -29,6 +29,10 @@
           <%= link_to 'My Lessons', lessons_path, class: "nav-link" %>
         </li>
         <% end %>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to 'Book a Driving Lesson', new_user_registration_path, class: "nav-link" %>
+        </li>
       <% end %>
    
     </ul>
@@ -49,8 +53,6 @@
         <li class="nav-item">
           <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>
-      <% elsif user_signed_in? %>
-        <li class="nav-item">Signing Up</li>
       <% else %>
         <li class="nav-item">
           <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %>
