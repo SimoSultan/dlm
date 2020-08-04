@@ -1,8 +1,13 @@
-<%= link_to 'Edit My Account', edit_instructor_path(@instructor) %>
+
+<% if current_user.admin? %>
+  <%= link_to "Edit Instructor's Account", edit_instructor_path(@instructor) %>
+<% elsif current_user.instructor? %>
+  <%= link_to 'Edit My Account', edit_instructor_path(@instructor) %>
+<% end %>
 
 <br>
 
-<%= image_tag user_avatar(current_user, 80), class: 'profile-avatar'%>
+<%= image_tag user_avatar(@instructor.user, 80), class: 'profile-avatar'%>
 
 <br>
 
@@ -45,5 +50,11 @@
   <%= @instructor&.gender ? @instructor&.gender&.capitalize : "N/A" %>
 </p>
 
-<%= link_to 'Show All My Lessons', lessons_path, class: 'btn btn-outline-primary'%>
-<%= link_to 'Back', instructor_path(current_user&.instructor&.id), class: 'btn btn-secondary'%>
+
+<% if current_user.admin? %>
+  <%= link_to 'Show All Lessons', lessons_path, class: 'btn btn-outline-primary'%>
+  <%= link_to 'Back', instructors_path, class: 'btn btn-secondary'%>
+<% elsif current_user.instructor? %>
+  <%= link_to 'Show All My Lessons', lessons_path, class: 'btn btn-outline-primary'%>
+  <%= link_to 'Back', instructor_path(current_user&.instructor&.id), class: 'btn btn-secondary'%>
+<% end %>

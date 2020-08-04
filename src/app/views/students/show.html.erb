@@ -1,48 +1,60 @@
-<%= link_to 'Edit My Account', edit_student_path(@student) %>
+
+<% if current_user.admin? %>
+  <%= link_to "Edit Student's Account", edit_student_path(@student) %>
+<% elsif current_user.student? %>
+  <%= link_to 'Edit My Account', edit_student_path(@student) %>
+<% end %>
+
 
 <br>
 
-<%= image_tag user_avatar(current_user, 100), class: 'profile-avatar'%>
+<%= image_tag user_avatar(@student.user, 100), class: 'profile-avatar'%>
 
 <br>
 
 <p>
   <strong>Name:</strong>
-  <%= if @student.first_name.empty? && @student.last_name.empty?
+  <%= if @student&.first_name&.empty? && @student&.last_name&.empty?
     "N/A"
   else
-    @student.first_name.capitalize + ' ' + @student.last_name.capitalize
+    @student&.first_name&.capitalize + ' ' + @student&.last_name&.capitalize
   end %>
 </p>
 
 <p>
   <strong>Email:</strong>
-  <%= @student.user.email if @student.user.email %>
+  <%= @student&.user&.email if @student&.user&.email %>
 </p>
 
 <p>
   <strong>Address:</strong>
-  <%= @student.address.empty? ? "N/A" : @student.address %>
+  <%= @student&.address&.empty? ? "N/A" : @student&.address %>
 </p>
 
 <p>
   <strong>Mobile:</strong>
-  <%= @student.phone.empty? ? "N/A" : "#{@student.phone[0..3]} #{@student.phone[4..6]} #{@student.phone[7..9]}" %>
+  <%= @student&.phone&.empty? ? "N/A" : "#{@student&.phone[0..3]} #{@student&.phone[4..6]} #{@student&.phone[7..9]}" %>
 </p>
 
 <p>
   <strong>Dob:</strong>
-  <%= get_readable_date(@student.dob, "without_day") if @student.dob %>
+  <%= get_readable_date(@student&.dob, "without_day") %>
 </p>
 
 <p>
   <strong>Transmission:</strong>
-  <%= @student.transmission ? @student.transmission.capitalize : "N/A" %>
+  <%= @student&.transmission ? @student&.transmission&.capitalize : "N/A" %>
 </p>
 
-
-<%= render 'shared/new_lesson', locals: {lesson: @lesson, instructors: @instructors} %>
+<% if current_user.student? %>
+  <%= render 'shared/new_lesson', locals: {lesson: @lesson, instructors: @instructors} %>
+<% end %>
 
 <br>
 
-<%= link_to 'Show All My Lessons', lessons_path, class: 'btn btn-outline-primary'%>
+<% if current_user.student? %>
+  <%= link_to 'Show All My Lessons', lessons_path, class: 'btn btn-outline-primary'%>
+<% else %>
+  <%= link_to 'Show All Lessons', lessons_path, class: 'btn btn-outline-primary'%>
+<% end %>
+

@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <%= image_tag user_avatar(current_user, 100), class: 'profile-avatar'%>
+  <%= image_tag user_avatar(@student.user, 100), class: 'profile-avatar'%>
   <br>
 
   <%= form.file_field :avatar, accept: 'image/png,image/gif,image/jpeg' %>  
@@ -38,7 +38,7 @@
 
   <div class="form-group">
     <%= form.label :dob %>
-    <%= form.date_field :dob, class: "form-control", value: current_user.student&.dob %>
+    <%= form.date_field :dob, class: "form-control", value: @student&.dob %>
   </div>
 
   <div class="form-group form-check">

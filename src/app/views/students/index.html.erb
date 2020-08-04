@@ -31,4 +31,6 @@
   </tbody>
 </table>
 
-
+<% if current_user.admin? %>
+  <%#= link_to 'New Student', new_student_path, class: 'btn btn-outline-primary' %>
+<% end %>

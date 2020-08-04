@@ -4,5 +4,13 @@
 
 <br>
 
-<%= link_to 'Back', admins_path, class: 'btn btn-secondary' %>
-<%= link_to 'Change My Password', edit_user_registration_path, class: 'btn btn-danger' %>
+
+<% if current_user.admin.id == @admin.id %>
+  <%= link_to 'Back', admins_path, class: 'btn btn-secondary' %>
+  <%= link_to 'Change My Password', edit_user_registration_path, class: 'btn btn-danger' %>
+<% else %>
+  <%= link_to 'Back', admins_path, class: 'btn btn-secondary' %>
+<% end %>
+
+
+

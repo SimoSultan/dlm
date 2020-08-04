@@ -25,4 +25,6 @@
 
 <br>
 
-<%= link_to 'New Admin', new_admin_path, class: 'btn btn-outline-primary' %>
+<% if current_user.admin? %>
+  <%#= link_to 'New Admin', new_admin_path, class: 'btn btn-outline-primary' %>
+<% end %>

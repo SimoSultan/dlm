@@ -1,8 +1,13 @@
-<%= link_to 'Edit My Account', edit_admin_path(@admin) %>
+
+<% if current_user.admin.id == @admin.id %>
+  <%= link_to 'Edit My Account', edit_admin_path(@admin) %>
+<% else %>
+  <%= link_to "Edit Admin's Account", edit_admin_path(@admin) %>
+<% end %>
 
 <br>
 
-<%= image_tag user_avatar(current_user, 100), class: 'profile-avatar'%>
+<%= image_tag user_avatar(@admin.user, 100), class: 'profile-avatar'%>
 
 <br>
 

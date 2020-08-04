@@ -2,13 +2,13 @@ module ApplicationHelper
 
   def user_avatar(user, size=40)
     if user.student?
-      return user.student&.avatar if user.student&.avatar&.attached?
+      return user&.student&.avatar if user&.student&.avatar&.attached?
       "default.png"
     elsif user.instructor?
-      return user.instructor&.avatar if user.instructor&.avatar&.attached?
+      return user&.instructor&.avatar if user&.instructor&.avatar&.attached?
       "default.png"
     elsif user.admin?
-      return user.admin&.avatar if user.admin&.avatar&.attached?
+      return user&.admin&.avatar if user&.admin&.avatar&.attached?
       "default.png"
     end
   end

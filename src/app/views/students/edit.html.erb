@@ -2,7 +2,17 @@
 
 <%= render 'form', student: @student %>
 
-<%#= link_to 'Show', @student %>
-<%= link_to 'Back', student_path(current_user.student.id), class: 'btn btn-outline-secondary'%>
-<%= link_to 'Change My Password', edit_user_registration_path, class: 'btn btn-outline-danger'%>
+
+<br>
+
+<% if current_user.admin? %>
+  <%= link_to 'Back', instructors_path, class: 'btn btn-secondary'%>
+<% elsif current_user.instructor? %>
+  <%= link_to 'Back', student_path(current_user.student.id), class: 'btn btn-outline-secondary'%>
+  <%= link_to 'Change My Password', edit_user_registration_path, class: 'btn btn-outline-danger'%>
+<% end %>
+
+
+
+
 

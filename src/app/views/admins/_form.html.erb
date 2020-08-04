@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <%= image_tag user_avatar(current_user, 100), class: 'profile-avatar'%>
+  <%= image_tag user_avatar(@admin.user, 100), class: 'profile-avatar'%>
   <br>
 
   <%= form.file_field :avatar, accept: 'image/png,image/gif,image/jpeg' %>  
