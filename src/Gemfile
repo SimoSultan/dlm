@@ -59,3 +59,5 @@ gem "devise", "~> 4.7.2"
 gem "aws-sdk-s3", "~> 1.75", require: false
 
 gem "gravatar_image_tag", "~> 1.2"
+
+gem "cancan", "~> 1.6"

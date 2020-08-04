@@ -12,15 +12,12 @@ class ApplicationController < ActionController::Base
 
   def format_dob(dob_day, dob_month, dob_year)
     dob = "#{dob_day}-#{dob_month}-#{dob_year}"
-
     return dob
   end
 
 
-
-
-
   protected
+
 
     def configure_permitted_parameters
         devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:role, :email, :password, :password_confirmation)}

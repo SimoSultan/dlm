@@ -8,16 +8,16 @@
 
 <p>
   <strong>Name:</strong>
-  <%= if @instructor.first_name.empty? && @instructor.last_name.empty?
+  <%= if @instructor&.first_name&.empty? && @instructor&.last_name&.empty?
     "N/A"
   else
-    @instructor.first_name.capitalize + ' ' + @instructor.last_name.capitalize
+    @instructor&.first_name&.capitalize + ' ' + @instructor&.last_name&.capitalize
   end %>
 </p>
 
 <p>
   <strong>Email:</strong>
-  <%= @instructor.user.email if @instructor.user.email %>
+  <%= @instructor&.user&.email %>
 </p>
 
 <p>

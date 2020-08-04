@@ -1,7 +1,9 @@
 class StudentsController < ApplicationController
+  before_action :authenticate_user!
+  # before_action :authenticate_role
   before_action :set_student, only: [:show, :edit, :update, :destroy]
-  # before_action :authenticate_user!, except: [:index, :show]
-  
+  # load_and_authorize_resource
+
   # GET /students
   # GET /students.json
   def index
@@ -32,7 +34,7 @@ class StudentsController < ApplicationController
     @student.user = current_user
 
     if @student.save
-      redirect_to student_path(current_user.student.id)
+      redirect_to edit_student_path(current_user.student.id)
     else
       render :new
     end
@@ -42,8 +44,6 @@ class StudentsController < ApplicationController
   # PATCH/PUT /students/1
   # PATCH/PUT /students/1.json
   def update
-    # student_params[:phone] = format_phone(student_params[:phone])
-    # puts "student_params[:phone]"
     respond_to do |format|
       if @student.update(student_params)
         format.html { redirect_to @student, notice: 'Student was successfully updated.' }
@@ -89,4 +89,19 @@ class StudentsController < ApplicationController
       end
       @instructors
     end
+
+    # def authenticate_role
+    #   unless current_user.admin?
+    #     if current_user.instructor?
+    #       unless params[:id] == current_user.instructor.id
+    #         redirect_to instructor_path(current_user.instructor.id), :alert => "Access denied."
+    #       end
+    #     elsif current_user.student?
+    #       unless params[:id] == current_user.student.id
+    #         redirect_to student_path(current_user.student.id), :alert => "Access denied."
+    #       end
+    #     end
+    #   end
+    # end
+
 end

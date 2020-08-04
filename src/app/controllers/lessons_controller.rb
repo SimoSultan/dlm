@@ -1,5 +1,7 @@
 class LessonsController < ApplicationController
 
+  # load_and_authorize_resource
+  
   def index
     @all_lessons = []
 
