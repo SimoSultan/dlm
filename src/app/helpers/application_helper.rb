@@ -42,7 +42,7 @@ module ApplicationHelper
     year = ymd[0].to_i
     month = ymd[1].to_i
     day = ymd[2].to_i
-    date = Date.new(year, month-1, day)
+    date = Date.new(year, month, day)
     week = Array.new(7)
     month = []
 
@@ -70,7 +70,8 @@ module ApplicationHelper
     month[11] = "Dec"
   
     weekday = week[date.day]
-    monthName = month[date.month]
+    # month - 1 because December = 12 for months, but its the 11th position in arraym hence 12 - 1 = 11 => "Dec"
+    monthName = month[date.month-1]
     dateOrdinal = get_ordinal(day)
   
     type == "without_day" ? readable = "#{dateOrdinal} #{monthName} #{year}" : readable = "#{weekday}, #{monthName} #{dateOrdinal} #{year}"
