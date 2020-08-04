@@ -14,7 +14,6 @@ class LessonsController < ApplicationController
     end
     @all_lessons
     # authorize! :read, @all_lessons, :message => "You do not have authorization to view that content."
-
   end
 
   def new
@@ -44,8 +43,19 @@ class LessonsController < ApplicationController
   # end
 
   def create
-    @lesson = Lesson.new
+    # stop the user from creating a lesson until all their details are filled out
+    if user_details_are_empty()
+      if current_user.admin?
+        redirect_to admin_path(current_user.admin.id), alert: 'All details must be filled in before booking a lesson.'
+      elsif current_user.instructor?
+        redirect_to instructor_path(current_user.instructor.id), alert: 'All details must be filled in before booking a lesson.'
+      elsif current_user.student?
+        redirect_to student_path(current_user.student.id), alert: 'All details must be filled in before booking a lesson.'
+      end
+      return
+    end
 
+    @lesson = Lesson.new
     lesson_params = params[:lesson]
 
     @lesson.student_id = lesson_params[:student_id].to_i
@@ -56,9 +66,9 @@ class LessonsController < ApplicationController
     @lesson.cancelled = false
 
     if @lesson.save
-      redirect_to lessons_path
+      redirect_to lessons_path, notice: 'Lesson successfully created'
     else
-      redirect_to student_path(current_user.student.id)
+      redirect_to student_path(current_user.student.id), alert: 'Something went wrong and lesson was not created.'
     end
 
   end
@@ -74,9 +84,9 @@ class LessonsController < ApplicationController
     @lesson.cancelled = params[:cancelled]
 
     if @lesson.save
-      redirect_to lessons_path
+      redirect_to lessons_path, notice: 'Lesson successfully updated'
     else
-      render :edit
+      render :edit, alert: 'Something went wrong and lesson was not updated.'
     end
   end
 
@@ -85,8 +95,12 @@ class LessonsController < ApplicationController
   def destroy
     id = params[:id]
     @lesson = Lesson.find_by(id: id)
-    @lesson.destroy
-    redirect_to student_path(current_user.student.id)
+
+    if @lesson.destroy
+      redirect_to lessons_path, notice: 'Lesson successfully deleted'
+    else
+      redirect_to lessons_path, alert: 'Something went wrong and lesson was not deleted.'
+    end
 
   end
 

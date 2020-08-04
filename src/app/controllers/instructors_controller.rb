@@ -33,8 +33,10 @@ class InstructorsController < ApplicationController
 
     if @instructor.save
       redirect_to edit_instructor_path
+      # flash.now[:notice] = 'Lesson successfully updated!'
     else
       render :new
+      flash.now[:alert] = 'Something went wrong and lesson was not updated.'
     end
   end
 
@@ -46,7 +48,7 @@ class InstructorsController < ApplicationController
         format.html { redirect_to @instructor, notice: 'Instructor was successfully updated.' }
         format.json { render :show, status: :ok, location: @instructor }
       else
-        format.html { render :edit }
+        format.html { render :edit, alert: 'Something went wrong and Instructor was not updated.' }
         format.json { render json: @instructor.errors, status: :unprocessable_entity }
       end
     end

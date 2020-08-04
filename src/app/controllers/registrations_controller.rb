@@ -52,10 +52,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   private
 
-    # def sign_up_params
-    #   params.require(:user).permit( :email, :password, :password_confirmation, :current_password)
-    # end
-
     def after_sign_up_path_for(current_user)
 
       if current_user.student?

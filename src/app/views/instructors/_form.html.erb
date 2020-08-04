@@ -1,9 +1,9 @@
 <%= form_with(model: instructor, local: true, data: { controller: "places", action: "google-maps-callback@window->places#initMap" }) do |form| %>
   <% if instructor.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(instructor.errors.count, "error") %> prohibited this instructor from being saved:</h2>
+      <!--<h2><%#= pluralize(instructor.errors.count, "error") %> prohibited this student from being saved:</h2>-->
 
-      <ul>
+      <ul class="alert alert-warning list-style-none">
         <% instructor.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
