@@ -31,8 +31,11 @@ module ApplicationHelper
     return ord
   end
 
-  def get_readable_date(date_string, type) 
+  def get_readable_date(date_string, type)
+
     return "N/A" if date_string.empty? 
+    return "N/A" if date_string == nil
+    return "N/A" if date_string.split("-").length < 3
 
     ymd = date_string.split("-")
     year = ymd[0].to_i

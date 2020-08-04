@@ -15,16 +15,14 @@ class LessonsController < ApplicationController
 
   def new
     @lesson = Lesson.new
+    @instructors = get_all_instructors()
+    @students = get_all_students()
   end
 
   def edit
     @lesson = Lesson.find_by(id: params[:id])
-
-    @instructors = Instructor.all
-    @instructors.map do |ins|
-      ins[:first_name] = "#{ins[:first_name]} #{ins[:last_name]}"
-    end
-
+    @instructors = get_all_instructors()
+    @students = get_all_students()
   end
 
   def show
@@ -78,7 +76,7 @@ class LessonsController < ApplicationController
     end
   end
 
-    # DELETE /lessons/1
+  # DELETE /lessons/1
   # DELETE /lessons/1.json
   def destroy
     id = params[:id]
@@ -90,5 +88,20 @@ class LessonsController < ApplicationController
 
   private
 
+  def get_all_instructors
+    @instructors = Instructor.all
+    @instructors.map do |ins|
+      ins[:first_name] = "#{ins[:first_name]} #{ins[:last_name]}"
+    end
+    @instructors
+  end
+
+  def get_all_students
+    @students = Student.all
+    @students.map do |stu|
+      stu[:first_name] = "#{stu[:first_name]} #{stu[:last_name]}"
+    end
+    @students
+  end
 
 end

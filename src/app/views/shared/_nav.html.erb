@@ -24,7 +24,7 @@
         <li class="nav-item">
           <%= link_to 'My Calendar', lessons_path, class: "nav-link" %>
         </li>
-        <% elsif current_user.student? || current_user.instructor? %>
+        <% elsif current_user.student? %>
         <li class="nav-item">
           <%= link_to 'My Lessons', lessons_path, class: "nav-link" %>
         </li>

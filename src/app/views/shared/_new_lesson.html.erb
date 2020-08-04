@@ -35,7 +35,7 @@
       <div class="form-group row">
         <%= form.label :student, class: "col-sm-3 col-form-label text-left" %>
         <div class="col-sm-6">
-          <%= form.collection_select :student_id, Student.all, :id, :first_name, {selected: "", disabled: "", prompt: "Select student"}, {value: :student, class: "form-control"} %>
+          <%= form.collection_select :student_id, @students, :id, :first_name, {selected: "", disabled: "", prompt: "Select student"}, {value: :student, class: "form-control"} %>
         </div>
       </div>
       <% else %>
@@ -43,10 +43,15 @@
       <% end %>
  
 
+
       <div class="form-group row">
         <%= form.label :instructor, class: "col-sm-3 col-form-label text-left" %>
         <div class="col-sm-6">
-          <%= form.collection_select :instructor_id, Instructor.all, :id, :first_name, {selected: "", disabled: "", prompt: "Select instructor"}, {value: current_user.instructor.first_name, class: "form-control"} %>
+          <% if current_user.instructor? %>
+            <%= form.collection_select :instructor_id, @instructors, :id, :first_name, {selected: "", disabled: "", prompt: "Select instructor"}, {value: current_user.instructor.first_name, class: "form-control"} %>
+          <% else %>
+            <%= form.collection_select :instructor_id, @instructors, :id, :first_name, {selected: "", disabled: "", prompt: "Select instructor"}, {value: "", class: "form-control"} %>
+          <% end %>
         </div>
       </div>
 

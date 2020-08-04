@@ -12,6 +12,7 @@ class StudentsController < ApplicationController
   # GET /students/1.json
   def show
     @lesson = Lesson.new
+    @instructors = get_all_instructors()
   end
 
   # GET /students/new
@@ -81,4 +82,11 @@ class StudentsController < ApplicationController
       params.require(:student).permit(:first_name, :last_name, :address, :phone, :dob, :transmission, :avatar)
     end
 
+    def get_all_instructors
+      @instructors = Instructor.all
+      @instructors.map do |ins|
+        ins[:first_name] = "#{ins[:first_name]} #{ins[:last_name]}"
+      end
+      @instructors
+    end
 end
