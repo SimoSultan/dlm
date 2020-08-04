@@ -18,8 +18,8 @@ default: &default
   adapter: postgresql
   encoding: unicode
 
-  username: postgres
-  password: simtotheon
+  username: <%= Rails.application.credentials.dig(:development, :postgres_username) %>
+  password: <%= Rails.application.credentials.dig(:development :postgres_password) %>
   host: localhost
 
   # For details on connection pooling, see Rails configuration guide
