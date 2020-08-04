@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   resources :admins
 
   get "/lessons", to: "lessons#index", as: "lessons"
-  # get "/lesson", to: "lessons#show_modal", as: "lesson_show_modal"
   get "/lesson/new", to: "lessons#new", as: "lesson_new"
   get "/lesson/:id", to: "lessons#show", as: "lesson_show"
   get "/lesson/:id/edit", to: "lessons#edit", as: "lesson_edit"
