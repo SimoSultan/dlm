@@ -9,26 +9,29 @@ class Student < ApplicationRecord
   has_many :lessons
   # has_many :comments, class_name: "comment", foreign_key: "comment_id"
 
-  validates :first_name, presence: true, if: -> { first_name.empty? }
-  validates :last_name, presence: true, if: -> { last_name.empty? }
-  validates :address, presence: true, if: -> { address.empty? }
-  validates :phone, presence: true, if: -> { phone.empty? || validate_phone_number() }
-  validates :dob, presence: true, if: -> { dob.empty? || validate_student_dob() }
-  
+  validates :first_name, presence: true, on: :update
+  validates :last_name, presence: true, on: :update
+  validates :address, presence: true, on: :update
+  validate :phone_number, on: :update
+  validate :student_dob, on: :update
 
   
   private
 
-  def validate_phone_number
-    phone.to_s.delete('^0-9')
-    if phone.length != 10
-      errors.add(:phone, "must be a 10 digit mobile number. eg. '0400123456'")
-    elsif phone[0..1] != "04"
-      errors.add(:phone, "must be a mobile number starting with '04'")
+  def phone_number
+    if phone != nil || phone != ""
+      phone.to_s.delete('^0-9')
+      if phone.empty?
+        errors.add(:phone, "can't be blank")
+      elsif phone.length != 10
+        errors.add(:phone, "must be a 10 digit mobile number. eg. '0411222333'")
+      elsif phone[0..1] != "04"
+        errors.add(:phone, "must be a mobile number starting with '04'")
+      end
     end
   end
-
-  def validate_student_dob
+  
+  def student_dob
     current_date = Date.today
 
     dob_year = dob.split('-')[0].to_i

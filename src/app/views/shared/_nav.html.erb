@@ -41,14 +41,26 @@
       <% if user_signed_in? %>
         <li class="nav-item">
           <% if current_user.student? %>
-            <%= link_to "#{current_user.student.first_name.capitalize} #{current_user.student.last_name.capitalize}", student_path(current_user.student.id), class: "nav-link" %>
+            <%= link_to "#{current_user.student&.first_name&.capitalize} #{current_user.student&.last_name&.capitalize}", student_path(current_user.student&.id), class: "nav-link" %>
           <% elsif current_user.instructor?  %>
-            <%= link_to "#{current_user.instructor.first_name.capitalize} #{current_user.instructor.last_name.capitalize}", instructor_path(current_user.instructor.id), class: "nav-link" %>
+            <%= link_to "#{current_user&.instructor&.first_name&.capitalize} #{current_user&.instructor&.last_name&.capitalize}", instructor_path(current_user&.instructor&.id), class: "nav-link" %>
           <% elsif current_user.admin? %>
-            <%= link_to "#{current_user.admin.first_name.capitalize} #{current_user.admin.last_name.capitalize}", admin_path(current_user.admin.id), class: "nav-link" %>
+            <%= link_to "#{current_user.admin&.first_name&.capitalize} #{current_user.admin&.last_name&.capitalize}", admin_path(current_user.admin&.id), class: "nav-link" %>
           <% end %>
         </li>
-        <%= image_tag user_avatar(current_user, 100), class: 'navbar-avatar'%>
+        <% if current_user.student? %>
+          <%= link_to student_path(current_user.student&.id) do %>
+            <%= image_tag user_avatar(current_user, 100), class: 'navbar-avatar'%>
+          <% end %>
+        <% elsif current_user.instructor?  %>
+         <%= link_to instructor_path(current_user.instructor&.id) do %>
+            <%= image_tag user_avatar(current_user, 100), class: 'navbar-avatar'%>
+          <% end %>
+        <% elsif current_user.admin? %>
+         <%= link_to admin_path(current_user.admin&.id) do %>
+            <%= image_tag admin_path(current_user, 100), class: 'navbar-avatar'%>
+          <% end %>
+        <% end %>
         
         <li class="nav-item">
           <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: "nav-link" %>

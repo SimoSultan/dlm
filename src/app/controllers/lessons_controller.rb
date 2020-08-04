@@ -52,9 +52,9 @@ class LessonsController < ApplicationController
     @lesson.cancelled = false
 
     if @lesson.save
-      redirect_to student_path(current_user.student.id)
-    else
       redirect_to lessons_path
+    else
+      redirect_to student_path(current_user.student.id)
     end
 
   end

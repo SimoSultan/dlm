@@ -21,15 +21,13 @@
     <% end %>
     <% @all_lessons.each do |lesson| %>
       <tr>
-        <td><%= lesson.student.first_name.capitalize + ' ' + lesson.student.last_name.capitalize %></td>
-        <td><%= lesson.instructor.first_name.capitalize + ' ' + lesson.instructor.last_name.capitalize %></td>
-        <td><%= lesson.date if lesson.date %></td>
-        <td><%= lesson.time.strftime('%H:%M') if lesson.time %></td>
-        <td><%= "#{lesson.duration} mins" if lesson.duration %></td>
-        <!--<td><%= lesson.transmission.capitalize if lesson.transmission %></td>-->
-        <td><%= lesson.cancelled ? "Yes": "No" %></td>
+        <td><%= lesson&.student&.first_name&.capitalize + ' ' + lesson&.student&.last_name&.capitalize %></td>
+        <td><%= lesson&.instructor.first_name.capitalize + ' ' + lesson&.instructor&.last_name&.capitalize %></td>
+        <td><%= lesson&.date%></td>
+        <td><%= lesson&.time&.strftime('%H:%M')%></td>
+        <td><%= "#{lesson&.duration} mins"%></td>
+        <td><%= lesson&.cancelled ? "Yes": "No" %></td>
         <td><%= "to-do" %></td>
-        <td><%#= link_to 'Show', lesson_show_path(lesson) %></td>
         <% if current_user.admin? || current_user.instructor? %>
         <td><%= link_to 'Edit', lesson_edit_path(lesson) %></td>
         <td><%= link_to 'Delete', lesson_destroy_path(lesson), method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,5 +1,6 @@
 class User < ApplicationRecord
 
+  attr_accessor :current_password
   enum role: {student: 0, instructor: 1, admin: 2}
 
   # Include default devise modules. Others available are:

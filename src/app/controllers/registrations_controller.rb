@@ -10,14 +10,13 @@ class RegistrationsController < Devise::RegistrationsController
     yield resource if block_given?
     if resource.persisted?
 
-      # We know that the user has been persisted to the database, so now we can create our empty profile
-      puts "____________________________"
+      # # We know that the user has been persisted to the database, so now we can create our empty profile
       if resource.student?
-        resource.create_student!
+        resource.create_student!(first_name: "", last_name: "", address: "", phone: "", transmission: "", dob: "")
       elsif resource.instructor?
-        resource.create_instructor!
+        resource.create_instructor!(first_name: "", last_name: "", address: "", phone: "", transmission: "", dob: "", gender: "")
       elsif resource.admin?
-        resource.create_admin!
+        resource.create_admin!(first_name: "", last_name: "")
       end
  
 
@@ -46,20 +45,23 @@ class RegistrationsController < Devise::RegistrationsController
     super
   end
 
+
+
   private
 
-  def after_sign_up_path_for(current_user)
-    puts "-------------------------"
-    puts "inside after sign up path"
+    # def sign_up_params
+    #   params.require(:user).permit( :email, :password, :password_confirmation, :current_password)
+    # end
 
-    if current_user.student?
-      edit_student_path(current_user.student.id)
-    elsif current_user.instructor?
-      edit_instructor_path(current_user.instructor.id)
-    elsif current_user.admin?
-      edit_admin_path(current_user.admin.id)
+    def after_sign_up_path_for(current_user)
+
+      if current_user.student?
+        edit_student_path(current_user.student.id)
+      elsif current_user.instructor?
+        edit_instructor_path(current_user.instructor.id)
+      elsif current_user.admin?
+        edit_admin_path(current_user.admin.id)
+      end
     end
-  end
-    
   
 end 
