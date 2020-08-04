@@ -1,8 +1,8 @@
 class PublicsController < ApplicationController
+  
+  before_action :authenticate_user!, except: [:home]
+
   def home
-    # if user_signed_in?
-    #   render "students/edit"
-    # end
   end
 
 end
