@@ -17,6 +17,9 @@
         <li class="nav-item">
           <%= link_to 'All Instructors', instructors_path, class: "nav-link" %>
         </li>
+        <li class="nav-item">
+          <%= link_to 'All Admins', admins_path, class: "nav-link" %>
+        </li>
         <% elsif current_user.instructor? %>
         <li class="nav-item">
           <%= link_to 'My Lessons', lessons_path, class: "nav-link" %>
@@ -58,7 +61,7 @@
           <% end %>
         <% elsif current_user.admin? %>
          <%= link_to admin_path(current_user.admin&.id) do %>
-            <%= image_tag admin_path(current_user, 100), class: 'navbar-avatar'%>
+            <%= image_tag user_avatar(current_user, 100), class: 'navbar-avatar'%>
           <% end %>
         <% end %>
         
