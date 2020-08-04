@@ -21,12 +21,15 @@
     </header>
 
 
+    <%= render "shared/warning" %>
+
+
     <div class="container">
 
-      <h1 class="mt-5">Driving Lesson Marketplace</h1>
+      <h1 class="mt-5" style="margin-top:1.5rem!important;">Simo_Sultan's Driving Lesson Marketplace</h1>
 
-      <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
-      <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
+      <% if notice %><div class="alert alert-info "><%= notice %></div><% end %>
+      <% if alert %><div class="alert alert-warning "><%= alert %></div><% end %>
 
       <%= yield %>
 
