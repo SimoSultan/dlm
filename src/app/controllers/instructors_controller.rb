@@ -1,14 +1,12 @@
 class InstructorsController < ApplicationController
-  before_action :authenticate_user!
-  # before_action :admin_only, only: [:new, :index, :create]
+  # before_action :authenticate_user!
   before_action :set_instructor, only: [:show, :edit, :update, :destroy]
-  # before_action :authenticate_role
-  load_and_authorize_resource
 
   # GET /instructors
   # GET /instructors.json
   def index
     @instructors = Instructor.order(:created_at).reverse_order
+    authorize! :read, @instructors, :message => "You do not have authorization to view that content."
   end
 
   # GET /instructors/1
@@ -19,6 +17,7 @@ class InstructorsController < ApplicationController
   # GET /instructors/new
   def new
     @instructor = Instructor.new
+    authorize! :read, @instructor, :message => "You do not have authorization to view that content."
   end
 
   # GET /instructors/1/edit
@@ -30,6 +29,7 @@ class InstructorsController < ApplicationController
   def create
     @instructor = Instructor.new(instructor_params)
     @instructor.user = current_user
+    authorize! :read, @instructor, :message => "You do not have authorization to view that content."
 
     if @instructor.save
       redirect_to edit_instructor_path
@@ -66,6 +66,7 @@ class InstructorsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_instructor
       @instructor = Instructor.find(params[:id])
+      authorize! :read, @instructor, :message => "You do not have authorization to view that content."
     end
 
     # Only allow a list of trusted parameters through.
@@ -75,45 +76,5 @@ class InstructorsController < ApplicationController
       params[:instructor][:phone] = format_phone_number(params[:instructor][:phone])
       params.require(:instructor).permit(:first_name, :last_name, :address, :phone, :dob, :transmission, :gender, :avatar)
     end
-
-
-    # def authenticate_role
-    #   # skip if person is admin
-    #   unless current_user.admin?
-    #     # check if they are instructor
-    #     if current_user.instructor?
-    #     # skip if params id matches the current person's instructor id
-    #       if @instructor.id == current_user.instructor.id
-    #         # otherwise redirect them back to their own show page
-    #         redirect_to instructor_path(current_user.instructor.id), :alert => "Access denied."
-    #       end
-    #     # check if they are instructor
-    #     elsif current_user.student?
-    #       # skip if params id matches the current person's student id
-    #       unless params[:id] == current_user.student.id
-    #         # otherwise redirect them back to their own show page
-    #         redirect_to student_path(current_user.student.id), :alert => "Access denied."
-    #       end
-    #     end
-    #   end
-    # end
-
-    # def admin_only
-    #   # skip if person is admin
-    #   unless current_user.admin?
-    #     puts "-------"
-    #     puts "here"
-    #     # check if they are instructor
-    #     if current_user.instructor?
-    #       # otherwise redirect them back to their own show page
-    #       redirect_to instructor_path(current_user.instructor.id), :alert => "Access denied."
-    #     # check if they are instructor
-    #     elsif current_user.student?
-    #       # otherwise redirect them back to their own show page
-    #       redirect_to student_path(current_user.student.id), :alert => "Access denied."
-    #     end
-    #   end
-    # end
-
 
 end

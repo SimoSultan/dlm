@@ -1,7 +1,7 @@
 class LessonsController < ApplicationController
 
   # load_and_authorize_resource
-  
+
   def index
     @all_lessons = []
 
@@ -13,6 +13,8 @@ class LessonsController < ApplicationController
       @all_lessons = Lesson.order(:date, :time).reverse_order
     end
     @all_lessons
+    # authorize! :read, @all_lessons, :message => "You do not have authorization to view that content."
+
   end
 
   def new

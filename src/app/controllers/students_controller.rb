@@ -1,13 +1,12 @@
 class StudentsController < ApplicationController
-  before_action :authenticate_user!
-  # before_action :authenticate_role
+  # before_action :authenticate_user!
   before_action :set_student, only: [:show, :edit, :update, :destroy]
-  # load_and_authorize_resource
 
   # GET /students
   # GET /students.json
   def index
     @students = Student.order(:created_at).reverse_order
+    authorize! :read, @students, :message => "You do not have authorization to view that content."
   end
 
   # GET /students/1
@@ -20,6 +19,7 @@ class StudentsController < ApplicationController
   # GET /students/new
   def new
     @student = Student.new
+    authorize! :read, @student, :message => "You do not have authorization to view that content."
   end
 
   # GET /students/1/edit
@@ -32,6 +32,7 @@ class StudentsController < ApplicationController
 
     @student = Student.new(student_params)
     @student.user = current_user
+    authorize! :read, @student, :message => "You do not have authorization to view that content."
 
     if @student.save
       redirect_to edit_student_path(current_user.student.id)
@@ -69,6 +70,7 @@ class StudentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_student
       @student = Student.find(params[:id])
+      authorize! :read, @student, :message => "You do not have authorization to view that content."
     end
 
     # Only allow a list of trusted parameters through.
@@ -76,32 +78,19 @@ class StudentsController < ApplicationController
       params[:student][:first_name].capitalize!
       params[:student][:last_name].capitalize!
       params[:student][:phone] = format_phone_number(params[:student][:phone])
-      # params[:student][:dob] = format_dob(params[:student][:dob_day], params[:student][:dob_month], params[:student][:dob_year])
       
-      # params.require(:student).permit(:first_name, :last_name, :address, :phone, :dob, :dob_day, :dob_month, :dob_year, :transmission, :avatar)
       params.require(:student).permit(:first_name, :last_name, :address, :phone, :dob, :transmission, :avatar)
     end
 
     def get_all_instructors
       @instructors = Instructor.all
       @instructors.map do |ins|
-        ins[:first_name] = "#{ins[:first_name]} #{ins[:last_name]}"
+        # ins[:first_name] = "#{ins[:first_name]} #{ins[:last_name]}"
+        ins[:address] = ""
+        ins[:phone] = ""
+        ins[:dob] = ""
       end
       @instructors
     end
-
-    # def authenticate_role
-    #   unless current_user.admin?
-    #     if current_user.instructor?
-    #       unless params[:id] == current_user.instructor.id
-    #         redirect_to instructor_path(current_user.instructor.id), :alert => "Access denied."
-    #       end
-    #     elsif current_user.student?
-    #       unless params[:id] == current_user.student.id
-    #         redirect_to student_path(current_user.student.id), :alert => "Access denied."
-    #       end
-    #     end
-    #   end
-    # end
 
 end

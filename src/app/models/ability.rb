@@ -8,13 +8,17 @@ class Ability
       if user.admin?
         can :manage, :all
       elsif user.instructor?
-        can :read, Student, user_id: user.id 
-        can :read, Lesson, user_id: user.id 
-        can :manage, User, user_id: user.id 
-      elsif user.student?
         can :read, Instructor, user_id: user.id 
-        can :read, Lesson, user_id: user.id      
+        can :read, Lesson, instructor_id: user.instructor.id 
         can :manage, User, user_id: user.id 
+        cannot :read, Student
+        cannot :read, Admin 
+      elsif user.student?
+        can :read, Student, user_id: user.id 
+        can :read, Lesson, student_id: user.student.id      
+        can :manage, User, user_id: user.id 
+        cannot :read, Instructor 
+        cannot :read, Admin 
       end
     #
     # The first argument to `can` is the action you are giving the user 
