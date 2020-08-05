@@ -1,0 +1,71 @@
+
+
+<div class="container text-center mt-5">
+
+
+  <%= image_tag user_avatar(person.user, 100), class: 'profile-avatar text-center mt-5'%>
+  <!--<p>Dob: <%#= get_readable_date(@student&.dob, "without_day") %></p>-->
+
+  <br>
+
+  <h2 class="mt-1">
+    <%= if person&.first_name&.empty? && person&.last_name&.empty?
+      "N/A"
+    else
+      person&.first_name&.capitalize + ' ' + person&.last_name&.capitalize
+    end %>
+  </h2>
+
+
+  <div class="mt-1">
+    <% if current_user.admin? %>
+      <%= link_to "Edit Student's Account", edit_student_path(person) %>
+    <% elsif current_user.instructor? %>
+      <%= link_to 'Edit My Account', edit_instructor_path(person) %>
+    <% elsif current_user.student? %>
+      <%= link_to 'Edit My Account', edit_student_path(person) %>
+    <% end %>
+  </div>
+
+
+  <% if current_user.student? %>
+
+    <div class="jumbotron jumbotron-fluid mt-4 mb-3 text-left">
+      <div class="container text-left">
+        <h5 class="inline">Upcoming Lesson</h5> <%= link_to 'More details', lesson_show_path(upcoming), class: 'ml-3 inline' %>
+        <% if upcoming %>
+          <p class="lead mb-1">A <%= upcoming&.duration %> min lesson with <%= upcoming&.instructor&.first_name %> on <%= get_readable_date(upcoming&.date&.to_s, "without_day") %> at <%= upcoming&.time&.strftime('%l:%M %P') %>, meeting at <%= @student.address %>.</p>
+        <% else %>
+          <p class="lead mb-1">You have no upcoming lessons.</p>
+        <% end %>
+      </div>
+
+      <div class="container text-right">
+        <%= link_to 'More details', lesson_show_path(previous), class: 'inline mr-3'%> <h5 class="inline">Previous Lesson</h5>
+        <% if previous %>
+          <p class="lead mb-1">A <%= previous&.duration %> min lesson with <%= previous&.instructor&.first_name %> on <%= get_readable_date(previous&.date&.to_s, "without_day") %>.</p>
+        <% else %>
+          <p class="lead mb-1">You have not had a lesson yet.</p>
+        <% end %>
+      </div>
+    </div>
+
+  <% end %>
+
+  <% if current_user.student? %>
+    <%= link_to 'Show All My Lessons', lessons_path, class: 'btn btn-outline-primary mb-4' %>
+  <% else %>
+    <%= link_to 'Show All Lessons', lessons_path, class: 'btn btn-outline-primary mb-4' %>
+  <% end %>
+
+  <% if current_user.student? %>
+    <%= render 'shared/new_lesson', locals: {lesson: @lesson, instructors: @instructors} %>
+  <% end %>
+
+  <br>
+
+
+
+
+</div>
+

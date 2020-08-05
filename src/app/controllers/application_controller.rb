@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+
+  require 'date'
+
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -42,11 +45,36 @@ class ApplicationController < ActionController::Base
       end
   end
 
+  def get_specific_lesson(user, spot)
+
+    today = Time.now
+    year = today.year
+    month = today.month
+    day = today.day
+
+    user_lessons = user.lessons
+    upcoming_lessons = []
+    previous_lessons = []
+
+    user_lessons.each do |lesson|
+      # if the lesson date is less than today, then add the lesson to previous lessons
+      # otherwise add to upcoming lessons
+      lesson.date < today ? previous_lessons << lesson : upcoming_lessons << lesson
+    end
+
+
+    if spot == "upcoming"
+      return upcoming_lessons.min(1) { |a| a.date <=> today }
+    else
+      return previous_lessons.min(1) { |a| a.date <=> today }
+    end
+  end
+
   protected
 
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:role, :email, :password, :password_confirmation)}
-      devise_parameter_sanitizer.permit(:update) { |u| u.permit(:avatar, :email, :password, :password_confirmation, :current_password)}
+      devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :current_password)}
     end
 
     def after_sign_out_path_for(resource)

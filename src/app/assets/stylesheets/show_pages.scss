@@ -1,0 +1,16 @@
+
+
+// PROFILE avatar
+.profile-avatar {
+  width: 10rem;
+  max-width: 160px;
+  max-height: 160px;
+  border-radius: 50%;
+}
+
+
+@media (min-width: 576px) {
+  .jumbotron {
+    padding: 2rem 1rem !important;
+  }
+}

@@ -1,16 +1,18 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "mt-7 form-signin text-center"}) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+  <%= image_tag 'dlm-logo.png', class: 'mb-4 logo-change-password' %>
+  <h1 class="h3 mb-3 font-weight-normal">Change your password</h1>
+
   <div class="form-group">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+    <%= f.label :email, class: "sr-only", placeholder: "Email address" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email address"  %>
   </div>
 
   <div class="form-group">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
+    <%= f.label :current_password, class: "sr-only" %>
+    <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control", placeholder: "Current password" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -18,69 +20,39 @@
   <% end %>
 
   <br>
-  <br>
 
+  <em><%= @minimum_password_length %> characters minimum</em>
   <div class="form-group">
-    <%= f.label :new_password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+    <%= f.label :new_password, class: "sr-only" %>
+    <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "New password"  %>
     <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      
     <% end %>
   </div>
 
   <div class="form-group">
-    <%= f.label :confirm_new_password %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+    <%= f.label :confirm_new_password, class: "sr-only" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirm new password" %>
   </div>
 
   <br>
-
 
   <div class="actions">
-    <%= f.submit "Update", class: "btn btn-primary" %>
+    <%= f.submit "Update", class: "btn btn-lg btn-primary btn-block" %>
   </div>
+  
+  <br>
+  <hr>
+
+  <h1 class="h3 mb-3 font-weight-normal">Delete your account</h1>
+
+
+  <%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure? This change is irreversible! This will delete all records of your lessons as well." }, method: :delete, class: "btn btn-danger" %>
+
+
 <% end %>
 
-<br>
-
-<h3>Delete my account</h3>
-
-<%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure? This change is irreversible!" }, method: :delete, class: "btn btn-danger" %>
-<br>
-
-<%= link_to "Back", :back, class: "btn btn-secondary" %>
 
 
 
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "mt-7 form-signin text-center"} ) do |f| %>
-  
-    <%= image_tag 'dlm-logo.png', class: 'mb-4, logo-login' %>
-    <%#= inline_svg_tag 'capicon/049.svg', class: 'login-icon mb-4' %>
-    <%# <img class="mb-4" src="/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> %>
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-
-    <%= f.label :email, class: "sr-only", placeholder: "Email address" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email address"  %>
-
-    <%= f.label :password, placeholder: "Password", class: "sr-only" %>
-    <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Password"  %>
-
-    <% if devise_mapping.rememberable? %>
-      <div class="checkbox mb-3 mt-2">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-      </div>
-    <% end %>
-
-    <div class="actions">
-      <%= f.submit "Sign in", class: "btn btn-lg btn-primary btn-block" %>
-    </div>
-
-    <br>
-    <%= render "devise/shared/links" %>
-
-    <p class="mt-4 mb-3 text-muted">© 2020</p>
-
-  <% end %>

@@ -1,10 +1,22 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+
+  <%= link_to :back do %>
+    <%= image_tag "capicon/277.png", class: 'back-button' %>
+  <% end %>
+
+  <%= link_to home_path do %>
+    <%= image_tag 'dlm-logo', class: 'navbar-logo'%>
+  <% end %>
+
   <%= link_to "DLM", home_path, class: "navbar-brand navbar-brand-simo" %>
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+
   <div class="collapse navbar-collapse" id="navbarCollapse">
-    <ul class="navbar-nav mr-auto">
+    
+    <ul class="navbar-nav ml-auto nav-right">
 
       <% if user_signed_in? %>
         <% if current_user.admin? %>
@@ -41,39 +53,35 @@
           <%= link_to 'Book a Driving Lesson', lesson_new_path, class: "nav-link" %>
         </li>
         <% end %>
+        <li class="nav-item">
+          <%= link_to "My Profile", student_path(current_user.student&.id), class: "nav-link" %>
+        </li>
       <% else %>
         <li class="nav-item">
           <%= link_to 'Book a Driving Lesson', new_user_registration_path, class: "nav-link" %>
         </li>
       <% end %>
-   
-    </ul>
-    
-    <ul class="navbar-nav nav-right">
+
       <% if user_signed_in? %>
-        <li class="nav-item">
+        <li class="nav-item ml-4 mr-4">
           <% if current_user.student? %>
-            <%= link_to "#{current_user.student&.first_name&.capitalize} #{current_user.student&.last_name&.capitalize}", student_path(current_user.student&.id), class: "nav-link" %>
+            <%#= link_to "#{current_user.student&.first_name&.capitalize} #{current_user.student&.last_name&.capitalize}", student_path(current_user.student&.id), class: "nav-link" %>
+            <%#= link_to "My Profile", student_path(current_user.student&.id), class: "nav-link" %>
+            <%= link_to student_path(current_user.student&.id) do %>
+              <%= image_tag user_avatar(current_user, 100), class: 'navbar-avatar inline'%>
+            <% end %>
           <% elsif current_user.instructor?  %>
             <%= link_to "#{current_user&.instructor&.first_name&.capitalize} #{current_user&.instructor&.last_name&.capitalize}", instructor_path(current_user&.instructor&.id), class: "nav-link" %>
+            <%= link_to instructor_path(current_user.instructor&.id) do %>
+              <%= image_tag user_avatar(current_user, 100), class: 'navbar-avatar'%>
+            <% end %>
           <% elsif current_user.admin? %>
             <%= link_to "#{current_user.admin&.first_name&.capitalize} #{current_user.admin&.last_name&.capitalize}", admin_path(current_user.admin&.id), class: "nav-link" %>
+            <%= link_to admin_path(current_user.admin&.id) do %>
+              <%= image_tag user_avatar(current_user, 100), class: 'navbar-avatar'%>
+            <% end %>
           <% end %>
         </li>
-        <% if current_user.student? %>
-          <%= link_to student_path(current_user.student&.id) do %>
-            <%= image_tag user_avatar(current_user, 100), class: 'navbar-avatar'%>
-          <% end %>
-        <% elsif current_user.instructor?  %>
-         <%= link_to instructor_path(current_user.instructor&.id) do %>
-            <%= image_tag user_avatar(current_user, 100), class: 'navbar-avatar'%>
-          <% end %>
-        <% elsif current_user.admin? %>
-         <%= link_to admin_path(current_user.admin&.id) do %>
-            <%= image_tag user_avatar(current_user, 100), class: 'navbar-avatar'%>
-          <% end %>
-        <% end %>
-        
         <li class="nav-item">
           <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>

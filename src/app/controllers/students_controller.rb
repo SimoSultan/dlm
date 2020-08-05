@@ -13,8 +13,17 @@ class StudentsController < ApplicationController
   # GET /students/1
   # GET /students/1.json
   def show
+    @student = Student.find_by(id: params[:id])
     @lesson = Lesson.new
     @instructors = get_all_instructors()
+    @upcoming = get_specific_lesson(@student, 'upcoming')[0]
+    @previous = get_specific_lesson(@student, 'previous')[0]
+    puts "----------------"
+    puts "upcoming"
+    puts @upcoming.date
+    puts "----------------"
+    puts "previous"
+    puts @previous.date
   end
 
   # GET /students/new

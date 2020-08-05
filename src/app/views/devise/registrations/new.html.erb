@@ -4,26 +4,24 @@
 
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <%= image_tag 'dlm-logo.png', class: 'mb-4, logo-login' %>
+    <%= image_tag 'dlm-logo.png', class: 'mb-4, logo-login' %>
+    <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
 
-  <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
+    <%= f.label :email, class: "sr-only", placeholder: "Email address" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email address" %>
 
-  <%= f.label :email, class: "sr-only", placeholder: "Email address" %>
-  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email address" %>
+    <%= f.label :password, placeholder: "Password", class: "sr-only" %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Password" %>
 
-  <%= f.label :password, placeholder: "Password", class: "sr-only" %>
-  <% if @minimum_password_length %>
-  <em>(<%= @minimum_password_length %> characters minimum)</em>
-  <% end %><br />
-  <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Password" %>
-
-  <div class="form-group">
     <%= f.label :password_confirmation, class: "sr-only" %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirm password" %>
-  </div>
 
 
-  <div class="form-group form-check">
+
+  <div class="form-group form-check mt-3">
     <%= f.radio_button :role, :student, class: "form-check-input" %>
     <%= f.label :role, "Student (please read warnings!)", class: "form-check-label", value: :student %><br />
     <%= f.radio_button :role, :instructor, class: "form-check-input" %>
@@ -35,7 +33,7 @@
   </div>
 
   <br>
-  
+
   <%= render "devise/shared/links" %>
 
   <p class="mt-4 mb-3 text-muted">© 2020</p>

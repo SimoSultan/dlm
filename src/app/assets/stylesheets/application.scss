@@ -22,6 +22,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
+  background-color: whitesmoke !important;
 }
 
 
@@ -40,15 +41,12 @@ body {
 }
 
 
-
-// PROFILE avatar
-.profile-avatar {
-  width: 18%;
-  height: 18%;
-  max-width: 160px;
-  max-height: 160px;
-  border-radius: 50%;
+.inline {
+  display: inline-block;
 }
+
+
+
 
 .btn-primary {
   background-color: $primary-dark !important;
@@ -59,3 +57,13 @@ body {
   }
 }
 
+.btn-outline-primary {
+  background-color: inherit;
+  border-color: $primary-dark !important;
+  color: $primary-dark !important;
+  &:hover {
+    background-color: $primary-light !important;
+    border-color: $primary-light !important;
+    color: white !important;
+  }
+}

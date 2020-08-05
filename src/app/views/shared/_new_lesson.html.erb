@@ -39,7 +39,7 @@
         </div>
       </div>
       <% else %>
-      <%= form.hidden_field :student_id, value: current_user.student.id %>
+        <%= form.hidden_field :student_id, value: current_user.student.id %>
       <% end %>
  
 
@@ -86,7 +86,7 @@
 
 
       <div class="actions">
-        <%= form.submit "BOOK", class: "btn btn-primary" %>
+        <%= form.submit "BOOK", class: "btn btn-lg btn-primary" %>
       </div>
     <% end %>
 

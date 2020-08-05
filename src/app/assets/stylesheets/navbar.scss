@@ -1,10 +1,23 @@
 
 @import 'variables';
 
+.back-button {
+  display: block;
+  margin: 0 auto;
+  fill: $font-dark;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 .navbar-avatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+}
+
+.navbar-logo {
+  margin-left: 2rem;
+  width: 3rem;
 }
 
 .navbar {
@@ -16,4 +29,5 @@
   padding-top: 0 !important;
   padding-bottom: 0 !important;
   font-size: 1.7rem !important;
+  margin-left: 0.5rem;
 }

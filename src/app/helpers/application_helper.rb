@@ -79,6 +79,10 @@ module ApplicationHelper
   
   end
 
+  def get_readable_time(time_string)
+
+  end
+
 
   # GOOGLE MAPS JAVASCRIPT TAGE
   def google_maps_api_script_tag

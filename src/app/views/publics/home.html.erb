@@ -4,29 +4,22 @@
 
 <main role="main" class="container">
 
-
-
-  <h2 class="display-4">HOME PAGE</h2>
-  <h3 class="display-4">What this site is about</h3>
-  <h3 class="display-4">What we offer</h3>
-
-<%
-=begin%>
   <div class="jumbotron">
     <h3 class="display-4">What this site is about</h3>
-    <p class="lead">Mollit consequat nostrud aute officia id. Nulla cupidatat sit in occaecat esse ea nostrud eu duis eiusmod dolore reprehenderit. Amet ullamco cupidatat voluptate occaecat. In anim commodo ullamco consectetur nulla anim. Est nostrud do nostrud nulla tempor consequat dolor proident dolor nulla cillum nostrud. Aute ad ut ex ex est excepteur et. Mollit sit excepteur incididunt laborum.</p>
+    <p class="lead">Mollit consequat nostrud aute officia id. Nulla cupidatat sit in occaecat esse ea nostrud eu duis eiusmod dolore reprehenderit.</p>
     <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
   </div>
 
   <div class="jumbotron">
     <h3 class="display-4">What we offer</h3>
-    <p class="lead">Mollit consequat nostrud aute officia id. Nulla cupidatat sit in occaecat esse ea nostrud eu duis eiusmod dolore reprehenderit. Amet ullamco cupidatat voluptate occaecat. In anim commodo ullamco consectetur nulla anim. Est nostrud do nostrud nulla tempor consequat dolor proident dolor nulla cillum nostrud. Aute ad ut ex ex est excepteur et. Mollit sit excepteur incididunt laborum.</p>
+    <p class="lead">Mollit consequat nostrud aute officia id. Nulla cupidatat sit in occaecat esse ea nostrud eu duis eiusmod dolore reprehenderit.</p>
     <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
   </div>
-    <%
-<%
-=end%>
 
+
+<%
+=begin
+%>
   <% if user_signed_in?%>
     <%= link_to 'Log Out', destroy_user_session_path, class: "btn btn-outline-primary" %>
   <% else %>
@@ -34,5 +27,7 @@
     <%= link_to 'Log In', new_user_session_path, class: "btn btn-outline-primary" %>
     <%= link_to 'Book a Driving Lesson', new_user_registration_path, class: "btn btn-outline-primary" %>
   <% end %>
-
+<%
+=end
+%>
 </main>
