@@ -3,12 +3,11 @@ Rails.application.routes.draw do
   
   root to: 'publics#home', as: "home"
 
+  devise_for :users, :controllers => {:registrations => "registrations"}
   resources :instructors
   resources :students
   resources :admins
 
-  get "/users", to: "admins#users", as: "users"
-  delete "/users/:id", to: "admins#destroy_user", as: "destroy_user"
 
   get "/lessons", to: "lessons#index", as: "lessons"
   get "/lesson/new", to: "lessons#new", as: "lesson_new"
@@ -18,6 +17,8 @@ Rails.application.routes.draw do
   patch "/lesson/:id", to: "lessons#update", as: "lesson_update"
   delete "/lesson/:id", to: "lessons#destroy", as: "lesson_destroy"
 
-  devise_for :users, :controllers => {:registrations => "registrations"}
+  get "/users", to: "admins#users", as: "users"
+  delete "/users/:id", to: "admins#admin_delete_user", as: "admin_delete_user"
+
 
 end 

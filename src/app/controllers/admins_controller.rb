@@ -18,11 +18,11 @@ class AdminsController < ApplicationController
   end
 
   # GIVE ADMINS ACCESS TO DELETE A USER AND ITS ASSOCIATED USER
-  def destroy_user
+  def admin_delete_user
     @user = User.find_by(id: params[:id])
     authorize! :read, @user, :message => "You do not have authorization to view that content."
 
-    if @user.destroy
+    if @user&.destroy
       redirect_to users_path, notice: 'User successfully deleted'
     else
       redirect_to users_path, alert: 'Something went wrong and user was not deleted.'
