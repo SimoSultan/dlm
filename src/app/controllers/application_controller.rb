@@ -25,11 +25,11 @@ class ApplicationController < ActionController::Base
 
   def user_details_are_empty
     if current_user.admin?
-      return false if any_attributes_are_empty(current_user.admin)
+      return true if any_attributes_are_empty(current_user.admin)
     elsif current_user.instructor?
-      return false if any_attributes_are_empty(current_user.instructor)
+      return true if any_attributes_are_empty(current_user.instructor)
     elsif current_user.student?
-      return false if any_attributes_are_empty(current_user.student)
+      return true if any_attributes_are_empty(current_user.student)
     end
   end
 

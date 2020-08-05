@@ -10,6 +10,25 @@ class AdminsController < ApplicationController
     authorize! :read, @admins, :message => "You do not have authorization to view that content."
   end
 
+
+  # GIVE ADMINS ACCESS TO SEE ALL USERS
+  def users
+    @users = User.all
+    authorize! :read, @users, :message => "You do not have authorization to view that content."
+  end
+
+  # GIVE ADMINS ACCESS TO DELETE A USER AND ITS ASSOCIATED USER
+  def destroy_user
+    @user = User.find_by(id: params[:id])
+    authorize! :read, @user, :message => "You do not have authorization to view that content."
+
+    if @user.destroy
+      redirect_to users_path, notice: 'User successfully deleted'
+    else
+      redirect_to users_path, alert: 'Something went wrong and user was not deleted.'
+    end
+  end
+
   # GET /admins/1
   # GET /admins/1.json
   def show
@@ -30,6 +49,7 @@ class AdminsController < ApplicationController
   def create
     @admin = Admin.new(admin_params)
     authorize! :read, @admin, :message => "You do not have authorization to view that content."
+
     respond_to do |format|
       if @admin.save
         format.html { redirect_to @admin, notice: 'Admin was successfully created.' }
@@ -64,6 +84,8 @@ class AdminsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

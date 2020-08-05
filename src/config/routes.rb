@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :students
   resources :admins
 
+  get "/users", to: "admins#users", as: "users"
+  delete "/users/:id", to: "admins#destroy_user", as: "destroy_user"
+
   get "/lessons", to: "lessons#index", as: "lessons"
   get "/lesson/new", to: "lessons#new", as: "lesson_new"
   get "/lesson/:id", to: "lessons#show", as: "lesson_show"

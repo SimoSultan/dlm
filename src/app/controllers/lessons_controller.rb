@@ -46,11 +46,11 @@ class LessonsController < ApplicationController
     # stop the user from creating a lesson until all their details are filled out
     if user_details_are_empty()
       if current_user.admin?
-        redirect_to admin_path(current_user.admin.id), alert: 'All details must be filled in before booking a lesson.'
+        redirect_to admin_path(current_user.admin.id), alert: 'Please fill in all user details before booking a lesson.'
       elsif current_user.instructor?
-        redirect_to instructor_path(current_user.instructor.id), alert: 'All details must be filled in before booking a lesson.'
+        redirect_to instructor_path(current_user.instructor.id), 'Please fill in all user details before booking a lesson.'
       elsif current_user.student?
-        redirect_to student_path(current_user.student.id), alert: 'All details must be filled in before booking a lesson.'
+        redirect_to student_path(current_user.student.id), alert: 'Please fill in all user details before booking a lesson.'
       end
       return
     end

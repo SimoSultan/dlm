@@ -8,9 +8,9 @@ class User < ApplicationRecord
         #  :recoverable, :rememberable, :validatable, :confirmable
          :recoverable, :rememberable, :validatable
 
-  has_one :student
-  has_one :instructor
-  has_one :admin
+  has_one :student, dependent: :destroy
+  has_one :instructor, dependent: :destroy
+  has_one :admin, dependent: :destroy
 
   # has_many :payments, class_name: "payment", foreign_key: "reference_id"
 
