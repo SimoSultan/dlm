@@ -89,5 +89,4 @@ module ApplicationHelper
     Rails.application.credentials.dig(:google, :maps_api_key)
   end
 
-
 end

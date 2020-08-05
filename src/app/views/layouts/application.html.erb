@@ -24,17 +24,14 @@
     <%= render "shared/warning" %>
 
 
-    <div class="container">
-
-      <h1 class="mt-5" style="margin-top:1.5rem!important;">Simo_Sultan's Driving Lesson Marketplace</h1>
+    <div class="container mt-5">
 
       <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
       <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
 
       <%= yield %>
-
     </div>
-    
+
 
     <%#= render "shared/footer"%>
 
