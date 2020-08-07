@@ -14,6 +14,7 @@
  *= require_self
  */
 
+
 @import 'navbar';
 @import 'variables';
 
@@ -23,6 +24,15 @@ body {
   width: 100%;
   height: 100%;
   background-color: whitesmoke !important;
+  // background-color: #112126 !important;
+
+}
+
+.page-container {
+  width: 100%;
+  height: 100%;
+  // background: rgb(245,245,245) !important;
+  // background: linear-gradient(180deg, rgba(245,245,245,1) 0%, rgba(17,33,38,0.8883928571428571) 100%) !important;
 }
 
 
@@ -46,8 +56,6 @@ body {
 }
 
 
-
-
 .btn-primary {
   background-color: $primary-dark !important;
   border-color: $primary-dark !important;
@@ -56,6 +64,8 @@ body {
     border-color: $primary-light !important;
   }
 }
+
+
 
 .btn-outline-primary {
   background-color: inherit;

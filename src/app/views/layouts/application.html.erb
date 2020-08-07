@@ -24,12 +24,16 @@
     </header>
 
 
-    <div style="margin-top: 56px;">
+    <div class="container page-container" style="margin-top: 64px;">
 
       <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
       <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
 
       <%= yield %>
+
+      <%#= render 'shared/lesson_modal', lesson: @lesson %>
+
+      
     </div>
 
 

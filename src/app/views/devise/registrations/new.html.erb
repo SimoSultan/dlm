@@ -1,43 +1,47 @@
-<%= render 'shared/role_warning' %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "mt-7 form-signin text-center"}) do |f| %>
+<div class="container">
 
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= render 'shared/role_warning' %>
 
-    <%= image_tag 'dlm-logo.png', class: 'mb-4, logo-login' %>
-    <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "mt-7 form-signin text-center"}) do |f| %>
 
-    <%= f.label :email, class: "sr-only", placeholder: "Email address" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email address" %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-    <%= f.label :password, placeholder: "Password", class: "sr-only" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Password" %>
+      <%= image_tag 'dlm-logo.png', class: 'mb-4, logo-login' %>
+      <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
 
-    <%= f.label :password_confirmation, class: "sr-only" %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirm password" %>
+      <%= f.label :email, class: "sr-only", placeholder: "Email address" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email address" %>
+
+      <%= f.label :password, placeholder: "Password", class: "sr-only" %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Password" %>
+
+      <%= f.label :password_confirmation, class: "sr-only" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirm password" %>
 
 
 
-  <div class="form-group form-check mt-3">
-    <%= f.radio_button :role, :student, class: "form-check-input" %>
-    <%= f.label :role, "Student (please read warnings!)", class: "form-check-label", value: :student %><br />
-    <%= f.radio_button :role, :instructor, class: "form-check-input" %>
-    <%= f.label :role, "Instructor (please read warnings!)", class: "form-check-label", value: :instructor %><br />
-  </div>
+    <div class="form-group form-check mt-3">
+      <%= f.radio_button :role, :student, class: "form-check-input" %>
+      <%= f.label :role, "Student (please read warnings!)", class: "form-check-label", value: :student %><br />
+      <%= f.radio_button :role, :instructor, class: "form-check-input" %>
+      <%= f.label :role, "Instructor (please read warnings!)", class: "form-check-label", value: :instructor %><br />
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up", class: "btn btn-lg btn-primary btn-block" %>
-  </div>
+    <div class="actions">
+      <%= f.submit "Sign up", class: "btn btn-lg btn-primary btn-block" %>
+    </div>
 
-  <br>
+    <br>
 
-  <%= render "devise/shared/links" %>
+    <%= render "devise/shared/links" %>
 
-  <p class="mt-4 mb-3 text-muted">© 2020</p>
+    <p class="mt-4 mb-3 text-muted">© 2020</p>
 
-<% end %>
+  <% end %>
 
+</div>
 

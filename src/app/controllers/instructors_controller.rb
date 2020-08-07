@@ -12,6 +12,9 @@ class InstructorsController < ApplicationController
   # GET /instructors/1
   # GET /instructors/1.json
   def show
+    @instructor = Instructor.find_by(id: params[:id])
+    @upcoming = get_specific_lesson(@instructor, 'upcoming')[0]
+    @previous = get_specific_lesson(@instructor, 'previous')[0]
   end
 
   # GET /instructors/new

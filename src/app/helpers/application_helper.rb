@@ -33,10 +33,12 @@ module ApplicationHelper
   end
 
   def get_readable_date(date_string, type)
+  
+    date_string = date_string.to_s
 
-    return "N/A" if date_string.empty? 
+    # return "N/A" if date_string&.empty? 
     return "N/A" if date_string == nil
-    return "N/A" if date_string.split("-").length < 3
+    return "N/A" if date_string&.split("-").length < 3
 
     ymd = date_string.split("-")
     year = ymd[0].to_i
@@ -68,20 +70,32 @@ module ApplicationHelper
     month[9] = "Oct"
     month[10] = "Nov"
     month[11] = "Dec"
+
+    puts "----------"
+    puts date.day
   
-    weekday = week[date.day]
+    weekday = week[date.wday-1]
     # month - 1 because December = 12 for months, but its the 11th position in arraym hence 12 - 1 = 11 => "Dec"
     monthName = month[date.month-1]
     dateOrdinal = get_ordinal(day)
   
     type == "without_day" ? readable = "#{dateOrdinal} #{monthName} #{year}" : readable = "#{weekday}, #{monthName} #{dateOrdinal} #{year}"
     return readable
-  
+    Australia
   end
 
   def get_readable_time(time_string)
 
   end
+
+  def get_readable_phone_number(number)
+    "#{number[0..3]} #{number[4..6]} #{number[7..9]}"
+  end
+
+  def get_readable_address(address)
+    "#{address[0..-12]}"
+  end
+
 
 
   # GOOGLE MAPS JAVASCRIPT TAGE

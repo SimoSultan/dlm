@@ -18,12 +18,7 @@ class StudentsController < ApplicationController
     @instructors = get_all_instructors()
     @upcoming = get_specific_lesson(@student, 'upcoming')[0]
     @previous = get_specific_lesson(@student, 'previous')[0]
-    puts "----------------"
-    puts "upcoming"
-    puts @upcoming.date
-    puts "----------------"
-    puts "previous"
-    puts @previous.date
+
   end
 
   # GET /students/new

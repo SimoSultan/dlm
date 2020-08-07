@@ -1,3 +1,15 @@
 // Place all the styles related to the Lessons controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.lesson-background {
+  filter: brightness(20%);
+}
+
+.list-group-item {
+  background: transparent !important;
+  border: 1px solid rgba(131, 129, 129, 0.349) !important;
+  border-left: none !important;
+  border-right: none !important;
+}

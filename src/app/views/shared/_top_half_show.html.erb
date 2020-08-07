@@ -1,0 +1,33 @@
+  
+  
+  <%= image_tag user_avatar(person.user, 100), class: 'profile-avatar text-center mt-5'%>
+  <!--<p>Dob: <%#= get_readable_date(@student&.dob, "without_day") %></p>-->
+
+  <br>
+
+  <h2 class="mt-1">
+    <%= if person&.first_name&.empty? && person&.last_name&.empty?
+      "N/A"
+    else
+      person&.first_name&.capitalize + ' ' + person&.last_name&.capitalize
+    end %>
+  </h2>
+
+
+  <div class="mt-1">
+    <% if current_user.admin? %>
+      
+      <% if params[:controller] == "admins" %>
+        <%= link_to 'Edit My Account', edit_admin_path(person) %>
+      <% elsif params[:controller] == "instructors" %>
+        <%= link_to "Edit Instructor's Account", edit_instructor_path(person) %>
+      <% elsif params[:controller] == "students" %>
+        <%= link_to "Edit Student's Account", edit_student_path(person) %>
+      <% end %>
+    
+    <% elsif current_user.instructor? %>
+      <%= link_to 'Edit My Account', edit_instructor_path(person) %>
+    <% elsif current_user.student? %>
+      <%= link_to 'Edit My Account', edit_student_path(person) %>
+    <% end %>
+  </div>

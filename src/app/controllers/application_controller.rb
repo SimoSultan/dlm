@@ -37,12 +37,14 @@ class ApplicationController < ActionController::Base
   end
 
   def any_attributes_are_empty(person)
-      person.attributes.each do |attr_name, attr_val|
-        puts "name = #{attr_name}"
-        puts "value = #{attr_val}"
-        puts "empty" if attr_val == ""
-        return true if attr_val == ""
-      end
+    
+    person.attributes.each do |attr_name, attr_val|
+      puts "name = #{attr_name}"
+      puts "value = #{attr_val}"
+      puts "empty" if attr_val == ""
+      return true if attr_val == ""
+    end
+    return false
   end
 
   def get_specific_lesson(user, spot)

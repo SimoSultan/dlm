@@ -1,0 +1,44 @@
+
+<p>
+  <strong>Instructor:</strong>
+  <%= @lesson.instructor.first_name.capitalize + ' ' + @lesson.instructor.last_name.capitalize if @lesson.instructor.first_name && @lesson.instructor.last_name %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @lesson.date if @lesson.date %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @lesson.time.strftime('%H:%M') if @lesson.time %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= "#{@lesson.duration} mins" if @lesson.duration %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @lesson.student.address.capitalize %>
+</p>
+
+<p>
+  <strong>Transmission:</strong>
+  <%= @lesson.student.transmission.capitalize %>
+</p>
+
+<p>
+  <strong>Cancelled:</strong>
+  <%= @lesson.cancelled ? "Yes" : "No" %>
+</p>
+
+
+<p>
+  <strong>Payment:</strong>
+  to-do
+  <%#= @lesson.payment if @lesson.payment %>
+</p>
+
+

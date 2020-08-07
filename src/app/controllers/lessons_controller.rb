@@ -30,17 +30,8 @@ class LessonsController < ApplicationController
 
   def show
     @lesson = Lesson.find_by(id: params[:id])
-    # render "shared/slideout", lesson: lesson
-
   end
 
-  # def show_modal
-  #   @lesson = params[:lesson]
-  #   # respond_to do |format|
-  #   #   format.js
-  #   # end
-  #   render "shared/slideout", lesson: @lesson
-  # end
 
   def create
     # stop the user from creating a lesson until all their details are filled out
@@ -48,7 +39,7 @@ class LessonsController < ApplicationController
       if current_user.admin?
         redirect_to admin_path(current_user.admin.id), alert: 'Please fill in all user details before booking a lesson.'
       elsif current_user.instructor?
-        redirect_to instructor_path(current_user.instructor.id), 'Please fill in all user details before booking a lesson.'
+        redirect_to instructor_path(current_user.instructor.id), alert: 'Please fill in all user details before booking a lesson.'
       elsif current_user.student?
         redirect_to student_path(current_user.student.id), alert: 'Please fill in all user details before booking a lesson.'
       end

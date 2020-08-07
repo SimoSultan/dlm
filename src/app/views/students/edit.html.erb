@@ -1,14 +1,11 @@
-<h1>Editing Student</h1>
+<h1 class="display-3">Editing Your Details</h1>
 
 <%= render 'form', student: @student %>
 
 
 <br>
 
-<% if current_user.admin? %>
-  <%= link_to 'Back', instructors_path, class: 'btn btn-secondary'%>
-<% elsif current_user.student? %>
-  <%= link_to 'Back', student_path(current_user.student.id), class: 'btn btn-outline-secondary'%>
+<% if current_user.student? %>
   <%= link_to 'Change My Password', edit_user_registration_path, class: 'btn btn-outline-danger'%>
 <% end %>
 

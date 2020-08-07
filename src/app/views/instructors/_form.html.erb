@@ -1,62 +1,83 @@
-<%= form_with(model: instructor, local: true, data: { controller: "places", action: "google-maps-callback@window->places#initMap" }) do |form| %>
-  <% if instructor.errors.any? %>
-    <div id="error_explanation">
-      <!--<h2><%#= pluralize(instructor.errors.count, "error") %> prohibited this student from being saved:</h2>-->
 
-      <ul class="alert alert-warning list-style-none">
-        <% instructor.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<div class="container">
+
+  <%= form_with(model: instructor, local: true, data: { controller: "places", action: "google-maps-callback@window->places#initMap" }) do |form| %>
+    <% if instructor.errors.any? %>
+      <div id="error_explanation">
+        <!--<h2><%#= pluralize(instructor.errors.count, "error") %> prohibited this student from being saved:</h2>-->
+
+        <ul class="alert alert-warning list-style-none">
+          <% instructor.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="container text-center">
+      <%= image_tag user_avatar(@instructor.user, 100), class: 'profile-avatar'%>
+      <br>
+      <%= form.file_field :avatar, accept: 'image/png,image/gif,image/jpeg', class: 'ml-5 mt-4' %>
     </div>
+
+
+    <div class="row mt-5">
+      <div class="form-group col">
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name, class: "form-control" %>
+      </div>
+
+      <div class="form-group col">
+        <%= form.label :last_name %>
+        <%= form.text_field :last_name, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group form-check">
+      <%= form.radio_button :gender, :male, class: "form-check-input" %>
+      <%= form.label :gender, "Male", class: "form-check-label", value: :male %><br />
+      <%= form.radio_button :gender, :female, class: "form-check-input" %>
+      <%= form.label :gender, "Female", class: "form-check-label", value: :female %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :address %>
+      <%= form.search_field :address, class: "form-control", data: { target: "places.field", action: "keydown->places#preventSubmit" } %>
+    </div>
+
+    <div class="form-group form-check">
+      <%= form.radio_button :transmission, :manual, class: "form-check-input" %>
+      <%= form.label :transmission, "Manual", class: "form-check-label", value: :manual %><br />
+      <%= form.radio_button :transmission, :automatic, class: "form-check-input" %>
+      <%= form.label :transmission, "Automatic", class: "form-check-label", value: :automatic %>
+    </div>
+
+    <div class="row">
+    
+      <div class="form-group col">
+        <%= form.label :phone %>
+        <%= form.text_field :phone, class: "form-control" %>
+      </div>
+
+      <div class="form-group col">
+        <%= form.label :dob %>
+        <%= form.date_field :dob, class: "form-control", value: @instructor.dob %>
+      </div>
+
+    </div>
+
+
+
+
+
+      <div class="actions">
+        <%= form.submit 'Update', class: 'btn btn-primary btn-lg' %>
+      </div>
+
+
+
   <% end %>
 
-  <%= image_tag user_avatar(@instructor.user, 100), class: 'profile-avatar'%>
 
-  <br>
 
-  <%= form.file_field :avatar, accept: 'image/png,image/gif,image/jpeg' %>  
-
-  <div class="form-group">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :address %>
-    <%= form.search_field :address, class: "form-control", data: { target: "places.field", action: "keydown->places#preventSubmit" } %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :phone %>
-    <%= form.text_field :phone, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :dob %>
-    <%= form.date_field :dob, class: "form-control", value: @instructor.dob %>
-  </div>
-
-  <div class="form-group form-check">
-    <%= form.radio_button :transmission, :manual, class: "form-check-input" %>
-    <%= form.label :transmission, "Manual", class: "form-check-label", value: :manual %><br />
-    <%= form.radio_button :transmission, :automatic, class: "form-check-input" %>
-    <%= form.label :transmission, "Automatic", class: "form-check-label", value: :automatic %>
-  </div>
-
-  <div class="form-group form-check">
-    <%= form.radio_button :gender, :male, class: "form-check-input" %>
-    <%= form.label :gender, "Male", class: "form-check-label", value: :male %><br />
-    <%= form.radio_button :gender, :female, class: "form-check-input" %>
-    <%= form.label :gender, "Female", class: "form-check-label", value: :female %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit 'Update', class: 'btn btn-primary' %>
-  </div>
-<% end %>
+</div>

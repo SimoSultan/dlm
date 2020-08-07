@@ -1,44 +1,37 @@
 
-<p>
-  <strong>Instructor:</strong>
-  <%= @lesson.instructor.first_name.capitalize + ' ' + @lesson.instructor.last_name.capitalize if @lesson.instructor.first_name && @lesson.instructor.last_name %>
-</p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @lesson.date if @lesson.date %>
-</p>
+<div class="container ">
 
-<p>
-  <strong>Time:</strong>
-  <%= @lesson.time.strftime('%H:%M') if @lesson.time %>
-</p>
+  <div class="container text-center mt-5">
+    <% if current_user.student? %>
+      <%= render 'shared/top_half_show', person: @lesson.student %>
+    <% elsif current_user.instructor? %>
+      <%= render 'shared/top_half_show', person: @lesson.instructor %>
+    <% end %>
+  </div>
 
-<p>
-  <strong>Duration:</strong>
-  <%= "#{@lesson.duration} mins" if @lesson.duration %>
-</p>
+  <div class="container mt-5">
+  
+    <div class="card bg-dark text-white">
+      <%= image_tag 'road.jpg', class: "card-img lesson-background" %>
+      <div class="card-img-overlay">
+        <h5 class="card-title display-3">Lesson Details</h5>
+        <div class="row justify-content-around">
+          <ul class="list-group list-group-flush col">
+            <li class="list-style-none lead"><%= get_readable_date(@lesson&.date, "with_day") %> </li>
+            <li class="list-group-item lead""> <%= "#{@lesson&.duration} minutes" %> </li>
+            <li class="list-group-item lead""> <%= @lesson&.time&.strftime('%l:%M %P')%> </li>
+            <li class="list-group-item text-nowrap lead""> <%= get_readable_address(@lesson&.student&.address) %> </li>
+            <li class="list-group-item lead""> <%= @lesson&.instructor&.first_name %> </li>
+            <li class="list-group-item lead""> <%= get_readable_phone_number(@lesson&.instructor&.phone) %> </li>
+          </ul>
+        </div>
 
-<p>
-  <strong>Address:</strong>
-  <%= @lesson.student.address.capitalize %>
-</p>
-
-<p>
-  <strong>Transmission:</strong>
-  <%= @lesson.student.transmission.capitalize %>
-</p>
-
-<p>
-  <strong>Cancelled:</strong>
-  <%= @lesson.cancelled ? "Yes" : "No" %>
-</p>
+      </div>
+    </div>
+  </div>
 
 
-<p>
-  <strong>Payment:</strong>
-  to-do
-  <%#= @lesson.payment if @lesson.payment %>
-</p>
 
+</div>
 

@@ -20,42 +20,49 @@
 
       <% if user_signed_in? %>
         <% if current_user.admin? %>
-        <li class="nav-item">
-          <%= link_to 'All Lessons', lessons_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'All Students', students_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'All Instructors', instructors_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'All Admins', admins_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'All Users', users_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Edit Lesson Details (Future)', "#", class: "nav-link" %>
-        </li>
+          <li class="nav-item">
+            <%= link_to 'All Lessons', lessons_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'All Students', students_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'All Instructors', instructors_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'All Admins', admins_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'All Users', users_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Edit Lesson Details (Future)', "#", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "My Profile", admin_path(current_user.admin&.id), class: "nav-link" %>
+          </li>
         <% elsif current_user.instructor? %>
-        <li class="nav-item">
-          <%= link_to 'My Lessons', lessons_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'My Calendar', "#", class: "nav-link" %>
-        </li>
+          <li class="nav-item">
+            <%= link_to 'My Lessons', lessons_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'My Calendar', "#", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "My Profile", instructor_path(current_user.instructor&.id), class: "nav-link" %>
+          </li>
         <% elsif current_user.student? %>
-        <li class="nav-item">
-          <%= link_to 'My Lessons', lessons_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Book a Driving Lesson', lesson_new_path, class: "nav-link" %>
-        </li>
+          <li class="nav-item">
+            <%= link_to 'My Lessons', lessons_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Book a Driving Lesson', lesson_new_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "My Profile", student_path(current_user.student&.id), class: "nav-link" %>
+          </li>
         <% end %>
-        <li class="nav-item">
-          <%= link_to "My Profile", student_path(current_user.student&.id), class: "nav-link" %>
-        </li>
+
       <% else %>
         <li class="nav-item">
           <%= link_to 'Book a Driving Lesson', new_user_registration_path, class: "nav-link" %>
@@ -71,12 +78,12 @@
               <%= image_tag user_avatar(current_user, 100), class: 'navbar-avatar inline'%>
             <% end %>
           <% elsif current_user.instructor?  %>
-            <%= link_to "#{current_user&.instructor&.first_name&.capitalize} #{current_user&.instructor&.last_name&.capitalize}", instructor_path(current_user&.instructor&.id), class: "nav-link" %>
+            <%#= link_to "#{current_user&.instructor&.first_name&.capitalize} #{current_user&.instructor&.last_name&.capitalize}", instructor_path(current_user&.instructor&.id), class: "nav-link" %>
             <%= link_to instructor_path(current_user.instructor&.id) do %>
               <%= image_tag user_avatar(current_user, 100), class: 'navbar-avatar'%>
             <% end %>
           <% elsif current_user.admin? %>
-            <%= link_to "#{current_user.admin&.first_name&.capitalize} #{current_user.admin&.last_name&.capitalize}", admin_path(current_user.admin&.id), class: "nav-link" %>
+            <%#= link_to "#{current_user.admin&.first_name&.capitalize} #{current_user.admin&.last_name&.capitalize}", admin_path(current_user.admin&.id), class: "nav-link" %>
             <%= link_to admin_path(current_user.admin&.id) do %>
               <%= image_tag user_avatar(current_user, 100), class: 'navbar-avatar'%>
             <% end %>

@@ -1,0 +1,60 @@
+
+<% if current_user.admin? %>
+  <%= link_to "Edit Instructor's Account", edit_instructor_path(@instructor) %>
+<% elsif current_user.instructor? %>
+  <%= link_to 'Edit My Account', edit_instructor_path(@instructor) %>
+<% end %>
+
+<br>
+
+<%= image_tag user_avatar(@instructor.user, 80), class: 'profile-avatar'%>
+
+<br>
+
+<p>
+  <strong>Name:</strong>
+  <%= if @instructor&.first_name&.empty? && @instructor&.last_name&.empty?
+    "N/A"
+  else
+    @instructor&.first_name&.capitalize + ' ' + @instructor&.last_name&.capitalize
+  end %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @instructor&.user&.email %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @instructor&.address&.empty? ? "N/A" : @instructor&.address %>
+</p>
+
+<p>
+  <strong>Mobile:</strong>
+  <%= @instructor&.phone&.empty? ? "N/A" : "#{@instructor&.phone[0..3]} #{@instructor&.phone[4..6]} #{@instructor&.phone[7..9]}" %>
+</p>
+
+<p>
+  <strong>Dob:</strong>
+  <%= get_readable_date(@instructor&.dob, "without_day") %>
+</p>
+
+<p>
+  <strong>Transmission:</strong>
+  <%= @instructor&.transmission ? @instructor&.transmission&.capitalize : "N/A" %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @instructor&.gender ? @instructor&.gender&.capitalize : "N/A" %>
+</p>
+
+
+<% if current_user.admin? %>
+  <%= link_to 'Show All Lessons', lessons_path, class: 'btn btn-outline-primary'%>
+  <%= link_to 'Back', instructors_path, class: 'btn btn-secondary'%>
+<% elsif current_user.instructor? %>
+  <%= link_to 'Show All My Lessons', lessons_path, class: 'btn btn-outline-primary'%>
+  <%= link_to 'Back', instructor_path(current_user&.instructor&.id), class: 'btn btn-secondary'%>
+<% end %>
