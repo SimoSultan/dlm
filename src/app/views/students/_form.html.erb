@@ -15,10 +15,10 @@
     <div class="container text-center">
       <%= image_tag user_avatar(@student.user, 100), class: 'profile-avatar'%>
       <br>
-      <%= form.file_field :avatar, accept: 'image/png,image/gif,image/jpeg' %>  
+      <%= form.file_field :avatar, accept: 'image/png,image/gif,image/jpeg', class: 'ml-5 mt-4' %>  
     </div>
 
-    <div class="row">
+    <div class="row mt-5">
       <div class="form-group col">
         <%= form.label :first_name %>
         <%= form.text_field :first_name, class: "form-control" %>
