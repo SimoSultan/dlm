@@ -63,3 +63,5 @@ gem "gravatar_image_tag", "~> 1.2"
 gem "cancan", "~> 1.6"
 
 gem 'inline_svg'
+
+gem 'faker'

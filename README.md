@@ -175,6 +175,7 @@ This external code I used in my site was for the scroll bar and the 404 page. I 
 
 - [Capicon](https://mariodelvalle.github.io/CaptainIconWeb/)
 - [Logomakr](https://logomakr.com/9dzQOD)
+- [Lesson Background Image](https://unsplash.com/photos/Kuu5mmxkwW4)
 
 
 ---
