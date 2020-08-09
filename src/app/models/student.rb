@@ -46,4 +46,10 @@ class Student < ApplicationRecord
     end
   end
 
+  def address
+    unless address.include?(", Australia")
+      errors.add(:address, "must be selected from Google Dropdown")
+    end
+  end
+
 end

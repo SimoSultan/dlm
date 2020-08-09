@@ -45,4 +45,13 @@ class Instructor < ApplicationRecord
       errors.add(:instructor, "must be over 21 to sign up")
     end
   end
+
+  def address
+    unless address.include?(", Australia")
+      errors.add(:address, "must be selected from Google Dropdown")
+    end
+  end
+
+
+  
 end
