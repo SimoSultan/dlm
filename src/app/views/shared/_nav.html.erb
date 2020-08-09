@@ -1,7 +1,9 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top">
 
-  <%= link_to :back do %>
-    <%= image_tag "capicon/277.png", class: 'back-button' %>
+  <% unless current_page?(home_path) %>
+    <%= link_to :back do %>
+      <%= image_tag "capicon/277.png", class: 'back-button' %>
+    <% end %>
   <% end %>
 
   <%= link_to home_path do %>

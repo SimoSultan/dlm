@@ -11,7 +11,7 @@ class Instructor < ApplicationRecord
 
   validates :first_name, presence: true, on: :update
   validates :last_name, presence: true, on: :update
-  validates :address, presence: true, on: :update
+  validate :address_check, on: :update
   validate :phone_number, on: :update
   validate :instructor_dob, on: :update
   
@@ -46,7 +46,7 @@ class Instructor < ApplicationRecord
     end
   end
 
-  def address
+  def address_check
     unless address.include?(", Australia")
       errors.add(:address, "must be selected from Google Dropdown")
     end
