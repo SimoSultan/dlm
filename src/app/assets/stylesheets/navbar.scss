@@ -31,3 +31,14 @@
   font-size: 1.7rem !important;
   margin-left: 0.5rem;
 }
+
+.nav-link {
+ font-family: $nav-font;
+}
+
+.log-out-nav {
+  color: $font-dark !important;
+  &:hover {
+    text-decoration: underline !important;
+  }
+}
