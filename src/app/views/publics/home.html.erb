@@ -7,24 +7,40 @@
   <div class="row">
     <div class="jumbotron col-md-6 mr-2">
       <h3 class="display-4">What this site is about</h3>
-      <p class="lead">Mollit consequat nostrud aute officia id. Nulla cupidatat sit in occaecat esse ea nostrud eu duis eiusmod dolore reprehenderit.</p>
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+      <p class="lead">DLM is here to provide a method for connecting people who wish to learn how to drive, with the instructors that are teaching around your area. We have a large range of instructors avaialable in all areas, sign up and start booking!</p>
+      <% if user_signed_in? %>
+        <% if current_user.student? %>
+          <%= link_to 'My Profile', student_path(current_user.student&.id), class: "btn btn-lg btn-primary" %>
+        <% elsif current_user.instructor?  %>
+          <%= link_to 'My Profile', instructor_path(current_user.instructor&.id), class: "btn btn-lg btn-primary" %>
+        <% elsif current_user.admin? %>
+          <%= link_to 'My Profile', admin_path(current_user.admin&.id), class: "btn btn-lg btn-primary" %>
+        <% end %>
+      <% else  %>
+        <%= link_to 'Sign Up', new_user_registration_path, class: "btn btn-lg btn-primary" %>
+      <% end %>
     </div>
 
     <div class="jumbotron col ml-2">
-      <h3 class="display-4">What we offer</h3>
-      <p class="lead">Mollit consequat nostrud aute officia id. Nulla cupidatat sit in occaecat esse ea nostrud eu duis eiusmod dolore reprehenderit.</p>
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+      <h3 class="display-4">What this site offers</h3>
+      <p class="lead">You don't have to go through the efforts of organising a driving school, just log in and book a lesson at your choosing from the comfort of your couch.</p>
+      <p class="lead font-weight-bold">Developer note:</p>
+      <p class="lead">Log in with a fake account if you don't wish to sign up yourself</p>
+      <p class="lead font-weight-bold">s1@email.com (student) || t1@email.com (instructor)</p>
+      <p class="lead font-weight-bold">password</p>
+      <% if user_signed_in? %>
+        <% if current_user.student? %>
+          <%= link_to 'My Profile', student_path(current_user.student&.id), class: "btn btn-lg btn-outline-primary" %>
+        <% elsif current_user.instructor?  %>
+          <%= link_to 'My Profile', instructor_path(current_user.instructor&.id), class: "btn btn-lg btn-outline-primary" %>
+        <% elsif current_user.admin? %>
+          <%= link_to 'My Profile', admin_path(current_user.admin&.id), class: "btn btn-lg btn-outline-primary" %>
+        <% end %>
+      <% else  %>
+        <%= link_to 'Log In', new_user_session_path, class: "btn btn-lg btn-outline-primary" %>
+      <% end %>
     </div>
   </div>
-
-  <div class="container text-center mt-5">
-    <% unless user_signed_in? %>
-      <%= link_to 'Sign Up', new_user_registration_path, class: "btn btn-lg btn-dark" %>
-      <%= link_to 'Log In', new_user_session_path, class: "btn btn-lg btn-outline-dark" %>
-    <% end %>
-  </div>
-
 
 </div>
 

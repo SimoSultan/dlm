@@ -223,8 +223,8 @@ Here are the screenshots from the mobile view from the student's perspective, wi
 ![Student Edit Account Page](docs/screenshots/student_edit_account.png)
 
 
-- Student All Lesson Page
-![Student All Lesson Page](docs/screenshots/student_all_lessons.png)
+- Student All Lessons Page
+![Student All Lessons Page](docs/screenshots/student_all_lessons.png)
 
 - Student New Lesson Page
 ![Student New Lesson Page](docs/screenshots/student_new_lesson.png)
