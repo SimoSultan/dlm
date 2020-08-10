@@ -112,8 +112,11 @@ Ruby on Rails was the foundation of this application which uses all of the above
 
 - [DLM Sitemap](https://app.lucidchart.com/documents/edit/f1969e48-fb25-4148-b36b-a8c9a932da01/0_0)  
 
+#### Original Sitemap
+![Original DLM Sitemap](./sitemap/original_driving_lesson_marketplace_sitemap.png)
 
-<!-- ![DLM Sitemap](https://app.lucidchart.com/documents/edit/f1969e48-fb25-4148-b36b-a8c9a932da01/0_0)   -->
+#### Updated Sitemap
+![Updated DLM Sitemap](./sitemap/updated_driving_lesson_marketplace_sitemap.png)
 
 
 > ### Trello Board 
@@ -126,7 +129,7 @@ The project management application used to complete these tasks was Trello. This
 
 > ### Wireframes
 
-With my wireframes, I hadn't understood what I was and was not able to do, 1. in the time frame, and 2. with how rails worked. I will details in each section where the wireframes different from production. 
+With my wireframes, I hadn't understood what I was and was not able to do, 1. in the time frame, and 2. how rails and some gems worked that would affect views. I will detail in each section where the wireframes differ from production. 
 
 - [Balsamiq Wireframes](./wireframes/driving_lesson_marketplace.bmpr)
 
@@ -164,13 +167,15 @@ With my wireframes, I hadn't understood what I was and was not able to do, 1. in
 #### Other Wireframes
 
  
-##### Home Page was to have buttons that turned into a sign-up or log-in form. However, only buttons were included to go to separate sign up and log in pages due to Devise supplying them.
+##### Home Page 
+- was to have sign-up and log-in buttons that turned into a sign-up or log-in form. However, only buttons were included to go to separate sign up and log in pages due to Devise supplying them.
 ![Home Page](./wireframes/home.png)
 
-##### 404 Page was found from a nice template online. This page didn't have an exact design.
+##### 404 Page 
+- was found from a nice template online. This page didn't have an exact design.
 ![404 Page](./wireframes/404.png)
 
-##### Forgot Password Page was turned into change 
+##### Forgot Password Page 
 ![Forgot Password Page](./wireframes/forgot_password.png)
 
 
