@@ -110,7 +110,7 @@ Ruby on Rails was the foundation of this application which uses all of the above
 
 > ### Sitemap
 
-[DLM Sitemap](https://app.lucidchart.com/documents/edit/f1969e48-fb25-4148-b36b-a8c9a932da01/0_0)  
+- [DLM Sitemap](https://app.lucidchart.com/documents/edit/f1969e48-fb25-4148-b36b-a8c9a932da01/0_0)  
 
 
 <!-- ![DLM Sitemap](https://app.lucidchart.com/documents/edit/f1969e48-fb25-4148-b36b-a8c9a932da01/0_0)   -->
@@ -133,50 +133,50 @@ With my wireframes, I hadn't understood what I was and was not able to do, 1. in
 
 #### Student Wireframes
 
-- Student Profile Page
+##### Student Profile Page
 ![Student Profile Page](./wireframes/student_profile.png)
 
-- Student Edit Profile Page
+##### Student Edit Profile Page
 ![Student Edit Profile Page](./wireframes/student_edit_profile.png)
 
-- Student Sign-up Page
+##### Student Sign-up Page
 ![Student Edit Account Page](./wireframes/student_signup.png)
 
-- Student All Lesson Page
+##### Student All Lesson Page
 ![Student All Lesson Page](./wireframes/student_all_lessons.png)
 
 
 #### Instructor Wireframes
 
-- Instructor Profile Page
+##### Instructor Profile Page
 ![Instructor Profile Page](./wireframes/instructor_profile.png)
 
-- Instructor Edit Profile Page
+##### Instructor Edit Profile Page
 ![Instructor Edit Profile Page](./wireframes/instructor_edit_profile.png)
 
-- Instructor Sign-up Page
+##### Instructor Sign#####up Page
 ![Instructor Edit Account Page](./wireframes/instructor_signup.png)
 
-- Instructor All Lesson Page
+##### Instructor All Lesson Page
 ![Instructor All Lesson Page](./wireframes/instructor_all_lessons.png)
 
 
 #### Other Wireframes
 
  
-- Home Page was to have buttons that turned into a sign-up or log-in form. However, only buttons were included to go to separate sign up and log in pages due to Devise supplying them.
+##### Home Page was to have buttons that turned into a sign-up or log-in form. However, only buttons were included to go to separate sign up and log in pages due to Devise supplying them.
 ![Home Page](./wireframes/home.png)
 
-- 404 Page was found from a nice template online. This page didn't have an exact design.
+##### 404 Page was found from a nice template online. This page didn't have an exact design.
 ![404 Page](./wireframes/404.png)
 
-- Forgot Password Page was turned into change 
+##### Forgot Password Page was turned into change 
 ![Forgot Password Page](./wireframes/forgot_password.png)
 
 
 > ### ERD
 
-[My ERD](https://app.dbdesigner.net/designer/schema/343185)  
+- [My ERD](https://app.dbdesigner.net/designer/schema/343185)  
 
 For the MVP 
 
@@ -201,38 +201,38 @@ Here are the screenshots from the mobile view from the student's perspective, wi
 ***Disclaimer: All data seen below in screenshots is fake.***
 
 
-- Home Page
+##### Home Page
 ![Home Page](./screenshots/home.png)
 
-- Signup Page
+##### Signup Page
 ![Signup Page](./screenshots/signup.png)
 
-- Login Page
+##### Login Page
 ![Login Page](./screenshots/login.png)
 
-- Forgot Password Page
+##### Forgot Password Page
 ![Login Page](./screenshots/forgot_password.png)
 
-- Student Profile Page
+##### Student Profile Page
 ![Student Profile Page](./screenshots/student_profile.png)
 
-- Student Edit Profile Page
+##### Student Edit Profile Page
 ![Student Edit Profile Page](./screenshots/student_edit_profile.png)
 
-- Student Edit Account Page
+##### Student Edit Account Page
 ![Student Edit Account Page](./screenshots/student_edit_account.png)
 
 
-- Student All Lessons Page
+##### Student All Lessons Page
 ![Student All Lessons Page](./screenshots/student_all_lessons.png)
 
-- Student New Lesson Page
+##### Student New Lesson Page
 ![Student New Lesson Page](./screenshots/student_new_lesson.png)
 
-- Student View Lesson Page
+##### Student View Lesson Page
 ![Student View Lesson Page](./screenshots/lesson_show.png)
 
-- Admin All Students/Instructors/Admin/Users/Lessons Page
+##### Admin All Students/Instructors/Admin/Users/Lessons Page
 ![Admin All Students Page](./screenshots/admin_all_students.png)
 
 
