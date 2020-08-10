@@ -2,7 +2,7 @@
 <%= render "shared/warning" %>
 
 
-<main role="main" class="container">
+<div class="container">
 
   <div class="row">
     <div class="jumbotron col-md-6 mr-2">
@@ -18,20 +18,6 @@
     </div>
   </div>
 
+</div>
 
 
-
-<%
-=begin
-%>
-  <% if user_signed_in?%>
-    <%= link_to 'Log Out', destroy_user_session_path, class: "btn btn-outline-primary" %>
-  <% else %>
-    <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary' %>
-    <%= link_to 'Log In', new_user_session_path, class: "btn btn-outline-primary" %>
-    <%= link_to 'Book a Driving Lesson', new_user_registration_path, class: "btn btn-outline-primary" %>
-  <% end %>
-<%
-=end
-%>
-</main>

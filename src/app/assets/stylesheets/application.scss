@@ -19,30 +19,38 @@
 @import 'variables';
 
 
-body {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  background-color: whitesmoke !important;
-  // background-color: #112126 !important;
-
+body, html {
+  height: calc(100% - 200px) !important;
 }
 
-.page-container {
+body {
+  background-color: whitesmoke !important;
+  // background-color: #112126 !important;
+}
+
+#page-container {
   width: 100vw;
-  height: calc(100vh - 64px);
+  
+  height: calc(100vh - 80px) !important;
+  padding-bottom: 60px;
+  overflow-y: auto;
   // background: rgb(245,245,245) !important;
   // background: linear-gradient(180deg, rgba(245,245,245,1) 0%, rgba(17,33,38,0.8883928571428571) 100%) !important;
 }
 
-.footer {
+
+.blog-footer {
   position: fixed;
   bottom: 0;
-  right: 0;
   width: 100%;
-  text-align: right;
-  /* Set the fixed height of the footer here */
-  height: 60px;
+  padding: 1.25rem 0;
+    color: #999;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-top: .05rem solid #e5e5e5;
+    .container span a {
+    color: $primary-dark !important;
+  }
 }
 
 
