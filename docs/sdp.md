@@ -3,37 +3,38 @@
 The app: [DLM](https://driving-lesson-marketplace.herokuapp.com/)
 Source code: [https://github.com/SimoSultan/dlm](https://github.com/SimoSultan/dlm)
 
-![GitHub followers](https://img.shields.io/github/followers/SimoSultan?style=social)  
-![Twitter Follow](https://img.shields.io/twitter/follow/simo_sultan?style=social)
-[www.simonmcurran.com](https://www.simonmcurran.com/)  
-
-
-
 
 #### Index:
-- [**Software Development Plan**](docs/sdp.md) - my implementation plan
-- [**Description**](#Description) - what the site is
-- [**Motivation**](#Motivation-and-Inspiration) - to develop the site
-- [**Target Audience**](#Target-Audience) - who will use the site
-- [**Features**](#Features) - what does the site do
-- [**Tech Stack**](#Tech-Stack) - the languages that make up the app
-- [**Resources**](#Resources) - links to resources I used
+- [**Statement of Purpose**](#Statement-of-Purpose)
+- [**Description**](#Description)
+- [**Motivation**](#Motivation-and-Inspiration)
+- [**Target Audience**](#Target-Audience)
+- [**Features**](#Features)
+- [**Tech Stack**](#Tech-Stack)
+- [**Implementation Plan**](#Implementation-Plan)
+- [**Development Log**](#Development-Log)
+- [**Testing**](#Testing)
+- [**Resources**](#Resources)
 - [**Copyright**](#Copyright)
 
 
 
----
-
-
-## Description
-
-This is my first Ruby on Rails application. Currently studying at [Coder Academy](https://coderacademy.edu.au) and we were tasked with building a 2-way marketplace application and were given 10 days to complete this piece of assessment. This application is intended to be used by Learner Drivers and Instructors. Where a learner driver is able to book a lesson with an instructor and then are able to see that lesson in their 'my lessons' tab. Instructors and Admin roles can book lessons for students as well. Both instructors and students can see all of the upcoming and their past lessons for reference. 
-
-This application is the MVP for a full-fledged marketplace.
-
 
 ---
 
+## Statement of Purpose
+
+The goal was to develop a terminal application that resembles someone learning to code. A re-imagining of the experiences that programmers will face in a learning environment to some small degree. The game must provide challenges, fun, laughs, but most importantly, reiterate the values of Growth Mindset. The game is inspired from, more-or-less, every episode of the TV show Scrubs. This show provided challenges to the main character and laughs along the way, but majority of episodes, there was always something the main character learnt, a life lesson for example, which is what I hoped to encapsulate.
+
+Finishing the game is when you have enough EXP to be able to look for a job, or depending on what you did through your journey, you may receive a job offer.
+
+The problem I hoped to solve with my choice of a text adventure game, apart from the main concept of enjoyment, was to use the life lesson of having the user see the value of helping others. Because, not only do they get experience if they choose to, but they get to help another person along the way. I believe I managed to scratch the surface of this goal in the time frame provided. 
+
+The audience for the game is mainly tailored towards a programmer. As the type of questions that are presented to the user throughout the game are coding based, so for a non-programmer, these would be quite difficult, still possible, but a lot more time consuming. This game is also specifically tailored towards a programmer who is in the learning stages. We are all always learning, but a new programmer is someone who faces these types of challenges every day, and these users will receive the most enjoyment for the game.
+
+I had never developed a game myself which is why I chose to undertake my first one as a text adventure, which seemed appropriate for a terminal app as well. Putting enjoyment at the front of design (apart from UI) was a challenge I enjoyed. Also combining all the topics I had learnt so far into one coherent design, one helluva fun time.
+
+---
 
 ## Motivation and Inspiration
 
@@ -87,14 +88,13 @@ The target audience for this app is for driving instructors and people looking t
 - utilise cookies so that people don't have to keep logging in from their same computer
 
 
-
 ---
 
 
 ## Tech Stack
 
-- Ruby 2.7.1
-- Rails 6.0.3.2
+- Ruby
+- Rails 6+
 - HTML
 - CSS
 - SASS
@@ -104,8 +104,66 @@ The target audience for this app is for driving instructors and people looking t
 - Bootstrap 4
 - Heroku
 
+Ruby on Rails was the foundation of this application which uses all of the above languages. There was additional JS written to implement the Google Maps Places API address autocomplete select box. Bootstrap was used for the front-end framework to style elements. PostgreSQL for the database. Git and GitHub for version control and Heroku for deployment.
+
+
+
 ---
 
+## Implementation Plan
+
+> ### User Stories
+
+> ### Sitemap
+
+[DLM Sitemap](https://app.lucidchart.com/documents/edit/f1969e48-fb25-4148-b36b-a8c9a932da01/0_0)  
+
+
+<!-- ![DLM Sitemap](https://app.lucidchart.com/documents/edit/f1969e48-fb25-4148-b36b-a8c9a932da01/0_0)   -->
+
+
+> ### Trello Board 
+
+The project management application used to complete these tasks was Trello. This program allowed me to develop outlines for the majority of the application, including features, methods, timelines and so forth. Without this plan, implementing the application would have been significantly more difficult. 
+
+- [DLM Trello Board](https://trello.com/b/JUx9nN3o/driving-app)  
+
+> ### Wireframes
+
+
+> ### ERD
+
+[My ERD](https://app.dbdesigner.net/designer/schema/343185)  
+
+For the MVP 
+
+![DLM ERD](docs/ERD/erd.png)
+
+
+> ### Screenshots
+
+
+
+> ### Presentation
+
+Here is a link to my [Google Slides Presentation](https://docs.google.com/presentation/d/1eogqfMuEI7aU3tamuzeD5aQIzG-SiKWQFydJYUXe2XI/edit#slide=id.g35f391192_00) that we present the day after submission to the Brisbane cohort.
+
+
+---
+
+## Development Log
+
+
+- [Development log](docs/development-log.md)
+
+
+---
+
+## **Testing**
+
+
+
+---
 
 
 ## Resources
@@ -175,8 +233,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
----
+--- 
+
 
 ## Author
 © Simon Curran
-[www.simonmcurran.com](https://www.simonmcurran.com/)  
+[www.simonmcurran.com](https://www.simonmcurran.com/)
