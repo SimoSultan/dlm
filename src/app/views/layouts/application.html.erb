@@ -28,18 +28,15 @@
     <main role="main" id="page-container" class="container" style="margin-top: 64px;">
 
       <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
-      <% if alert %><main class="alert alert-warning"><%= alert %></div><% end %>
+      <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
 
       <%= yield %>
 
       <%#= render 'shared/lesson_modal', lesson: @lesson %>
-      
- 
 
     </main>
 
     <%= render "shared/footer"%>
-
 
 
     <!-- JS, Popper.js, and jQuery -->

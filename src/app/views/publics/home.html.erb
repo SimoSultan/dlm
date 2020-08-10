@@ -24,10 +24,13 @@
     <div class="jumbotron col ml-2">
       <h3 class="display-4">What this site offers</h3>
       <p class="lead">You don't have to go through the efforts of organising a driving school, just log in and book a lesson at your choosing from the comfort of your couch.</p>
-      <p class="lead font-weight-bold">Developer note:</p>
-      <p class="lead">Log in with a fake account if you don't wish to sign up yourself</p>
-      <p class="lead font-weight-bold">s1@email.com (student) || t1@email.com (instructor)</p>
-      <p class="lead font-weight-bold">password</p>
+      <% unless user_signed_in? %>
+        <p class="lead font-weight-bold">Developer note:</p>
+        <p class="lead">Log in with a fake account if you don't wish to sign up yourself</p>
+        <p class="lead font-weight-bold">s1@email.com (student) || t1@email.com (instructor)</p>
+        <p class="lead font-weight-bold">password</p>
+      <% end %>
+
       <% if user_signed_in? %>
         <% if current_user.student? %>
           <%= link_to 'My Profile', student_path(current_user.student&.id), class: "btn btn-lg btn-outline-primary" %>
