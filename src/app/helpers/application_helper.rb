@@ -1,6 +1,9 @@
 module ApplicationHelper
 
+  # helper function to get the current user's avatar
   def user_avatar(user, size=40)
+    # return the avater of who is passed
+    # if its not there, send back the default image
     if user.student?
       return user&.student&.avatar if user&.student&.avatar&.attached?
       "default.png"
@@ -13,7 +16,7 @@ module ApplicationHelper
     end
   end
 
-
+  # changes a 1 to 1st, 2 to 2nd and so on
   def get_ordinal(int)
     int.to_i
     unit = int % 10
@@ -28,10 +31,11 @@ module ApplicationHelper
     else
       ord = "#{int}th"
     end
-
     return ord
   end
 
+  # changes the date format from the date picker to a human readable string
+  # e.g. 2000-01-01 -> 1st Jan, 2020
   def get_readable_date(date_string, type)
   
     date_string = date_string.to_s
@@ -79,28 +83,29 @@ module ApplicationHelper
   
     type == "without_day" ? readable = "#{dateOrdinal} #{monthName} #{year}" : readable = "#{weekday}, #{monthName} #{dateOrdinal} #{year}"
     return readable
-    Australia
+    
   end
 
-  def get_readable_time(time_string)
-
-  end
-
+  # adds a space in mobile numbers
+  # e.g. 0400111222 -> 0400 111 222
   def get_readable_phone_number(number)
     "#{number[0..3]} #{number[4..6]} #{number[7..9]}"
   end
 
+  # removes the ", Australia" from the end of addresses to shorten the string
   def get_readable_address(address)
     "#{address[0..-12]}"
   end
 
 
 
-  # GOOGLE MAPS JAVASCRIPT TAGE
+  # GOOGLE MAPS JAVASCRIPT TAG
+  # returns the google maps api script into the javascript pack tag in application.html.erb
   def google_maps_api_script_tag
     "https://maps.googleapis.com/maps/api/js?key=#{google_maps_api_key}&libraries=places&callback=initMap"
   end
 
+  #digs in the credentials file to get the google maps api key and returns it into the script tag above
   def google_maps_api_key
     Rails.application.credentials.dig(:google, :maps_api_key)
   end
