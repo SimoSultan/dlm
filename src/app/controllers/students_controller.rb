@@ -6,7 +6,7 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @students = Student.order(:created_at).reverse_order
+    @students = Student.order(:created_at).reverse_order.includes([:user])
     authorize! :read, @students, :message => "You do not have authorization to view that content."
   end
 

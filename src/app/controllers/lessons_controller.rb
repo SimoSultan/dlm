@@ -6,11 +6,11 @@ class LessonsController < ApplicationController
     @all_lessons = []
 
     if current_user.student?
-      @all_lessons = Lesson.where(student_id: current_user.student.id).order(:date, :time).reverse_order
+      @all_lessons = Lesson.where(student_id: current_user.student.id).order(:date, :time).reverse_order.includes([:student]).includes([:instructor])
     elsif current_user.instructor?
-      @all_lessons = Lesson.where(instructor_id: current_user.instructor.id).order(:date, :time).reverse_order
+      @all_lessons = Lesson.where(instructor_id: current_user.instructor.id).order(:date, :time).reverse_order.includes([:student]).includes([:instructor])
     elsif current_user.admin?
-      @all_lessons = Lesson.order(:date, :time).reverse_order
+      @all_lessons = Lesson.order(:date, :time).reverse_order.includes([:student]).includes([:instructor])
     end
     @all_lessons
     # authorize! :read, @all_lessons, :message => "You do not have authorization to view that content."

@@ -17,6 +17,9 @@ class Student < ApplicationRecord
   
   private
 
+  # custom validation for a phone number
+  # a number must be present, must contain 10 digits, and must start in '04'
+  # this should have been in a helper file somewhere to not repeate the function 
   def phone_number
     if phone != nil || phone != ""
       phone.to_s.delete('^0-9')
@@ -30,6 +33,8 @@ class Student < ApplicationRecord
     end
   end
   
+  # custom validation for student dob
+  # student must be older than 16 years to sign up
   def student_dob
     current_date = Date.today
 
@@ -46,10 +51,18 @@ class Student < ApplicationRecord
     end
   end
 
+  # custom validation for address update
+  # address must contain the australia part
+  # this can be broken by simply typing 
+    # test, Australia
+  # but hopefully this one warning will stop them to select their address from the google api dropdown
+  # this should have been in a helper to avoid repeating from instructor model
   def address_check
     unless address.include?(", Australia")
       errors.add(:address, "must be selected from Google Dropdown")
     end
   end
+
+  
 
 end

@@ -13,7 +13,7 @@ class AdminsController < ApplicationController
 
   # GIVE ADMINS ACCESS TO SEE ALL USERS
   def users
-    @users = User.all
+    @users = User.all.includes([:student]).includes([:instructor]).includes([:admin])
     authorize! :read, @users, :message => "You do not have authorization to view that content."
   end
 

@@ -5,7 +5,7 @@ class InstructorsController < ApplicationController
   # GET /instructors
   # GET /instructors.json
   def index
-    @instructors = Instructor.order(:created_at).reverse_order
+    @instructors = Instructor.order(:created_at).reverse_order.includes([:user])
     authorize! :read, @instructors, :message => "You do not have authorization to view that content."
   end
 

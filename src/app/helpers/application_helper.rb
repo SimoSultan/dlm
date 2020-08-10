@@ -71,8 +71,6 @@ module ApplicationHelper
     month[10] = "Nov"
     month[11] = "Dec"
 
-    puts "----------"
-    puts date.day
   
     weekday = week[date.wday-1]
     # month - 1 because December = 12 for months, but its the 11th position in arraym hence 12 - 1 = 11 => "Dec"

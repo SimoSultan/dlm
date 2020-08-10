@@ -65,3 +65,5 @@ gem "cancan", "~> 1.6"
 gem 'inline_svg'
 
 gem 'faker'
+
+gem "bullet", "~> 6.1"
