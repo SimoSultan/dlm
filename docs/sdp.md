@@ -108,14 +108,32 @@ Ruby on Rails was the foundation of this application which uses all of the above
 
 > ### User Stories
 
-> ### Sitemap
+There will be 3 different types (roles) of people who will use the app. They are: Student, Instructor and an Admin role. 
 
+#### Students
+A student can come in 2 variants, someone who is old enough to start learning by QLD law, and someone who isn't. There is client side validation to check the age of a user on signup. *(just realised that validation only occurs after a user is created, meaning there will be users on the users table who will never be able to sign up, or at least until they turn of age. I should add date of birth on user sign up to check it then. future update, not something to do 1 night before assessment is due)*. Then when that person is of age and signs up, they will be able to book lessons and choose their instructor they want. 
+
+#### Instructors
+An instructor can come in 2 variants, someone who is old enough to teach by QLD law and has appropriate licensing *(but I don't have validation for their license numbers against Department of Transport details)*, and someone who isn't. There is client side validation to check the age of a user on signup. Then when that person is of age and signs up, they will be able to book lessons with students *(which actually need a request to be sent and confirmed by the other party, and not just a straight out lesson created)*, see all of their lessons they have and have had and choose their instructor they want. 
+
+#### Admins
+An Admin is a person who works for DLM. They will have the ability to see and manage everything on the site. That is all users, students, instructors, admins and lessons. In the future they will have the opportunity to add, edit and delete different lesson lengths and costs as well. 
+
+
+
+> ### Sitemap
 - [DLM Sitemap](https://app.lucidchart.com/documents/edit/f1969e48-fb25-4148-b36b-a8c9a932da01/0_0)  
 
+
 #### Original Sitemap
+The original sitemap was a great start to how to navigate through the app. But was unaware of how many more pages there would be. A 'bacl' button has been implemented and a nav menu so that each person can get to any page they have available to them.
+
 ![Original DLM Sitemap](./sitemap/original_driving_lesson_marketplace_sitemap.png)
 
+
 #### Updated Sitemap
+The new sitemap includes all the extra pages that were include
+
 ![Updated DLM Sitemap](./sitemap/updated_driving_lesson_marketplace_sitemap.png)
 
 
@@ -137,30 +155,38 @@ With my wireframes, I hadn't understood what I was and was not able to do, 1. in
 #### Student Wireframes
 
 ##### Student Profile Page
+It's similar, but the main difference is in the new lesson form and lack of slideout menu again. And the layout regarding the new lesson form doesn't move around like originally planned. It always sits underneath itself.
 ![Student Profile Page](./wireframes/student_profile.png)
 
 ##### Student Edit Profile Page
+Stayed the same.
 ![Student Edit Profile Page](./wireframes/student_edit_profile.png)
 
 ##### Student Sign-up Page
+Stayed the same.
 ![Student Edit Account Page](./wireframes/student_signup.png)
 
 ##### Student All Lesson Page
+Didn't get the search and filter functions onto MVP. And doesn't include the slideout modal.
 ![Student All Lesson Page](./wireframes/student_all_lessons.png)
 
 
 #### Instructor Wireframes
 
 ##### Instructor Profile Page
+Only showing instructor's upcoming and previous lesson. Didn't implement the feature where it shows a table of all upcoming lessons for that day. Also don't have counts running for the amount of lessons the instructor has completed and so forth.
 ![Instructor Profile Page](./wireframes/instructor_profile.png)
 
 ##### Instructor Edit Profile Page
+Stayed the same.
 ![Instructor Edit Profile Page](./wireframes/instructor_edit_profile.png)
 
-##### Instructor Sign#####up Page
+##### Instructor Sign-up Page
+Stayed the same.
 ![Instructor Edit Account Page](./wireframes/instructor_signup.png)
 
 ##### Instructor All Lesson Page
+Didn't get the search and filter functions onto MVP. And doesn't include the slideout modal.
 ![Instructor All Lesson Page](./wireframes/instructor_all_lessons.png)
 
 
@@ -168,14 +194,15 @@ With my wireframes, I hadn't understood what I was and was not able to do, 1. in
 
  
 ##### Home Page 
-- was to have sign-up and log-in buttons that turned into a sign-up or log-in form. However, only buttons were included to go to separate sign up and log in pages due to Devise supplying them.
+Was to have sign-up and log-in buttons that turned into a sign-up or log-in form. However, only buttons were included to go to separate sign up and log in pages due to Devise supplying them.
 ![Home Page](./wireframes/home.png)
 
 ##### 404 Page 
-- was found from a nice template online. This page didn't have an exact design.
+Was found from a nice template online. This page didn't have an exact design.
 ![404 Page](./wireframes/404.png)
 
 ##### Forgot Password Page 
+Stayed the same.
 ![Forgot Password Page](./wireframes/forgot_password.png)
 
 
@@ -257,7 +284,27 @@ Here is a link to my [Google Slides Presentation](https://docs.google.com/presen
 
 ---
 
-## **Testing**
+## Testing
+
+Only manual testing was undertaken for this assignment due to time restraints to implement automatic testing which is something I really wish I had more time to look into. Manual tests that were undertaken were any time a new feature was implemented. For example the tests that were run;
+- rails app generation
+- implementing bootstrap
+- deploying to heroku
+- implementing devise signup/login authentication gem
+- rails generation of scaffold pages
+- reading and displaying data pulled from the database
+- creation of new data into the database
+- updating data in database
+- destroying data in database
+- implementing enums for different roles for users
+- implementing partials and dryer/dynamic views
+- implementing cancan authorization of different data being available for different roles/users
+- seeding the database
+- full styling of app
+- implementing Amazon S3 image upload for avatar photos
+- attaching images to specific roles (i.e. students/instructors/admins)
+
+Manual testing takes up a lot of time, especially when it's a trial and error method. In the end, investing the time to understand how you will test throughout the app would highly advantageous for speeding up testing processes. 
 
 
 

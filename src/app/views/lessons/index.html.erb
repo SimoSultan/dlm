@@ -29,6 +29,7 @@
           <td><%= "#{lesson&.duration} mins"%></td>
           <td><%= lesson&.cancelled ? "Yes": "No" %></td>
           <!--<td><%#= "to-do" %></td>-->
+          <td><%= link_to 'More Details', lesson_show_path(lesson) %></td>
           <% if current_user.admin? || current_user.instructor? %>
           <td><%= link_to 'Edit', lesson_edit_path(lesson) %></td>
           <td><%= link_to 'Delete', lesson_destroy_path(lesson), method: :delete, data: { confirm: 'Are you sure?' } %></td>

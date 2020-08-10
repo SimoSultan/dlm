@@ -90,3 +90,22 @@ loop do
   k += 1
 end
 
+
+# https://edgeguides.rubyonrails.org/active_storage_overview.html#attaching-file-io-objects
+# def attach_pictures_to_patterns
+#   patterns = Pattern.all
+#   i = 1
+#   patterns.each do |pattern|
+#   string1 = "clothes/#{i}.jpg"
+#   string2 = "#{i}.jpg"
+#        pattern.pictures.attach(
+#            io: File.open(string1),
+#            filename: string2,
+#            content_type: 'image/jpg',
+#            identify: false
+#        )
+#           puts "added clothes image to #{pattern.name}, i = #{i}"
+#          i += 1
+#          i = 1 if i > 30
+#    end
+# end
