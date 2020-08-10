@@ -1,10 +1,10 @@
 # SIMO_SULTAN'S DRIVING LESSONS MARKETPLACE
 
-The app: [DLM](https://driving-lesson-marketplace.herokuapp.com/)
+The app: [DLM](https://driving-lesson-marketplace.herokuapp.com/)  
 Source code: [https://github.com/SimoSultan/dlm](https://github.com/SimoSultan/dlm)
 
 ![GitHub followers](https://img.shields.io/github/followers/SimoSultan?style=social)  
-![Twitter Follow](https://img.shields.io/twitter/follow/simo_sultan?style=social)
+![Twitter Follow](https://img.shields.io/twitter/follow/simo_sultan?style=social)  
 [www.simonmcurran.com](https://www.simonmcurran.com/)  
 
 
@@ -178,5 +178,5 @@ SOFTWARE.
 ---
 
 ## Author
-© Simon Curran
+© Simon Curran  
 [www.simonmcurran.com](https://www.simonmcurran.com/)  

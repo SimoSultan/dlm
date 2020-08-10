@@ -1,6 +1,6 @@
 # SIMO_SULTAN'S DRIVING LESSONS MARKETPLACE
 
-The app: [DLM](https://driving-lesson-marketplace.herokuapp.com/)
+The app: [DLM](https://driving-lesson-marketplace.herokuapp.com/)  
 Source code: [https://github.com/SimoSultan/dlm](https://github.com/SimoSultan/dlm)
 
 
@@ -128,50 +128,50 @@ The project management application used to complete these tasks was Trello. This
 
 With my wireframes, I hadn't understood what I was and was not able to do, 1. in the time frame, and 2. with how rails worked. I will details in each section where the wireframes different from production. 
 
-- [Balsamiq Wireframes](docs/wireframes/driving_lesson_marketplace.bmpr)
+- [Balsamiq Wireframes](./wireframes/driving_lesson_marketplace.bmpr)
 
 
 #### Student Wireframes
 
 - Student Profile Page
-![Student Profile Page](docs/wireframes/student_profile.png)
+![Student Profile Page](./wireframes/student_profile.png)
 
 - Student Edit Profile Page
-![Student Edit Profile Page](docs/wireframes/student_edit_profile.png)
+![Student Edit Profile Page](./wireframes/student_edit_profile.png)
 
 - Student Sign-up Page
-![Student Edit Account Page](docs/wireframes/student_signup.png)
+![Student Edit Account Page](./wireframes/student_signup.png)
 
 - Student All Lesson Page
-![Student All Lesson Page](docs/wireframes/student_all_lessons.png)
+![Student All Lesson Page](./wireframes/student_all_lessons.png)
 
 
 #### Instructor Wireframes
 
 - Instructor Profile Page
-![Instructor Profile Page](docs/wireframes/instructor_profile.png)
+![Instructor Profile Page](./wireframes/instructor_profile.png)
 
 - Instructor Edit Profile Page
-![Instructor Edit Profile Page](docs/wireframes/instructor_edit_profile.png)
+![Instructor Edit Profile Page](./wireframes/instructor_edit_profile.png)
 
 - Instructor Sign-up Page
-![Instructor Edit Account Page](docs/wireframes/instructor_signup.png)
+![Instructor Edit Account Page](./wireframes/instructor_signup.png)
 
 - Instructor All Lesson Page
-![Instructor All Lesson Page](docs/wireframes/instructor_all_lessons.png)
+![Instructor All Lesson Page](./wireframes/instructor_all_lessons.png)
 
 
 #### Other Wireframes
 
  
 - Home Page was to have buttons that turned into a sign-up or log-in form. However, only buttons were included to go to separate sign up and log in pages due to Devise supplying them.
-![Home Page](docs/wireframes/home.png)
+![Home Page](./wireframes/home.png)
 
 - 404 Page was found from a nice template online. This page didn't have an exact design.
-![404 Page](docs/wireframes/404.png)
+![404 Page](./wireframes/404.png)
 
 - Forgot Password Page was turned into change 
-![Forgot Password Page](docs/wireframes/forgot_password.png)
+![Forgot Password Page](./wireframes/forgot_password.png)
 
 
 > ### ERD
@@ -180,7 +180,7 @@ With my wireframes, I hadn't understood what I was and was not able to do, 1. in
 
 For the MVP 
 
-![DLM ERD](docs/ERD/erd.png)
+![DLM ERD](./ERD/erd.png)
 
 
 <!-- R14	An ERD for your app
@@ -202,38 +202,38 @@ Here are the screenshots from the mobile view from the student's perspective, wi
 
 
 - Home Page
-![Home Page](docs/screenshots/home.png)
+![Home Page](./screenshots/home.png)
 
 - Signup Page
-![Signup Page](docs/screenshots/signup.png)
+![Signup Page](./screenshots/signup.png)
 
 - Login Page
-![Login Page](docs/screenshots/login.png)
+![Login Page](./screenshots/login.png)
 
 - Forgot Password Page
-![Login Page](docs/screenshots/forgot_password.png)
+![Login Page](./screenshots/forgot_password.png)
 
 - Student Profile Page
-![Student Profile Page](docs/screenshots/student_profile.png)
+![Student Profile Page](./screenshots/student_profile.png)
 
 - Student Edit Profile Page
-![Student Edit Profile Page](docs/screenshots/student_edit_profile.png)
+![Student Edit Profile Page](./screenshots/student_edit_profile.png)
 
 - Student Edit Account Page
-![Student Edit Account Page](docs/screenshots/student_edit_account.png)
+![Student Edit Account Page](./screenshots/student_edit_account.png)
 
 
 - Student All Lessons Page
-![Student All Lessons Page](docs/screenshots/student_all_lessons.png)
+![Student All Lessons Page](./screenshots/student_all_lessons.png)
 
 - Student New Lesson Page
-![Student New Lesson Page](docs/screenshots/student_new_lesson.png)
+![Student New Lesson Page](./screenshots/student_new_lesson.png)
 
 - Student View Lesson Page
-![Student View Lesson Page](docs/screenshots/lesson_show.png)
+![Student View Lesson Page](./screenshots/lesson_show.png)
 
 - Admin All Students/Instructors/Admin/Users/Lessons Page
-![Admin All Students Page](docs/screenshots/admin_all_students.png)
+![Admin All Students Page](./screenshots/admin_all_students.png)
 
 
 
@@ -247,7 +247,7 @@ Here is a link to my [Google Slides Presentation](https://docs.google.com/presen
 ## Development Log
 
 
-- [Development log](docs/development-log.md)
+- [Development log](./development-log.md)
 
 
 ---
@@ -330,5 +330,5 @@ SOFTWARE.
 
 
 ## Author
-© Simon Curran
+© Simon Curran  
 [www.simonmcurran.com](https://www.simonmcurran.com/)
