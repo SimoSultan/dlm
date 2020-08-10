@@ -1,16 +1,23 @@
-<h2>Forgot your password?</h2>
+<div class="container">
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "mt-7 form-signin text-center"}) do |f| %>
+    
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+      <%= image_tag 'dlm-logo.png', class: 'mb-4, logo-login' %>
+      <h2 class="h3 mb-3 font-weight-normal">Forgot your password?</h2>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="field">
+      <%= f.label :email, class: "sr-only", placeholder: "Email address" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email address" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "Send me reset password instructions", class: 'btn btn-primary mt-3 mb-3'%>
+    </div>
 
-<%= render "devise/shared/links" %>
+    <%= render "devise/shared/links" %>
+
+  <% end %>
+
+
+</div>

@@ -24,15 +24,9 @@ Source code: [https://github.com/SimoSultan/dlm](https://github.com/SimoSultan/d
 
 ## Statement of Purpose
 
-The goal was to develop a terminal application that resembles someone learning to code. A re-imagining of the experiences that programmers will face in a learning environment to some small degree. The game must provide challenges, fun, laughs, but most importantly, reiterate the values of Growth Mindset. The game is inspired from, more-or-less, every episode of the TV show Scrubs. This show provided challenges to the main character and laughs along the way, but majority of episodes, there was always something the main character learnt, a life lesson for example, which is what I hoped to encapsulate.
+This is my first Ruby on Rails application. Currently studying at [Coder Academy](https://coderacademy.edu.au) and we were tasked with building a 2-way marketplace application and were given 10 days to complete this piece of assessment. This application is intended to be used by Learner Drivers and Instructors. Where a learner driver is able to book a lesson with an instructor and then are able to see that lesson in their 'my lessons' tab. Instructors and Admin roles can book lessons for students as well. Both instructors and students can see all of the upcoming and their past lessons for reference. 
 
-Finishing the game is when you have enough EXP to be able to look for a job, or depending on what you did through your journey, you may receive a job offer.
-
-The problem I hoped to solve with my choice of a text adventure game, apart from the main concept of enjoyment, was to use the life lesson of having the user see the value of helping others. Because, not only do they get experience if they choose to, but they get to help another person along the way. I believe I managed to scratch the surface of this goal in the time frame provided. 
-
-The audience for the game is mainly tailored towards a programmer. As the type of questions that are presented to the user throughout the game are coding based, so for a non-programmer, these would be quite difficult, still possible, but a lot more time consuming. This game is also specifically tailored towards a programmer who is in the learning stages. We are all always learning, but a new programmer is someone who faces these types of challenges every day, and these users will receive the most enjoyment for the game.
-
-I had never developed a game myself which is why I chose to undertake my first one as a text adventure, which seemed appropriate for a terminal app as well. Putting enjoyment at the front of design (apart from UI) was a challenge I enjoyed. Also combining all the topics I had learnt so far into one coherent design, one helluva fun time.
+This application is the MVP for a full-fledged marketplace.
 
 ---
 
@@ -128,7 +122,56 @@ The project management application used to complete these tasks was Trello. This
 
 - [DLM Trello Board](https://trello.com/b/JUx9nN3o/driving-app)  
 
+
+
 > ### Wireframes
+
+With my wireframes, I hadn't understood what I was and was not able to do, 1. in the time frame, and 2. with how rails worked. I will details in each section where the wireframes different from production. 
+
+- [Balsamiq Wireframes](docs/wireframes/driving_lesson_marketplace.bmpr)
+
+
+#### Student Wireframes
+
+- Student Profile Page
+![Student Profile Page](docs/wireframes/student_profile.png)
+
+- Student Edit Profile Page
+![Student Edit Profile Page](docs/wireframes/student_edit_profile.png)
+
+- Student Sign-up Page
+![Student Edit Account Page](docs/wireframes/student_signup.png)
+
+- Student All Lesson Page
+![Student All Lesson Page](docs/wireframes/student_all_lessons.png)
+
+
+#### Instructor Wireframes
+
+- Instructor Profile Page
+![Instructor Profile Page](docs/wireframes/instructor_profile.png)
+
+- Instructor Edit Profile Page
+![Instructor Edit Profile Page](docs/wireframes/instructor_edit_profile.png)
+
+- Instructor Sign-up Page
+![Instructor Edit Account Page](docs/wireframes/instructor_signup.png)
+
+- Instructor All Lesson Page
+![Instructor All Lesson Page](docs/wireframes/instructor_all_lessons.png)
+
+
+#### Other Wireframes
+
+ 
+- Home Page was to have buttons that turned into a sign-up or log-in form. However, only buttons were included to go to separate sign up and log in pages due to Devise supplying them.
+![Home Page](docs/wireframes/home.png)
+
+- 404 Page was found from a nice template online. This page didn't have an exact design.
+![404 Page](docs/wireframes/404.png)
+
+- Forgot Password Page was turned into change 
+![Forgot Password Page](docs/wireframes/forgot_password.png)
 
 
 > ### ERD
@@ -140,7 +183,57 @@ For the MVP
 ![DLM ERD](docs/ERD/erd.png)
 
 
+<!-- R14	An ERD for your app
+R15	Explain the different high-level components (abstractions) in your app
+R16	Detail any third party services that your app will use
+R17	Describe your projects models in terms of the relationships (active record associations) they have with each other
+R18	Discuss the database relations to be implemented in your application
+R19	Provide your database schema design
+R20	Describe the way tasks are allocated and tracked in your project -->
+
+
+
 > ### Screenshots
+
+Here are the screenshots from the mobile view from the student's perspective, with one desktop view of admin. The instructor's pages are similar to this which is why they haven't been included. The desktop view of admin provides us with a look at how the app looks there.
+
+
+***Disclaimer: All data seen below in screenshots is fake.***
+
+
+- Home Page
+![Home Page](docs/screenshots/home.png)
+
+- Signup Page
+![Signup Page](docs/screenshots/signup.png)
+
+- Login Page
+![Login Page](docs/screenshots/login.png)
+
+- Forgot Password Page
+![Login Page](docs/screenshots/forgot_password.png)
+
+- Student Profile Page
+![Student Profile Page](docs/screenshots/student_profile.png)
+
+- Student Edit Profile Page
+![Student Edit Profile Page](docs/screenshots/student_edit_profile.png)
+
+- Student Edit Account Page
+![Student Edit Account Page](docs/screenshots/student_edit_account.png)
+
+
+- Student All Lesson Page
+![Student All Lesson Page](docs/screenshots/student_all_lessons.png)
+
+- Student New Lesson Page
+![Student New Lesson Page](docs/screenshots/student_new_lesson.png)
+
+- Student View Lesson Page
+![Student View Lesson Page](docs/screenshots/lesson_show.png)
+
+- Admin All Students/Instructors/Admin/Users/Lessons Page
+![Admin All Students Page](docs/screenshots/admin_all_students.png)
 
 
 

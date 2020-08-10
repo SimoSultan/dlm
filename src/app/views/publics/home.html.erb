@@ -18,6 +18,13 @@
     </div>
   </div>
 
-</div>
+  <div class="container text-center mt-5">
+    <% unless user_signed_in? %>
+      <%= link_to 'Sign Up', new_user_registration_path, class: "btn btn-lg btn-dark" %>
+      <%= link_to 'Log In', new_user_session_path, class: "btn btn-lg btn-outline-dark" %>
+    <% end %>
+  </div>
 
+
+</div>
 

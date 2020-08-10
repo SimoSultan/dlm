@@ -13,9 +13,9 @@ class Ability
       elsif user.instructor?
         # instructor can read their own details
         # instructor can read their own associated lessons
-        # instructor can update and delete their own user profile
+        # instructor can read, create, update and delete their own user profile
         # are blocked from reading any student and admin details
-        can :read, Instructor, user_id: user.id 
+        can [:read], Instructor, user_id: user.id 
         can :read, Lesson, instructor_id: user.instructor.id 
         can :manage, User, user_id: user.id 
         cannot :read, Student
@@ -23,7 +23,7 @@ class Ability
       elsif user.student?
         # student can read their own details
         # student can read their own associated lessons
-        # student can update and delete their own user profile
+        # student can read, create, update and delete their own user profile
         # are blocked from reading any instructor and admin details
         can :read, Student, user_id: user.id 
         can :read, Lesson, student_id: user.student.id      
