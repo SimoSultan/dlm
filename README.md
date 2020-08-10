@@ -1,13 +1,14 @@
 # SIMO_SULTAN'S DRIVING LESSONS MARKETPLACE
-[www.simonmcurran.com](https://www.simonmcurran.com/)  
 
+The app: [DLM](https://driving-lesson-marketplace.herokuapp.com/)
+Source code: [https://github.com/SimoSultan/dlm](https://github.com/SimoSultan/dlm)
 
 ![GitHub followers](https://img.shields.io/github/followers/SimoSultan?style=social)  
 ![Twitter Follow](https://img.shields.io/twitter/follow/simo_sultan?style=social)
+[www.simonmcurran.com](https://www.simonmcurran.com/)  
 
 
-<!-- The app: []() -->
-<!-- Source code: []() -->
+
 
 
 
@@ -95,27 +96,31 @@ JS was used to jump to a certain section of the home page for quick navigation f
 
 
 > ### Trello
-[My Trello Board](https://trello.com/b/JUx9nN3o/driving-app)  
+
+[DLM Trello Board](https://trello.com/b/JUx9nN3o/driving-app)  
 
 
 
 > ### Sitemap
 
-<!-- The layout and navigation through my site. -->
+[DLM Sitemap](https://app.lucidchart.com/documents/edit/f1969e48-fb25-4148-b36b-a8c9a932da01/0_0)  
 
+
+<!-- ![DLM Sitemap](https://app.lucidchart.com/documents/edit/f1969e48-fb25-4148-b36b-a8c9a932da01/0_0)   -->
+
+> ### ERD
+
+[My ERD](https://app.dbdesigner.net/designer/schema/343185)  
+
+<!-- EXPLAIN SOME STUFF HERE -->
+
+![DLM ERD](docs/ERD/erd.png)
 
 
 
 > ### Inspiration 
 <!-- The mini mood board I created for inspiration on specific elements on the page.   -->
 
-
-
-> ### Mood Board
-
-<!-- The images I collected on Unsplash that helped spark some ideas. The final picture I used, seen as the one with the yellow cable in it, gave me my 2 secondary colours to use on the site. Something with nice contrast to give the page some character.
-[My Mood Board](https://unsplash.com/collections/10450631/portfolio_images)  
--->
 
 
 > ### Wireframes
@@ -150,14 +155,14 @@ More screenshots can be found [here](https://github.com/SimoSultan/portfolio-web
 
 
 #### ***404 Page***
-
+- no wireframes were done for this as I wanted to implement a free 404 page layout
 
 
 ---
 
 ## Presentation
-<!-- 
-- [Google Slides Presentation](https://docs.google.com/presentation/d/1X7vOkHn0RGC_c2KCUlbf8kGDYAynqMSnotMM_FeUi4s/edit?usp=sharing) -->
+
+- [Google Slides Presentation](https://docs.google.com/presentation/d/1eogqfMuEI7aU3tamuzeD5aQIzG-SiKWQFydJYUXe2XI/edit#slide=id.g35f391192_00)
 
 
 ---
@@ -165,14 +170,29 @@ More screenshots can be found [here](https://github.com/SimoSultan/portfolio-web
 
 
 ## Resources
-<!-- 
-This external code I used in my site was for the scroll bar and the 404 page. I find the default scrollbars hideous so for most modern sites, so it was a must for me to include. Also, a simple and fun 404 page was something I didn't want to reinvent the wheel on, so I decided to use a free template.-->
-
 
 - [Capicon](https://mariodelvalle.github.io/CaptainIconWeb/)
+  - not currently being used but will implement in future update
 - [Logomakr](https://logomakr.com/9dzQOD)
+  - for my logo...
 - [Lesson Background Image](https://unsplash.com/photos/Kuu5mmxkwW4)
+  - used on the lesson show page
 - [404 Page](https://codepen.io/sqfreakz/pen/GJRJOY)
+  - 404 page...
+
+### Gems Used
+- [Devise](https://github.com/heartcombo/devise)
+  - for user authentication
+- [AWS SDK S3](https://github.com/aws/aws-sdk-ruby)
+  - for image upload
+- Gravatar image tag in Gemfile is not being used yet
+- [CanCan](https://github.com/ryanb/cancan)
+  - for user authorisation
+- Inline SVG in Gemfile is not being used yet
+- [Faker](https://github.com/faker-ruby/faker)
+  - to build fake names on database in seeds.rb
+- [Bullet](https://github.com/flyerhzm/bullet)
+  - to check eager loading in development environment
 
 
 ---
@@ -180,7 +200,28 @@ This external code I used in my site was for the scroll bar and the 404 page. I 
 
 ## Copyright, ethical, social issues
 
-<!-- Infringing on copyright, ethical or social issues wasn't thought to be of concern as this website is original and designed purely by myself.  -->
+MIT License
+
+Copyright (c) 2020 Simon Curran
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
 
 ---
 

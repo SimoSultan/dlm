@@ -12,23 +12,26 @@
 
   <div class="container mt-5">
   
-    <div class="card bg-dark text-white">
+    <div class="card mb-3">
       <%= image_tag 'road.jpg', class: "card-img lesson-background" %>
       <div class="card-img-overlay">
-        <h5 class="card-title display-3">Lesson Details</h5>
-        <div class="row justify-content-around">
-          <ul class="list-group list-group-flush col">
-            <li class="list-style-none lead"><%= get_readable_date(@lesson&.date, "with_day") %> </li>
-            <li class="list-group-item lead""> <%= "#{@lesson&.duration} minutes" %> </li>
-            <li class="list-group-item lead""> <%= @lesson&.time&.strftime('%l:%M %P')%> </li>
-            <li class="list-group-item text-nowrap lead""> <%= get_readable_address(@lesson&.student&.address) %> </li>
-            <li class="list-group-item lead""> <%= @lesson&.instructor&.first_name %> </li>
-            <li class="list-group-item lead""> <%= get_readable_phone_number(@lesson&.instructor&.phone) %> </li>
-          </ul>
-        </div>
+        <h5 class="card-title display-2" style="color: white;">Lesson Details</h5>
+      </div>
 
+      <div class="card-body">
+          <ul class="list-group list-group-flush col">
+            <li class="list-group-item lead"><strong>Date:</strong> <%= get_readable_date(@lesson&.date, "with_day") %> </li>
+            <li class="list-group-item lead""><strong>Time:</strong>  <%= @lesson&.time&.strftime('%l:%M %P')%> </li>
+            <li class="list-group-item lead""><strong>Duration:</strong> <%= "#{@lesson&.duration} minutes" %> </li>
+            <li class="list-group-item lead""><strong>Meet At:</strong> <%= get_readable_address(@lesson&.student&.address) %> </li>
+            <li class="list-group-item lead""><strong>Instructor:</strong> <%= @lesson&.instructor&.first_name %> </li>
+            <li class="list-group-item lead""><strong>Instructor Mobile:</strong> <%= get_readable_phone_number(@lesson&.instructor&.phone) %> </li>
+          </ul>
       </div>
     </div>
+
+
+
   </div>
 
 

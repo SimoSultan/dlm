@@ -1,47 +1,44 @@
-<h1>All Lessons</h1>
+<h1 class="display-3">All Lessons</h1>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Student</th>
-      <th scope="col">Instructor</th>
-      <th scope="col">Date</th>
-      <th scope="col">Time</th>
-      <th scope="col">Duration</th>
-      <%# <th scope="col">Transmission</th> %>
-      <th scope="col">Cancelled</th>
-      <!--<th scope="col">Payment</th>-->
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% if @all_lessons.empty? %>
-      <td>You have no booked lessons</td>
-    <% end %>
-    <% @all_lessons.each do |lesson| %>
+<div class="container">
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= lesson&.student&.first_name&.capitalize + ' ' + lesson&.student&.last_name&.capitalize %></td>
-        <td><%= lesson&.instructor.first_name.capitalize + ' ' + lesson&.instructor&.last_name&.capitalize %></td>
-        <td><%= lesson&.date%></td>
-        <td><%= lesson&.time&.strftime('%H:%M')%></td>
-        <td><%= "#{lesson&.duration} mins"%></td>
-        <td><%= lesson&.cancelled ? "Yes": "No" %></td>
-        <!--<td><%#= "to-do" %></td>-->
-        <% if current_user.admin? || current_user.instructor? %>
-        <td><%= link_to 'Edit', lesson_edit_path(lesson) %></td>
-        <td><%= link_to 'Delete', lesson_destroy_path(lesson), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+        <th scope="col">Student</th>
+        <th scope="col">Instructor</th>
+        <th scope="col">Date</th>
+        <th scope="col">Time</th>
+        <th scope="col">Duration</th>
+        <%# <th scope="col">Transmission</th> %>
+        <th scope="col">Cancelled</th>
+        <!--<th scope="col">Payment</th>-->
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% if @all_lessons.empty? %>
+        <td>You have no booked lessons</td>
+      <% end %>
+      <% @all_lessons.each do |lesson| %>
+        <tr>
+          <td><%= lesson&.student&.first_name&.capitalize + ' ' + lesson&.student&.last_name&.capitalize %></td>
+          <td><%= lesson&.instructor.first_name.capitalize + ' ' + lesson&.instructor&.last_name&.capitalize %></td>
+          <td><%= lesson&.date%></td>
+          <td><%= lesson&.time&.strftime('%H:%M')%></td>
+          <td><%= "#{lesson&.duration} mins"%></td>
+          <td><%= lesson&.cancelled ? "Yes": "No" %></td>
+          <!--<td><%#= "to-do" %></td>-->
+          <% if current_user.admin? || current_user.instructor? %>
+          <td><%= link_to 'Edit', lesson_edit_path(lesson) %></td>
+          <td><%= link_to 'Delete', lesson_destroy_path(lesson), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
+  <%#= render 'shared/slideout', lesson: lesson %>
 
-<%#= render 'shared/slideout', lesson: lesson %>
-
-
-
-<%= link_to 'Book a New Lesson', lesson_new_path, class: 'btn btn-outline-primary' %>
+  <%= link_to 'Book a New Lesson', lesson_new_path, class: 'btn btn-outline-primary' %>
+</div>
