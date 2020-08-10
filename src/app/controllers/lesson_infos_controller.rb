@@ -1,8 +1,8 @@
 class LessonInfosController < ApplicationController
-  
-  before_action :authenticate_user!
+  # this controller is not being used in MVP version
 
-  def index
-    @infos = LessonInfo.all
-  end
+  # before_action :authenticate_user!
+  # def index
+  #   @infos = LessonInfo.all
+  # end
 end

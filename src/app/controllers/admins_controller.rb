@@ -1,5 +1,4 @@
 class AdminsController < ApplicationController
-  # before_action :authenticate_user!
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
@@ -11,14 +10,16 @@ class AdminsController < ApplicationController
   end
 
 
-  # GIVE ADMINS ACCESS TO SEE ALL USERS
   def users
+    # GIVE ADMINS ACCESS TO SEE ALL USERS
+    # get all users from database that include student, instructor and admin roles
+    # authorize read access to users table for admins
     @users = User.all.includes([:student]).includes([:instructor]).includes([:admin])
     authorize! :read, @users, :message => "You do not have authorization to view that content."
   end
 
-  # GIVE ADMINS ACCESS TO DELETE A USER AND ITS ASSOCIATED USER
   def admin_delete_user
+    # GIVE ADMINS ACCESS TO DELETE A USER AND ITS ASSOCIATED USER
     @user = User.find_by(id: params[:id])
     authorize! :read, @user, :message => "You do not have authorization to view that content."
 
@@ -48,7 +49,7 @@ class AdminsController < ApplicationController
   # POST /admins.json
   def create
     @admin = Admin.new(admin_params)
-    authorize! :read, @admin, :message => "You do not have authorization to view that content."
+    # authorize! :read, @admin, :message => "You do not have authorization to view that content."
 
     respond_to do |format|
       if @admin.save
@@ -95,6 +96,7 @@ class AdminsController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
+    # capitalize the inputs of the first and last name before being saved to database
     def admin_params
       params[:admin][:first_name].capitalize!
       params[:admin][:last_name].capitalize!
