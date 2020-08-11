@@ -45,9 +45,6 @@ class ApplicationController < ActionController::Base
     # this looks through the persons' details to see if any attributes are empty
     # this can happen when someone signs up, and when they get redirected to their edit page and they click out of that page and start using the app
     person.attributes.each do |attr_name, attr_val|
-      puts "name = #{attr_name}"
-      puts "value = #{attr_val}"
-      puts "empty" if attr_val == ""
       return true if attr_val == ""
     end
     return false

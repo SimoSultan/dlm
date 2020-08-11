@@ -70,10 +70,27 @@ class LessonsController < ApplicationController
     @lesson.duration = lesson_params[:duration].to_i
     @lesson.cancelled = false
 
+    puts "--------------------------"
+    puts @lesson.inspect
+
+    # return 
+
     if @lesson.save
       redirect_to lessons_path, notice: 'Lesson successfully created'
     else
-      redirect_to student_path(current_user.student.id), alert: 'Something went wrong and lesson was not created.'
+      # if current_user.student? 
+      #   redirect_to student_path(current_user.student.id), alert: 'Something went wrong and lesson was not created.'
+      # elsif current_user.instructor?
+      #   redirect_to instructor_path(current_user.instructor.id), alert: 'Something went wrong and lesson was not created.'
+      # elsif current_user.admin?
+      #   redirect_to admin_path(current_user.admin.id), alert: 'Something went wrong and lesson was not created.'
+      # end
+
+      if current_user.admin? || current_user.instructor?
+        render :new, locals: {lesson: Lesson.new, instructors: get_all_instructors(), students: get_all_students()}, alert: "Date #{@lesson.errors[:date]}"
+      else
+        render :new, locals: {lesson: Lesson.new, instructors: get_all_instructors()}, alert: "Date #{@lesson.errors[:date]}"
+      end
     end
 
   end

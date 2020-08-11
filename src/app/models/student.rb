@@ -43,11 +43,11 @@ class Student < ApplicationRecord
     dob_day = dob.split('-')[2].to_i
 
     if current_date.year - 16 < dob_year
-      errors.add(:student, "must be over 16 to sign up")
+      errors.add(:student, "'s must be over 16 to use this app. If you are not, please delete your account you just created. You can find this in the 'Change My Password' button at the bottom of the page.")
     elsif current_date.year - 16 == dob_year and current_date.month < dob_month
-      errors.add(:student, "must be over 16 to sign up")
+      errors.add(:student, "'s must be over 16 to use this app. If you are not, please delete your account you just created. You can find this in the 'Change My Password' button at the bottom of the page.")
     elsif current_date.year - 16 == dob_year and current_date.month == dob_month and current_date.day < dob_day
-      errors.add(:student, "must be over 16 to sign up")
+      errors.add(:student, "'s must be over 16 to use this app. If you are not, please delete your account you just created. You can find this in the 'Change My Password' button at the bottom of the page.")
     end
   end
 

@@ -42,11 +42,11 @@ class Instructor < ApplicationRecord
     dob_day = dob.split('-')[2].to_i
 
     if current_date.year - 21 < dob_year
-      errors.add(:instructor, "must be over 21 to sign up")
+      errors.add(:instructor, "'s must be over 21 to use this app. If you are not, please delete your account you just created. You can find this in the 'Change My Password' button at the bottom of the page.")
     elsif current_date.year - 20 == dob_year and current_date.month < dob_month
-      errors.add(:instructor, "must be over 21 to sign up")
+      errors.add(:instructor, "'s must be over 21 to use this app. If you are not, please delete your account you just created. You can find this in the 'Change My Password' button at the bottom of the page.")
     elsif current_date.year - 20 == dob_year and current_date.month == dob_month and current_date.day < dob_day
-      errors.add(:instructor, "must be over 21 to sign up")
+      errors.add(:instructor, "'s must be over 21 to use this app. If you are not, please delete your account you just created. You can find this in the 'Change My Password' button at the bottom of the page.")
     end
   end
 
