@@ -13,7 +13,7 @@ Source code: [https://github.com/SimoSultan/dlm](https://github.com/SimoSultan/d
 #### Index:
 - [**Software Development Plan**](docs/sdp.md) - my implementation plan of DLM
 - [**Description**](#Description) - what the site is
-- [**Motivation**](#Motivation-and-Inspiration) - to develop the site
+- [**Problem and Solution**](#The-Problem-and-Solution)
 - [**Target Audience**](#Target-Audience) - who will use the site
 - [**Features**](#Features) - what does the site do
 - [**Tech Stack**](#Tech-Stack) - the languages that make up the app
@@ -27,7 +27,7 @@ Source code: [https://github.com/SimoSultan/dlm](https://github.com/SimoSultan/d
 
 ## Description
 
-This is my first Ruby on Rails application. Currently studying at [Coder Academy](https://coderacademy.edu.au) and we were tasked with building a 2-way marketplace application and were given 10 days to complete this piece of assessment. This application is intended to be used by Learner Drivers and Instructors. Where a learner driver is able to book a lesson with an instructor and then are able to see that lesson in their 'my lessons' tab. Instructors and Admin roles can book lessons for students as well. Both instructors and students can see all of the upcoming and their past lessons for reference. 
+This is my first Ruby on Rails application. Currently studying at [Coder Academy](https://coderacademy.edu.au) and we were tasked with building a 2-way marketplace application and were given 10 days to complete this piece of assessment. This application is intended to be used by Learner Drivers and Instructors. A learner driver can sign up and book a lesson with an instructor and then are able to see all their lessons in the 'My Lessons' tab. Instructors and Admin roles can book lessons for students as well. Both instructors and students can see all of the upcoming and their past lessons for reference. Only people who have signed up to the app can utilise its full potential.
 
 This application is the MVP for a full-fledged marketplace.
 
@@ -35,11 +35,12 @@ This application is the MVP for a full-fledged marketplace.
 ---
 
 
-## Motivation and Inspiration
+## The Problem and Solution
 
-In the past one of my professions was a driver trainer. I worked as a contractor with a company, but as contractor's are able to work for any company, which means that if that instructor had available time, they could also put that up on this site and be able to conduct individual lessons outside of their current company.
+In one of my past professions I was a driver trainer. We are typically contractors who work for a company, and as we may not be busy all the time, especially in the middle of weekday, we may have a lot of spare time. So, as being a contractor allows us to work for anyone, we would be able to offer our services to other students to expand our reach and hopefully fill up our calendar more, but finding those students by oneself can be hard. So, a 2 way marketplace app can sit in this niche. It would allow a person to register on the app, and select available times for themselves to work (like an Uber driver), so they are available for students who use that app as well. This would allow them to stay busy and earn more money when they may not get work from their own company. 
 
-A platform like this could actually exist in today's society and I intend to develop this idea further. I originally had built a page driving lesson booking system for my company with JavaScript and Firebase. So my inspiration for design came from this app. I cannot post a link to that app due to the database not being properly secured yet, which only contains fake data in development. 
+
+A platform like this could actually exist in today's society and I intend to develop this idea further. I originally had built a page driving lesson booking system for my own company with JavaScript and Firebase. So my inspiration came from that app that could be expanded to a wider reach then. 
 
 
 ---
@@ -133,7 +134,7 @@ The target audience for this app is for driving instructors and people looking t
   - used when building the Google Maps autocomplete dropdown.
 - [Rails ERD](https://github.com/voormedia/rails-erds)
   - used to generate an ERD of current model relationships.
-  
+
 ### Icons
 - [Capicon](https://mariodelvalle.github.io/CaptainIconWeb/)
   - not currently being used but will implement in future update

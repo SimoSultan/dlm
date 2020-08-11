@@ -171,7 +171,7 @@ The project management application used to complete these tasks was Trello. Whic
 
 With my wireframes, I hadn't understood what I was and was not able to do, 1. in the time frame, and 2. how rails and some gems worked that would affect views. I will detail in each section where the wireframes differ from production. 
 
-- [Balsamiq Wireframes](./wireframes/driving_lesson_marketplace.bmpr)
+- [Balsamiq Wireframes File](./wireframes/driving_lesson_marketplace.bmpr)
 
 
 #### Student Wireframes
@@ -200,11 +200,11 @@ Only showing instructor's upcoming and previous lesson. Didn't implement the fea
 ![Instructor Profile Page](./wireframes/instructor_profile.png)
 
 ##### Instructor Edit Profile Page
-Stayed the same.
+Stayed the same.  
 ![Instructor Edit Profile Page](./wireframes/instructor_edit_profile.png)
 
 ##### Instructor Sign-up Page
-Stayed the same.
+Stayed the same.  
 ![Instructor Edit Account Page](./wireframes/instructor_signup.png)
 
 ##### Instructor All Lesson Page
