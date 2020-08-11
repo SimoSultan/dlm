@@ -115,7 +115,7 @@ Certain roles will only have access to certain information.
 
 #### Students
 
-- A student who is old enough to start learning by QLD law, and someone who isn't. Client side validation will check the age of a user on profile creation. *(just realised that validation only occurs after a user is created, meaning there will be users on the users table who will never be able to sign up, or at least until they turn of age. I should add date of birth on user sign up to check it then. future update, not something to do 1 night before assessment is due)*.
+- A student who is old enough to start learning by QLD law, and someone who isn't. Server side validation will check the age of a user on profile creation. *(just realised that validation only occurs after a user is created, meaning there will be users on the users table who will never be able to sign up, or at least until they turn of age. I should add date of birth on user sign up to check it then. future update, not something to do 1 night before assessment is due)*.
 - When signed up that student will be sent to the profile page to continue updating their profile.
 - If that person does not complete their details and try to book a lesson, they will receive an error prompting them to complete their registration.
 - For students who have complete profile information can now book a lesson with an instructor of their choice
@@ -128,7 +128,7 @@ Certain roles will only have access to certain information.
 
 #### Instructors
 
-- An instructor who is old enough to teach learner drivers legally, according to QLD law, will be able to sign up and use the app. *(I have not included their QLD license numbers as I did not wish to validate that number with QLD Department of Transport for this MVP)*. They will be taken to their edit profile page where they are to fill in their personal information. There is client side validation to check the age of a user on profile creation.
+- An instructor who is old enough to teach learner drivers legally, according to QLD law, will be able to sign up and use the app. *(I have not included their QLD license numbers as I did not wish to validate that number with QLD Department of Transport for this MVP)*. They will be taken to their edit profile page where they are to fill in their personal information. There is server side validation to check the age of a user on profile creation.
 - If that person does not complete their details and try to book a lesson, they will receive an error prompting them to complete their registration.
 - For instructors who have complete profile information can now book a lesson with an student of their choice. *See note at top regarding this impractical approach*
 - Instructors can see all their lessons in their 'My Lesson' tab as well, and will be shown their upcoming and most recent lesson on their profile page. 
@@ -165,6 +165,25 @@ The new sitemap includes all the extra pages that were included in the app. As c
 The project management application used to complete these tasks was Trello. Which allowed me to develop outlines for the majority of the application, including features, methods, timelines, user stories, bugs and so forth. A development log was kept alongside Trello to track daily progress. 
 
 - [DLM Trello Board](https://trello.com/b/JUx9nN3o/driving-app)  
+![DLM Trello Board](./trello/submission_day.png)  
+
+
+### Third Party Services
+
+#### Bootstrap 4
+Bootstrap 4 was chosen for the front-end framework due to its popularity in web developer scene. Personally wanted to take the opportunity to familiarize myself with its grid system a little better. A front-end framework was used due to the sheer help it provides in making a website responsive. It allows a lot quicker creation and adjustment of content on the page. 
+
+#### PostgreSQL
+The relational SQL database Postgres was required for our application. The database holds all our information which Rails uses to query to then return the respective information back to the user.
+
+#### Heroku
+Heroku was chosen for the method of deployment as it was recommended. Previously have used Netlify so it was good to experience another. Heroku has the ability for us to use its console for our own custom queries and it can be built to be deployed from the console. Providing logs to the developer if something goes wrong as to check where the error is coming from as well.
+
+#### Amazon S3
+S3 is used in DLM for the storage of the avatars for the profiles on the page. Storing photos locally could be an option, but quickly our app size will get extremely large, so a separate place to store the images was of great need. S3 is a popular choice for this due to its simplicity. It stores and send our images back with ease and integrated nicely with Rails.
+
+#### Google Maps Places (autocompleted addresses)
+Google Maps Places API was used as an additional service to provide the user a correct address that is formatted in a way for the server to handle it. If the user did not choose the dropdown address then server side validation will ensure that it is correct before submitting. 
 
 
 > ### Wireframes
@@ -227,22 +246,182 @@ Stayed the same.
 ![Forgot Password Page](./wireframes/forgot_password.png)
 
 
-> ### Entity Relationship Diagram
-
-- [My Original ERD](https://app.dbdesigner.net/designer/schema/343185)  
-
-For the MVP 
-
-![DLM ERD](./ERD/erd.png)
+---
 
 
-<!-- R14	An ERD for your app
-R15	Explain the different high-level components (abstractions) in your app
-R16	Detail any third party services that your app will use
-R17	Describe your projects models in terms of the relationships (active record associations) they have with each other
-R18	Discuss the database relations to be implemented in your application
-R19	Provide your database schema design
-R20	Describe the way tasks are allocated and tracked in your project -->
+## Database Structure
+
+### Entity Relationship Diagram
+DbDesigner was chosen this time instead of DbDiagram to implement the ERD. However, I wish that I had used DbDiagram as Designer does not show the relationships at all, which is why they are seen in the note on the side. 
+
+- [Link to my original ERD](https://app.dbdesigner.net/designer/schema/343185)  
+
+![Orignal DLM ERD](./ERD/original_erd.png)
+
+- My auto-generated ERD from my models (created by the Gem [Rails ERD](https://github.com/voormedia/rails-erds))
+
+![Generated DLM ERD](./ERD/generated_erd.png)
+
+> ### Database Relations Discussion
+
+#### High-level components in the app
+<!-- R15	Explain the different high-level components (abstractions) in your app -->
+
+#### Current Project Model and Database Relationships
+<!-- R17	Describe your projects models in terms of the relationships (active record associations) they have with each other -->
+<!-- R18	Discuss the database relations to be implemented in your application -->
+- ##### User
+  - This model is set up by [Devise](https://github.com/heartcombo/devise) upon installation. The main information it holds is email, passwords and role information on the model. It also holds more information regarding resetting password which is utilized when a user needs to reset their password. The relationships of this model are below:
+    - **has one Student**
+    - **has one Instructor**
+    - **has one Admin**
+  - Enums are used to convert the role:integer into our readable roles.
+    - ```ruby enum role: {student: 0, instructor: 1, admin: 2} ```
+
+- ##### Student
+
+- ##### Instructor
+
+- ##### Admin
+
+- ##### Lesson
+
+- ##### ActiveStorage/Attachments
+
+- ##### Future Models to be implemented
+- LessonInfo model will contain the cost and duration of lessons that can be created, updated and deleted by the Admin role. There would not be a relation in this model as we are only fetching information from it. 
+- Payments will contain the payment information that will **belongs to** a lesson. Lesson would have a **has one** relation.
+- Calendar to the instructor so that instructors can fill out their available times which then directly affect if a lesson can be book or not with that instructor. That is, if the instructor is not available at that time, then the lesson cannot be booked and user receives an error. Instructors will **have one** calendar, which in turn **belongs to** the instructor.
+
+
+
+## Schema Design
+Below is code found in the DLM schema file to show how it works at a glance.
+
+```ruby
+
+ActiveRecord::Schema.define(version: 2020_08_04_005750) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "admins", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_admins_on_user_id"
+  end
+
+  create_table "instructors", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.string "phone"
+    t.string "dob"
+    t.integer "transmission"
+    t.integer "gender"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_instructors_on_user_id"
+  end
+
+  create_table "lesson_infos", force: :cascade do |t|
+    t.integer "cost"
+    t.integer "duration"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.bigint "instructor_id", null: false
+    t.date "date"
+    t.time "time"
+    t.integer "duration"
+    t.boolean "cancelled"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["instructor_id"], name: "index_lessons_on_instructor_id"
+    t.index ["student_id"], name: "index_lessons_on_student_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "lesson_id", null: false
+    t.string "card_no"
+    t.string "exp"
+    t.integer "amount"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lesson_id"], name: "index_payments_on_lesson_id"
+    t.index ["user_id"], name: "index_payments_on_user_id"
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.string "phone"
+    t.string "dob"
+    t.integer "transmission"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_students_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "role"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "admins", "users"
+  add_foreign_key "instructors", "users"
+  add_foreign_key "lessons", "instructors"
+  add_foreign_key "lessons", "students"
+  add_foreign_key "payments", "lessons"
+  add_foreign_key "payments", "users"
+  add_foreign_key "students", "users"
+end
+
+
+```
+
+<!-- R19	Provide your database schema design -->
+<!-- R20	Describe the way tasks are allocated and tracked in your project -->
 
 
 
