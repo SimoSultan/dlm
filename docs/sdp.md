@@ -6,8 +6,7 @@ Source code: [https://github.com/SimoSultan/dlm](https://github.com/SimoSultan/d
 
 #### Index:
 - [**Statement of Purpose**](#Statement-of-Purpose)
-- [**Description**](#Description)
-- [**Motivation**](#Motivation-and-Inspiration)
+- [**Problem and Solution**](#The-Problem-and-Solution)
 - [**Target Audience**](#Target-Audience)
 - [**Features**](#Features)
 - [**Tech Stack**](#Tech-Stack)
@@ -18,24 +17,22 @@ Source code: [https://github.com/SimoSultan/dlm](https://github.com/SimoSultan/d
 - [**Copyright**](#Copyright)
 
 
-
-
 ---
 
 ## Statement of Purpose
 
-This is my first Ruby on Rails application. Currently studying at [Coder Academy](https://coderacademy.edu.au) and we were tasked with building a 2-way marketplace application and were given 10 days to complete this piece of assessment. This application is intended to be used by Learner Drivers and Instructors. Where a learner driver is able to book a lesson with an instructor and then are able to see that lesson in their 'my lessons' tab. Instructors and Admin roles can book lessons for students as well. Both instructors and students can see all of the upcoming and their past lessons for reference. 
+This is my first Ruby on Rails application. Currently studying at [Coder Academy](https://coderacademy.edu.au) and we were tasked with building a 2-way marketplace application and were given 10 days to complete this piece of assessment. This application is intended to be used by Learner Drivers and Instructors. A learner driver can sign up and book a lesson with an instructor and then are able to see all their lessons in the 'My Lessons' tab. Instructors and Admin roles can book lessons for students as well. Both instructors and students can see all of the upcoming and their past lessons for reference. Only people who have signed up to the app can utilise its full potential.
 
 This application is the MVP for a full-fledged marketplace.
 
 ---
 
-## Motivation and Inspiration
+## The Problem and Solution
 
-In the past one of my professions was a driver trainer. I worked as a contractor with a company, but as contractor's are able to work for any company, which means that if that instructor had available time, they could also put that up on this site and be able to conduct individual lessons outside of their current company.
+In one of my past professions I was a driver trainer. We are typically contractors who work for a company, and as we may not be busy all the time, especially in the middle of weekday, we may have a lot of spare time. So, as being a contractor allows us to work for anyone, we would be able to offer our services to other students to expand our reach and hopefully fill up our calendar more, but finding those students by oneself can be hard. So, a 2 way marketplace app can sit in this niche. It would allow a person to register on the app, and select available times for themselves to work (like an Uber driver), so they are available for students who use that app as well. This would allow them to stay busy and earn more money when they may not get work from their own company. 
 
-A platform like this could actually exist in today's society and I intend to develop this idea further. I originally had built a page driving lesson booking system for my company with JavaScript and Firebase. So my inspiration for design came from this app. I cannot post a link to that app due to the database not being properly secured yet, which only contains fake data in development. 
 
+A platform like this could actually exist in today's society and I intend to develop this idea further. I originally had built a page driving lesson booking system for my own company with JavaScript and Firebase. So my inspiration came from that app that could be expanded to a wider reach then. 
 
 ---
 
@@ -46,10 +43,12 @@ The target audience for this app is for driving instructors and people looking t
 
 ---
 
-
 ## Features	
 
 ### Current features:  
+
+- people must be authenticated before using the app (provided by Devise gem, seen in [Resources](#Resources))
+- authorization of pages for certain roles (using CanCan gem, seen in [Resources](#Resources))
 
 - students can sign up, view and edit the profile
 - once completing their profile, a student can book a lesson
@@ -101,24 +100,48 @@ The target audience for this app is for driving instructors and people looking t
 Ruby on Rails was the foundation of this application which uses all of the above languages. There was additional JS written to implement the Google Maps Places API address autocomplete select box. Bootstrap was used for the front-end framework to style elements. PostgreSQL for the database. Git and GitHub for version control and Heroku for deployment.
 
 
-
 ---
+
 
 ## Implementation Plan
 
 > ### User Stories
 
+Only people who have signed up to the app can utilise its full potential. Otherwise they will only see the home page with sign up and log in links.
 There will be 3 different types (roles) of people who will use the app. They are: Student, Instructor and an Admin role. 
+All roles will be able to sign up, see their profile page, edit their personal information, change their password and delete their account.
+Certain roles will only have access to certain information.  
+*Any student/instructor can book a lesson with any instructor/student at this time. I am aware that this is not practical in real life, as what really needs to happen is a request to be sent to that person and then they can confirm that request. Especially from the side of instructors booking a lesson with a student. Not so much student to instructor, as if they were currently available then they would want that lesson to be booked immediately.*
 
 #### Students
-A student can come in 2 variants, someone who is old enough to start learning by QLD law, and someone who isn't. There is client side validation to check the age of a user on signup. *(just realised that validation only occurs after a user is created, meaning there will be users on the users table who will never be able to sign up, or at least until they turn of age. I should add date of birth on user sign up to check it then. future update, not something to do 1 night before assessment is due)*. Then when that person is of age and signs up, they will be able to book lessons and choose their instructor they want. 
+
+- A student who is old enough to start learning by QLD law, and someone who isn't. Client side validation will check the age of a user on profile creation. *(just realised that validation only occurs after a user is created, meaning there will be users on the users table who will never be able to sign up, or at least until they turn of age. I should add date of birth on user sign up to check it then. future update, not something to do 1 night before assessment is due)*.
+- When signed up that student will be sent to the profile page to continue updating their profile.
+- If that person does not complete their details and try to book a lesson, they will receive an error prompting them to complete their registration.
+- For students who have complete profile information can now book a lesson with an instructor of their choice
+  - There is a form on their profile page that allows them to do this.
+- Students who do or do not have any lessons can click on their 'My Lessons' tab in the nav bar and can see any lessons they may or may not have, and are given a note on the page if they do not have any lessons booked.
+- On their 'My Lessons' page, there is a 'Book A Lesson' button that will take them to a page where they are shown the same form from their profile page so that they can book a lesson.
+- On the student's profile page, it will also show the student their upcoming and most recent lesson as well.
+
+- A student who isn't old enough to sign up to the app, they will be presented with an error informing them they have to be of 16 years old before they can sign up and book a lesson.
 
 #### Instructors
-An instructor can come in 2 variants, someone who is old enough to teach by QLD law and has appropriate licensing *(but I don't have validation for their license numbers against Department of Transport details)*, and someone who isn't. There is client side validation to check the age of a user on signup. Then when that person is of age and signs up, they will be able to book lessons with students *(which actually need a request to be sent and confirmed by the other party, and not just a straight out lesson created)*, see all of their lessons they have and have had and choose their instructor they want. 
+
+- An instructor who is old enough to teach learner drivers legally, according to QLD law, will be able to sign up and use the app. *(I have not included their QLD license numbers as I did not wish to validate that number with QLD Department of Transport for this MVP)*. They will be taken to their edit profile page where they are to fill in their personal information. There is client side validation to check the age of a user on profile creation.
+- If that person does not complete their details and try to book a lesson, they will receive an error prompting them to complete their registration.
+- For instructors who have complete profile information can now book a lesson with an student of their choice. *See note at top regarding this impractical approach*
+- Instructors can see all their lessons in their 'My Lesson' tab as well, and will be shown their upcoming and most recent lesson on their profile page. 
+- *I would have preferred to develop a solution where instructors will see all their upcoming lessons on that day on their profile page, but did not due to time constraints.*
+
+- An instructor who isn't old enough to legally teach according to QLD law will not be able to sign up and use the app and will receive an error message as well, taking them back to their home page.
 
 #### Admins
-An Admin is a person who works for DLM. They will have the ability to see and manage everything on the site. That is all users, students, instructors, admins and lessons. In the future they will have the opportunity to add, edit and delete different lesson lengths and costs as well. 
 
+- An Admin is a person who works for DLM.
+- They will have the ability to see and manage (i.e. create, see, update an delete) everything on the site. That is all users, students, instructors, admins and lessons. 
+- In the future they will have the opportunity to add, edit and delete different lesson lengths and costs as well. 
+- Admins can book a lesson for an instructor and student, but are not included in any of the dropdowns themselves.
 
 
 > ### Sitemap
@@ -126,23 +149,22 @@ An Admin is a person who works for DLM. They will have the ability to see and ma
 
 
 #### Original Sitemap
-The original sitemap was a great start to how to navigate through the app. But was unaware of how many more pages there would be. A 'bacl' button has been implemented and a nav menu so that each person can get to any page they have available to them.
+The original sitemap was a great start to how to navigate through the app. But was unaware of how many more pages there would be. A 'back' button has been implemented and a nav menu so that each person can get to any page they have available to them. Original sitemap is seen below.
 
 ![Original DLM Sitemap](./sitemap/original_driving_lesson_marketplace_sitemap.png)
 
 
 #### Updated Sitemap
-The new sitemap includes all the extra pages that were include
+The new sitemap includes all the extra pages that were included in the app. As can be seen, many more admin pages have been added. However a lot of pages are built from partials or are filtered versions of the original page. 
 
 ![Updated DLM Sitemap](./sitemap/updated_driving_lesson_marketplace_sitemap.png)
 
 
 > ### Trello Board 
 
-The project management application used to complete these tasks was Trello. This program allowed me to develop outlines for the majority of the application, including features, methods, timelines and so forth. Without this plan, implementing the application would have been significantly more difficult. 
+The project management application used to complete these tasks was Trello. Which allowed me to develop outlines for the majority of the application, including features, methods, timelines, user stories, bugs and so forth. A development log was kept alongside Trello to track daily progress. 
 
 - [DLM Trello Board](https://trello.com/b/JUx9nN3o/driving-app)  
-
 
 
 > ### Wireframes
@@ -192,7 +214,6 @@ Didn't get the search and filter functions onto MVP. And doesn't include the sli
 
 #### Other Wireframes
 
- 
 ##### Home Page 
 Was to have sign-up and log-in buttons that turned into a sign-up or log-in form. However, only buttons were included to go to separate sign up and log in pages due to Devise supplying them.
 ![Home Page](./wireframes/home.png)
@@ -206,9 +227,9 @@ Stayed the same.
 ![Forgot Password Page](./wireframes/forgot_password.png)
 
 
-> ### ERD
+> ### Entity Relationship Diagram
 
-- [My ERD](https://app.dbdesigner.net/designer/schema/343185)  
+- [My Original ERD](https://app.dbdesigner.net/designer/schema/343185)  
 
 For the MVP 
 
@@ -229,9 +250,7 @@ R20	Describe the way tasks are allocated and tracked in your project -->
 
 Here are the screenshots from the mobile view from the student's perspective, with one desktop view of admin. The instructor's pages are similar to this which is why they haven't been included. The desktop view of admin provides us with a look at how the app looks there.
 
-
 ***Disclaimer: All data seen below in screenshots is fake.***
-
 
 ##### Home Page
 ![Home Page](./screenshots/home.png)
@@ -253,7 +272,6 @@ Here are the screenshots from the mobile view from the student's perspective, wi
 
 ##### Student Edit Account Page
 ![Student Edit Account Page](./screenshots/student_edit_account.png)
-
 
 ##### Student All Lessons Page
 ![Student All Lessons Page](./screenshots/student_all_lessons.png)
@@ -277,7 +295,6 @@ Here is a link to my [Google Slides Presentation](https://docs.google.com/presen
 ---
 
 ## Development Log
-
 
 - [Development log](./development-log.md)
 
@@ -304,7 +321,7 @@ Only manual testing was undertaken for this assignment due to time restraints to
 - implementing Amazon S3 image upload for avatar photos
 - attaching images to specific roles (i.e. students/instructors/admins)
 
-Manual testing takes up a lot of time, especially when it's a trial and error method. In the end, investing the time to understand how you will test throughout the app would highly advantageous for speeding up testing processes. 
+Manual testing takes up a lot of time, especially when it's a trial and error method. In the end, investing the time to understand how you will test throughout the app, and create these tests in the beginning would have been highly advantageous for speeding up testing processes. 
 
 
 
@@ -334,6 +351,8 @@ Manual testing takes up a lot of time, especially when it's a trial and error me
   - to check eager loading in development environment
 - [Stimulus](https://github.com/stimulusjs/stimulus)
   - used when building the Google Maps autocomplete dropdown.
+- [Rails ERD](https://github.com/voormedia/rails-erds)
+  - used to generate an ERD of current model relationships.
 
 ### Icons
 - [Capicon](https://mariodelvalle.github.io/CaptainIconWeb/)

@@ -63,7 +63,7 @@ class ApplicationController < ActionController::Base
     month = today.month
     day = today.day
 
-    user_lessons = user.lessons.includes([:instructor])
+    user_lessons = user.lessons
     upcoming_lessons = []
     previous_lessons = []
 

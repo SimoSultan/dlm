@@ -11,7 +11,7 @@ Source code: [https://github.com/SimoSultan/dlm](https://github.com/SimoSultan/d
 
 
 #### Index:
-- [**Software Development Plan**](docs/sdp.md) - my implementation plan
+- [**Software Development Plan**](docs/sdp.md) - my implementation plan of DLM
 - [**Description**](#Description) - what the site is
 - [**Motivation**](#Motivation-and-Inspiration) - to develop the site
 - [**Target Audience**](#Target-Audience) - who will use the site
@@ -131,7 +131,9 @@ The target audience for this app is for driving instructors and people looking t
   - to check eager loading in development environment
 - [Stimulus](https://github.com/stimulusjs/stimulus)
   - used when building the Google Maps autocomplete dropdown.
-
+- [Rails ERD](https://github.com/voormedia/rails-erds)
+  - used to generate an ERD of current model relationships.
+  
 ### Icons
 - [Capicon](https://mariodelvalle.github.io/CaptainIconWeb/)
   - not currently being used but will implement in future update
