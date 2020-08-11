@@ -258,7 +258,7 @@ DbDesigner was chosen this time instead of DbDiagram to implement the ERD. Howev
 
 ![Orignal DLM ERD](./ERD/original_erd.png)
 
-- My auto-generated ERD from my models (created by the Gem [Rails ERD](https://github.com/voormedia/rails-erds))
+- My auto-generated ERD from my models (created by the Gem [Rails ERD](https://github.com/voormedia/rails-erds)). As can be seen it is quite similar, missing the Calendar and Comment models, but also including the Active Storage models. Initial planning of the ERD paid off.
 
 ![Generated DLM ERD](./ERD/generated_erd.png)
 
@@ -283,42 +283,42 @@ Admins should be able to manage all users and objects on the database. They have
 
 #### Current Project Model and Database Relationships
 
-- ##### User
-  - This model is set up by [Devise](https://github.com/heartcombo/devise) upon installation. The main information it holds is email, passwords and role information on the model. It also holds more information regarding resetting password which is utilized when a user needs to reset their password. The relationships of this model are below:
-    - **has one Student**
-    - **has one Instructor**
-    - **has one Admin**
-  - Enums are used to convert the role:integer into our readable roles.
-    - ```ruby enum role: {student: 0, instructor: 1, admin: 2} ```
+##### User
+- This model is set up by [Devise](https://github.com/heartcombo/devise) upon installation. The main information it holds is email, passwords and role information on the model. It also holds more information regarding resetting password which is utilized when a user needs to reset their password. The relationships of this model are below:
+  - **has one Student**
+  - **has one Instructor**
+  - **has one Admin**
+- Enums are used to convert the role:integer into our readable roles.
+  - ```ruby enum role: {student: 0, instructor: 1, admin: 2} ```
 
-- ##### Student
-  - This model was created with a rails scaffold. However, our relations are of course needed to be added in. We want the student to belong to the user profile, and for that student to then have many lessons associated with it. The relationships of this model are below:
-    - **belongs to User**
-    - **has one attached Avatar** (using Active Storage and Amazon S3)
-    - **has many Lessons**
-  - Enums were used on this model for the transmission:integer, converting them to human readable again.
-    - ```ruby enum transmission: {manual: 0, automatic: 1} ```
+##### Student
+- This model was created with a rails scaffold. However, our relations are of course needed to be added in. We want the student to belong to the user profile, and for that student to then have many lessons associated with it. The relationships of this model are below:
+  - **belongs to User**
+  - **has one attached Avatar** (using Active Storage and Amazon S3)
+  - **has many Lessons**
+- Enums were used on this model for the transmission:integer, converting them to human readable again.
+  - ```ruby enum transmission: {manual: 0, automatic: 1} ```
 
-- ##### Instructor
-  - This model was also created with a rails scaffold. The Instructor has the same relationship structure as a Student, as it will belong to the user profile, and then have many lessons associated with it as well. The relationships of this model are below:
-    - **belongs to User**
-    - **has one attached Avatar** (using Active Storage and Amazon S3)
-    - **has many Lessons**
-  - Enums were used on this model for the transmission:integer, and the gender:integer, converting them to human readable again. Gender was used for the instructor to able to be incorporated in at a later stage that when a student selects a male/female/any instructor, the appropriate instructors will be available to them in the dropdown menu on the new lesson form. 
-    - ```ruby enum transmission: {manual: 0, automatic: 1} ```
-    - ```ruby enum gender: {male: 0, female: 1} ```
+##### Instructor
+- This model was also created with a rails scaffold. The Instructor has the same relationship structure as a Student, as it will belong to the user profile, and then have many lessons associated with it as well. The relationships of this model are below:
+  - **belongs to User**
+  - **has one attached Avatar** (using Active Storage and Amazon S3)
+  - **has many Lessons**
+- Enums were used on this model for the transmission:integer, and the gender:integer, converting them to human readable again. Gender was used for the instructor to able to be incorporated in at a later stage that when a student selects a male/female/any instructor, the appropriate instructors will be available to them in the dropdown menu on the new lesson form. 
+  - ```ruby enum transmission: {manual: 0, automatic: 1} ```
+  - ```ruby enum gender: {male: 0, female: 1} ```
 
-- ##### Admin
-  - As an Admin can't have any lessons, it only needs to be linked to our user and also have an avatar available to them if they wish. The relationships of this model are below:
-    - **belongs to User**
-    - **has one attached Avatar** (using Active Storage and Amazon S3)
+##### Admin
+- As an Admin can't have any lessons, it only needs to be linked to our user and also have an avatar available to them if they wish. The relationships of this model are below:
+  - **belongs to User**
+  - **has one attached Avatar** (using Active Storage and Amazon S3)
 
-- ##### Lesson
-  - Lesson model will belong to the people that are associated with it. Meaning, only the Student and Instructor. Now thinking about it, it would be good to have an association to an Admin if they create a lesson as well. *(future update)*.  The relationships of this model are below:
-    - **belongs to Student**
-    - **belongs to Instructor**
+##### Lesson
+- Lesson model will belong to the people that are associated with it. Meaning, only the Student and Instructor. Now thinking about it, it would be good to have an association to an Admin if they create a lesson as well. *(future update)*.  The relationships of this model are below:
+  - **belongs to Student**
+  - **belongs to Instructor**
 
-- ##### Future Models to be implemented
+##### Future Models to be implemented
 - LessonInfo model will contain the cost and duration of lessons that can be created, updated and deleted by the Admin role. There would not be a relation in this model as we are only fetching information from it. 
 - Payments will contain the payment information that will **belongs to** a lesson. Lesson would have a **has one** relation.
 - Comment model would be used to allow a comment and review feature on the lessons. An instructor would be able to give the student their feedback for the lesson on there. It would store the information of our users, the lesson, and the text for of the comment. 
