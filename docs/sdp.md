@@ -265,21 +265,21 @@ DbDesigner was chosen this time instead of DbDiagram to implement the ERD. Howev
 ### Database Relations Discussion
 
 #### High-level components in the app
-<!-- R15	Explain the different high-level components (abstractions) in your app -->
+
 ##### Authentication and Authorisation component
 General users will only be able to see the home page. They won't be able to use any of the features due to the nature of the app. It can be referred back to Uber, where a user must be signed up and can request a ride and a driver accepts it,. DLM is similar, *it's just that the Instructor is not accepting the request yet.* So Devise and CanCan are used to achieve this goal in restricting access to the database through their use. 
 
-##### Student/Instructor/Admin Book A Lesson
-All of these roles can create a lesson. These lessons are associated with both the Student and an Instructor but are not associated with the Admin if they created it, *(which was a mistake now that I write this)*. 
+##### Student/Instructor/Admin Booking A Lesson
+All of these roles can create a lesson. These lessons are associated with both the Student and an Instructor but are not associated with the Admin if they created it, *(which was a mistake now that I write this)*. Meaning all the relevant people will be able to see their respective authorized information.
 
 ##### Google Maps Autocomplete
-
+Google Maps autocomplete allows the user to select their address from the dropdown. It provides a complete address to the server which can be validated and found in the future when linking that address back to Google Maps for directions. 
 
 ##### Instructors Editing Lessons
-
+Instructors should be able to edit the information and control their schedule, whatever that is associated with them. Meaning they can cancel/uncancel, and edit time, address and duration of the lesson should they need to. 
 
 ##### Admin Management of Users and Details
-
+Admins should be able to manage all users and objects on the database. They have complete control. These are trusted representatives of DLM who would have this role. 
 
 #### Current Project Model and Database Relationships
 
