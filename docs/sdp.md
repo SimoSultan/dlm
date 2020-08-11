@@ -11,6 +11,14 @@ Source code: [https://github.com/SimoSultan/dlm](https://github.com/SimoSultan/d
 - [**Features**](#Features)
 - [**Tech Stack**](#Tech-Stack)
 - [**Implementation Plan**](#Implementation-Plan)
+- [**User Stories**](#User-Stories)
+- [**Sitemap**](#Sitemap)
+- [**Trello**](#Trello-Board)
+- [**Third Party Services**](#Third-Party-Services)
+- [**Wireframes**](#Wireframes)
+- [**Screenshots**](#Screenshots)
+- [**Presentation**](#Presentation)
+- [**Database Structure**](#Database-Structure)
 - [**Development Log**](#Development-Log)
 - [**Testing**](#Testing)
 - [**Resources**](#Resources)
@@ -246,6 +254,52 @@ Stayed the same.
 ![Forgot Password Page](./wireframes/forgot_password.png)
 
 
+> ### Screenshots
+
+Here are the screenshots from the mobile view from the student's perspective, with one desktop view of admin. The instructor's pages are similar to this which is why they haven't been included. The desktop view of admin provides us with a look at how the app looks there.
+
+***Disclaimer: All data seen below in screenshots is fake.***
+
+##### Home Page
+![Home Page](./screenshots/home.png)
+
+##### Signup Page
+![Signup Page](./screenshots/signup.png)
+
+##### Login Page
+![Login Page](./screenshots/login.png)
+
+##### Forgot Password Page
+![Login Page](./screenshots/forgot_password.png)
+
+##### Student Profile Page
+![Student Profile Page](./screenshots/student_profile.png)
+
+##### Student Edit Profile Page
+![Student Edit Profile Page](./screenshots/student_edit_profile.png)
+
+##### Student Edit Account Page
+![Student Edit Account Page](./screenshots/student_edit_account.png)
+
+##### Student All Lessons Page
+![Student All Lessons Page](./screenshots/student_all_lessons.png)
+
+##### Student New Lesson Page
+![Student New Lesson Page](./screenshots/student_new_lesson.png)
+
+##### Student View Lesson Page
+![Student View Lesson Page](./screenshots/lesson_show.png)
+
+##### Admin All Students/Instructors/Admin/Users/Lessons Page
+![Admin All Students Page](./screenshots/admin_all_students.png)
+
+
+
+> ### Presentation
+
+Here is a link to my [Google Slides Presentation](https://docs.google.com/presentation/d/1eogqfMuEI7aU3tamuzeD5aQIzG-SiKWQFydJYUXe2XI/edit#slide=id.g35f391192_00) that we present the day after submission to the Brisbane cohort.
+
+
 ---
 
 
@@ -326,7 +380,7 @@ Admins should be able to manage all users and objects on the database. They have
 
 
 
-## Schema Design
+### Schema Design
 Below is code found in the DLM schema file to show how it works at a glance.
 
 ```ruby
@@ -450,57 +504,6 @@ end
 
 
 ```
-
-<!-- R19	Provide your database schema design -->
-<!-- R20	Describe the way tasks are allocated and tracked in your project -->
-
-
-
-> ### Screenshots
-
-Here are the screenshots from the mobile view from the student's perspective, with one desktop view of admin. The instructor's pages are similar to this which is why they haven't been included. The desktop view of admin provides us with a look at how the app looks there.
-
-***Disclaimer: All data seen below in screenshots is fake.***
-
-##### Home Page
-![Home Page](./screenshots/home.png)
-
-##### Signup Page
-![Signup Page](./screenshots/signup.png)
-
-##### Login Page
-![Login Page](./screenshots/login.png)
-
-##### Forgot Password Page
-![Login Page](./screenshots/forgot_password.png)
-
-##### Student Profile Page
-![Student Profile Page](./screenshots/student_profile.png)
-
-##### Student Edit Profile Page
-![Student Edit Profile Page](./screenshots/student_edit_profile.png)
-
-##### Student Edit Account Page
-![Student Edit Account Page](./screenshots/student_edit_account.png)
-
-##### Student All Lessons Page
-![Student All Lessons Page](./screenshots/student_all_lessons.png)
-
-##### Student New Lesson Page
-![Student New Lesson Page](./screenshots/student_new_lesson.png)
-
-##### Student View Lesson Page
-![Student View Lesson Page](./screenshots/lesson_show.png)
-
-##### Admin All Students/Instructors/Admin/Users/Lessons Page
-![Admin All Students Page](./screenshots/admin_all_students.png)
-
-
-
-> ### Presentation
-
-Here is a link to my [Google Slides Presentation](https://docs.google.com/presentation/d/1eogqfMuEI7aU3tamuzeD5aQIzG-SiKWQFydJYUXe2XI/edit#slide=id.g35f391192_00) that we present the day after submission to the Brisbane cohort.
-
 
 ---
 
